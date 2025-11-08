@@ -1,0 +1,31 @@
+%LTeX: language=pt-BR
+\section{Introdução}
+Será considerado o problema usual de regressão linear com ruído 
+\[b=Ax+\epsilon,\label{P}\tag{P}\]
+em que $b\in\R^n$ é a resposta, $\epsilon \in\R^n$ é o rudo, $A\in \R^{n\times p}$ é a matriz do modelo e $x\in \R^p$ é o vetor de coeficientes buscado. Com o aumento da dimensão dos dados, técnicas de aprendizado esparso ganharam enfoque recentemente pela compacticidade e interpretabilidade dos modelos obtidos \cite{statsparse,stathigh}.
+
+Assumindo essa esparsidade na solução, algo comumente desejado ou teoricamente esperado no caso $p\gg n$ \cite{statsparse,stathigh}, uma estratégia natural é considerar o problema de quadrados mínimos regularizado
+\[\min_{x\in\R^p}  \frac{1}{2} \|Ax-b\|_2^2 + \lambda_0 \|x\|_0 + \lambda_q \|x\|_q^q, \quad q\in\{1,2\}. \label{R}\tag{R}\]
+Aqui, a norma $\ell_0$ refere-se à pseudo-norma definida como $\|x\|_0=|\{i\mid x_i\neq 0, i=1,\hdots,p\}| \ \forall x\in\R^p$, $\lambda_0\geq 0$ é seu parâmetro de penalização que regula o balanço entre elementos não nulos e recuperação da resposta, e $\lambda_q\geq 0$ controla a regularização $\ell_q$.
+
+Apesar da escolha $q=1$ também induzir esparsidade, na realidade a regularização $\ell_q$ é necessária para evitar \textit{overfitting} em cenários com baixa Relação Sinal-Ruído (RSR) \cite{overfitting}. Esse efeito se dá pelo fenômeno de \textit{shrinkage} induzido por essas regularizações. Denotaremos \eqref{R} com $q=1$ de problema $\ell_0\ell_1$ e $q=2$ de $\ell_0\ell_2$.
+
+\subsection{Alternativas de abordagem}
+O problema \eqref{R} é NP-difícil \cite{nphard}, tornando a solução computacional custosa. Três abordagens gerais são empregadas na prática. A primeira é utilizar \textit{proxys} da norma $\ell_0$, como a norma $\ell_1$ no modelo LASSO \cite{lasso}, a \textit{Minimax Concave Penalty} (MCP) \cite{mcp} e a \textit{Smoothly Clipped Absolute Deviation} (SCAD) \cite{scad}.  Porém, em muitos regimes, estimadores obtidos de \eqref{R} sob parâmetros de penalização adequados exibem características estatísticas superiores (predição, estimativa e seleção de variáveis) comparado com essas alternativas menos computacionalmente desafiadoras (veja \cite{fastselect} e referências ali presentes). 
+
+A segunda alternativa são algoritmos que abordam a norma $\ell_0$ diretamente e buscam soluções exatas. Trabalhos como \cite{mio} usam \textit{Mixed Integer Programming} (MIP) para resolver em otimalidade global problemas com $p\sim 10^7$ em tempos de minutos a horas quando soluções altamente esparsas são desejadas. 
+
+A terceira é utilizar heurísticas ou algoritmos que solucionam aproximadamente \eqref{R} (ou uma formulação com restrição de cardanalidade) com $\lambda_q=0$. Métodos populares incluem \textit{(greedy) stepwise regression} \cite{statsparse}, \textit{Iterative Hard Thresholding} (IHT) \cite{iht}, \texttt{abess} \cite{abess}, e \textit{greedy} e \textit{randomized Coordinate Descent} (CD) \cite{gcd, rcd}. 
+
+Em \cite{fastselect}, é proposta uma abordagem que busca conciliar a velocidade de modelagens \textit{proxys} dessa segunda estratégia e a otimalidade obtida pelos métodos de otimização inteira mista. O algoritmo proposto busca soluções quase ótimas que satisfaçam uma propriedade de exatidão combinatória local tal que pequenas perturbações no suporte não melhoram a função objetivo.
+
+Os estimadores obtidos demonstraram superioridade em comparação com outros algoritmos de aprendizado esparso em quesitos como predição, estimativa e seleção de variáveis. Além disso, a implementação \textit{open-source} dos autores, \texttt{L0Learn}, provou-se significativamente mais rápida que implementações amplamente usadas como \texttt{ncvreg} \cite{ncvreg} e \texttt{glmnet}  \cite{glmnet} que usam modelos \textit{proxy}.  
+
+\subsubsection{Notação}
+Para um conjunto de índices $T\subset\{1,2,\ldots,p\}$, $U_T\in\R^{p \times |T|}$ denota a submatriz composta pelas colunas da matriz identidade $I_p$ correspondentes aos elementos de $T$. Além disso, $x_T\in\R^{|T|}$ denota o subvetor de $x\in\R^p$ composto pelos índices em $T$.  
+
+O conjunto das funções $L$-suaves, $\mathcal{C}^{1,1}_L$, contém todas as funções $\mathcal{C}^1\ni g:\R^k\to \R$ (continuamente diferenciáveis) tais que $\nabla g$ é Lipschitz contínuo com fator $L$, isto é, $\|\nabla g(x)-\nabla g(y)\|\leq L\|x-y\|\ \forall x,y\in\R^k$.
+
+Para uma matriz $B\in\R^{k\times k}$ com autovalores reais, $\lambda_{\max}(B)$ é o seu maior autovalor.
+
+Denotamos por fim o conjunto $[p]\coloneq\{1,2,\ldots,p\}$.

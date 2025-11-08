@@ -1,0 +1,116 @@
+%LTeX: language=pt-BR
+\section{Experimentos numéricos}
+Nessa seção serão efetuados experimentos com o intuito de comparar os algoritmos apresentados. 
+
+\subsection{\textit{Setup} experimental}
+\subsubsection{Geração de dados}
+Assim como em \cite{fastselect}, utilizamos conjuntos de dados sintéticos para uma ampla variedade de tamanhos e configurações de problemas. A matriz de dados é gerada com distribuição gaussiana multivariada $A_{n \times p} \sim \text{MVN}(0, \Sigma)$, e então suas colunas são normalizadas tal que $\|A_i\|_2=1\ \forall i$ para simplificar as atualizações dos algoritmos. Como verdade base, é utilizado um vetor de coeficientes esparsos $x^\dagger\in\R^p$ com $k^\dagger$ entradas não nulas igualmente espaçadas e com valor $1$. É escolhido também um valor aproximado para o SNR, definido como 
+\[\text{SNR} \coloneq \frac{\text{E}[\|Ax^\dagger\|_2^2]}{\text{E}[\|b-Ax^\dagger\|_2^2]},\]
+e com base nessa escolha é tomado 
+\[\sigma = \sqrt{\frac{\|Ax^\dagger\|_2^2}{n\cdot\text{SNR}}}.\]
+Em seguida, o vetor de resposta é gerado como $b = Ax^\dagger + \epsilon$, onde $\epsilon_i \stackrel{\text{iid}}{\sim} N(0, \sigma^2)$ é independente de $A$. Dessa forma, garantimos que 
+\[\frac{\|Ax^\dagger\|_2^2}{\|b-Ax^\dagger\|_2^2} = \frac{\|Ax^\dagger\|_2^2}{\|\epsilon\|_2^2}\approx \frac{\|Ax^\dagger\|_2^2}{n\sigma^2}= \text{SNR},\] 
+ou seja, o SNR verdadeiro seja próximo do SNR desejado.   
+
+Foram consideradas as seguintes instâncias de $\Sigma \coloneq ((\sigma_{ij}))$:
+\begin{itemize}
+    \item \textit{Correlação constante}: É definido $\sigma_{ij} = \rho\ \forall i \neq j$ e $\sigma_{ii} = 1\ \forall i$;
+    \item \textit{Correlação exponencial}: É definido $\sigma_{ij} = \rho^{|i-j|}\ \forall i, j$, com a convenção $0^0 = 1$.
+\end{itemize}
+
+\subsubsection{Parâmetros dos algoritmos}
+Após experimentos iniciais de ajuste de hiperparâmetros, foram escolhidos $m=15,\ \delta=0.01$ e $\tau=0.25$ para o NPG. As salvaguardas $\gamma_{min}$ e $\gamma_{max}$ são usualmente tomadas como valores arbitrariamente pequenos e grandes, respectivamente. Os tamanhos de passo espectral iniciais, $\gamma^{BBR}_{0,+}$ e $\gamma^{BBR2}_{0,+}$, foram tomados via \eqref{BBR} e \eqref{BBR2} com a convenção de $x^{-1}=x^0-10^{-5}\nabla f(x^0)$. Já a métrica diagonal espectral inicial, $U_{0,+}^{DBBR}$, foi definida com esses tamanhos de passo e a convenção de $U_{-1,+}^{DBBR}$ nula. Para o VMNSPG, $\mu=10^{-3}$ apresentou os melhores resultados dentre os valores testados. Quanto ao CDSS, somente foram ordenadas um quarto das coordenadas.
+
+\subsection{Comparação entre CDSS e NPG}
+Consideramos a eficiência dos algoritmos propostos para o problema \eqref{R} com $\lambda_q=0$ (problema $\ell_0$ puro). Foi utilizado um conjunto de dados com correlação exponencial, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$. Foi tomado $\lambda_0=0.5\frac{\norm{A^Tb}^2_\infty}{2L_f}$ para obter uma penalização razoável (veja \cite[Exemplo 3]{manuscrito} para uma explicação dessa escolha). Foram geradas 50 inicializações com suporte de tamanho $k^\dagger$ com índices uniformemente escolhidos de $[p]$ e valores com distribuição uniforme em $(0,1)$. Para cada inicialização é rodado cada algoritmo. A medida de recuperação do suporte é definida como 
+\[\frac{| Supp(x) \cap Supp(x^\dagger) |}{\max \{ |Supp(x)|, k^\dagger \}},\] 
+que quantifica a fração de variáveis verdadeiramente ativas recuperadas, normalizada pelo máximo entre o tamanho do suporte estimado e o verdadeiro $k^\dagger$. Essa medida penaliza tanto falsos positivos quanto falsos negativos e valores próximos de 1 indicam recuperação alta. O critério de parada utilizada em todos os algoritmos foi uma mudança relativa no objetivo menor que $10^{-7}$.
+
+A \autoref{pK} contém o \textit{box plot} do número de iterações, em que uma passagem pelas $p$ coordenadas corresponde a uma iteração do CD. Essa métrica não reflete precisamente a velocidade de cada algoritmo uma vez que não considera, por exemplo, o número de sub iterações na busca linear do NPG e a reordenação efetuada no CD. Mesmo assim, é possível ter uma ideia de que a convergência do CD é significativamente mais rápida que a dos métodos proximais não monótonos apresentados. O VMSPG demonstra convergência mais rápida entre os métodos NPG, provavelmente devido à sua incorporação de mais informação de segunda ordem. Seu número de iterações, com mediana em torno de 30, fica o mais próximo do CD, com mediana em torno de 20. O passo espectral híbrido do NSPGH parece acelerar levemente a convergência em comparação com o passo primal usado no NSPG, e ambos performam cerca de duas a três vezes pior que o CD.
+
+Contudo, uma análise da qualidade das soluções obtidas através da \autoref{pF} e \autoref{pSUP} demonstra que, apesar de mais lentos, ambos o NSPG e NSPGH obtém melhores resultados em valor objetivo e recuperação de suporte. Em particular nesse segundo aspecto, a diferença é bastante significativa. O VMNSPG obteve a pior desempenho em ambos os quesitos, apesar da sua convergência mais rápida.
+
+A capacidade do NPG com estratégias de passo espectral encontrar soluções de qualidade está diretamente ligada a não monotonia da sequência de iterados e a permissão de tamanhos de passo maiores que permitem maior liberdade de movimento \cite{manuscrito}. No caso do VMNSPG, é possível que uma convergência local mais rápida restrinja essa movimentação e a busca por soluções melhores. A excelente recuperação do suporte indica que o NSPG e NSPGH produzem candidatos mais adequados para a aplicação da otimização combinatorial local, como será visto nos experimentos a seguir. Esse resultado é curioso visto que esses algoritmos só possuem garantia de convergência a pontos M-estacionários, enquanto o CD busca mínimos CW, cuja definição é mais restritiva (veja \eqref{hier}).
+
+Para melhor analisar as características dos limites das sequências dos algoritmos NPG, também foi executado o CD a partir desses pontos para determinar se eles também eram mínimos CW. Consideramos que caso o suporte não seja alterado durante essa passagem pelo CD e o número de iterações seja pequeno ($2$ ou menos) antes do critério de parada, então o ponto pode razoavelmente ser considerado (numericamente) CW. Para o NSPG, $60\%$ das inicializações resultaram em pontos CW, enquanto essa porcentagem foi $44\%$ para o NSPGH. O VMNSPG não resultou em nenhum ponto CW seguindo essa definição. 
+
+\begin{figure}[ht]
+  \centering
+  \subbottom[\label{pF}Valor objetivo alcançado.]{%
+    \includegraphics[width=0.45\linewidth]{images/pF-exp-0.5-500-2000-10-100 (1).png}}
+   \subbottom[\label{pSUP}Medida de recuperação do suporte.]{%
+    \includegraphics[width=0.45\linewidth]{images/pSUP-exp-0.5-500-2000-10-100 (1).png}}\\
+  \subbottom[\label{pK}Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do CD)]{%
+    \includegraphics[width=0.45\linewidth]{images/pK-exp-0.5-500-2000-10-100 (1).png}}
+  \caption{\textit{Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação exponencial, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$.}
+\end{figure}
+
+
+\subsection{Comparação com otimização combinatorial}
+Nesse experimento, visamos identificar o efeito que cada algoritmo tem quando empregado como \textit{inner solver} do CDPSI(1) (\autoref{alg:cpsi}). Serão testados o CD, o NSPG e o NSPG seguido do CD. Como comparação da qualidade das soluções, também foi incluído o NSPG sem estratégia combinatorial.
+
+O setup experimental é idêntico ao da seção anterior. Além das medidas apresentadas ali, incluímos o número de iterações externas (iterações do \autoref{alg:cpsi}). O número de iterações total se refere ao somatório de iterações de todas as chamadas do \textit{inner solver} durante a execução. 
+
+A \autoref{pK2} mostra que a diferença de iterações entre o CD e o NSPG se tornou menos pronunciada que na \autoref{pK}. Isso se deve ao fato de que o CD executa mais iterações externas em média, ou seja, precisa de mais perturbações para melhorar suas soluções, como visto na \autoref{pKout2}. A otimização combinatorial causa um grande aumento no número de iterações do NSPG.
+
+A qualidade das soluções obtidas por métodos NSPG (incluindo sem otimização combinatorial) continua bastante superior àquelas do CD nos critérios analisados (\autoref{pF2} e \autoref{pSUP2}). De fato, a otimização combinatorial melhora as soluções do NSPG, mas o ganho é relativamente pequeno nesse experimento. 
+
+A utilização conjunta do NSPG e CD se mostrou vantajosa em todos os aspectos se comparado com o NSPG puro.
+
+\begin{figure}[ht]
+  \centering
+  \subbottom[\label{pF2}Valor objetivo alcançado.]{%
+    \includegraphics[width=0.45\linewidth]{images/pF-exp-0.5-500-2000-10-100.png}}
+   \subbottom[\label{pSUP2}Medida de recuperação do suporte.]{%
+    \includegraphics[width=0.45\linewidth]{images/pSUP-exp-0.5-500-2000-10-100.png}}\\
+  \subbottom[\label{pK2}Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do CD)]{%
+    \includegraphics[width=0.45\linewidth]{images/pK-exp-0.5-500-2000-10-100.png}}
+    \subbottom[\label{pKout2}Número de iterações externas (iterações do \autoref{alg:cpsi})]{%
+    \includegraphics[width=0.45\linewidth]{images/pKout-exp-0.5-500-2000-10-100.png}}
+  \caption{\textit{Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação exponencial, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$.}
+\end{figure}
+
+Aumentando o SNR para 300 para permitir recuperação completa do suporte, vemos uma diferença drástica na qualidade das soluções, com somente um aumento pequeno no número de iterações (\autoref{p3}). A estratégia NSPG+ CD continua sendo a mais atrativa, com menos soluções \textit{outliers} com um custo levemente superior em iterações, porém todas as estratégias NSPG apresentam recuperação perfeita da solução verdadeira com probabilidade alta.
+
+\begin{figure}[ht]
+  \centering
+  \subbottom[Valor objetivo alcançado.]{%
+    \includegraphics[width=0.45\linewidth]{images/pF-exp-0.5-500-2000-300-100.png}}
+   \subbottom[Medida de recuperação do suporte.]{%
+    \includegraphics[width=0.45\linewidth]{images/pSUP-exp-0.5-500-2000-300-100.png}}\\
+  \subbottom[Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do CD)]{%
+    \includegraphics[width=0.45\linewidth]{images/pK-exp-0.5-500-2000-300-100.png}}
+    \subbottom[Número de iterações externas (iterações do \autoref{alg:cpsi})]{%
+    \includegraphics[width=0.45\linewidth]{images/pKout-exp-0.5-500-2000-300-100.png}}
+  \caption{\textit{Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação exponencial, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=300$.}\label{p3}
+\end{figure}
+
+Para o próximo experimento, mantivemos os parâmetros anteriores e trocando o tipo de correlação por constante, um cenário significativamente mais difícil. A \autoref{p4} apresenta resultados bastante drásticos em favor de estratégias NSPG com busca combinatorial. Em comparação com o CD, o ganho em iterações (tanto internas quanto externas) é substancial. Já em comparação com o NSPG sem busca combinatorial, a qualidade das soluções é muito superior. Entre o NSPG puro e o NSPG+CD, esse primeiro se provou quase tão bom em qualidade de soluções, mas com mais iterações externas, as quais são a parte mais expressiva no tempo de execução total. 
+
+\begin{figure}[ht]
+  \centering
+  \subbottom[Valor objetivo alcançado.]{%
+    \includegraphics[width=0.45\linewidth]{images/pF-con-0.5-500-2000-300-100.png}}
+   \subbottom[Medida de recuperação do suporte.]{%
+    \includegraphics[width=0.45\linewidth]{images/pSUP-con-0.5-500-2000-300-100.png}}\\
+  \subbottom[Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do CD)]{%
+    \includegraphics[width=0.45\linewidth]{images/pK-con-0.5-500-2000-300-100.png}}
+    \subbottom[Número de iterações externas (iterações do \autoref{alg:cpsi})]{%
+    \includegraphics[width=0.45\linewidth]{images/pKout-con-0.5-500-2000-300-100.png}}
+  \caption{\textit{Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação constante, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=300$.}\label{p4}
+\end{figure}
+
+Por fim, com correlação exponencial, dividimos todas as dimensões por 2, tomamos $k^\dagger=25$,  e aumentamos a correlação para $\rho=0.9$. Todos os métodos com otimização combinatorial obtiveram 100\% de recuperação do suporte original, enquanto o NSPG sem essa estratégia não. O número de iterações (internas e externas) do CD foi muito mais alto, indicando novamente que as soluções obtidas desse método exigem mais perturbações do suporte antes de estabilizar.
+
+\begin{figure}[ht]
+  \centering
+  \subbottom[Valor objetivo alcançado.]{%
+    \includegraphics[width=0.45\linewidth]{images/pF-exp-0.9-250-1000-300-25.png}}
+   \subbottom[Medida de recuperação do suporte.]{%
+    \includegraphics[width=0.45\linewidth]{images/pSUP-exp-0.9-250-1000-300-25.png}}\\
+  \subbottom[Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do CD)]{%
+    \includegraphics[width=0.45\linewidth]{images/pKout-exp-0.9-250-1000-300-25.png}}
+    \subbottom[Número de iterações externas (iterações do \autoref{alg:cpsi})]{%
+    \includegraphics[width=0.45\linewidth]{images/pKout-exp-0.9-250-1000-300-25.png}}
+  \caption{\textit{Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação exponencial, $\rho=0.9,\ n=250,\ p=1000,\ k^\dagger=25,\ \text{SNR}=300$.}\label{p5}
+\end{figure}

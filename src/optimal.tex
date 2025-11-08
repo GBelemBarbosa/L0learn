@@ -1,0 +1,164 @@
+%LTeX: language=pt-BR
+\section{Operador proximal e condições de otimalidade}
+Definindo $f(x)\coloneqq \frac{1}{2} \|Ax-b\|_2^2 + \lambda_2 \|x\|_2^2$ a parte suave de \eqref{R} e $h(x)\coloneqq \lambda_0 \|x\|_0 + \lambda_1 \|x\|_1$ a parte não suave, é possível aplicar a vasta teoria de otimização compósita ao problema
+\[\min_{x\in\R^p}F(x)\coloneqq f(x)+h(x).\label{C}\tag{C}\]
+Para isso, introduzimos o chamado operador proximal \cite{moreau1962} de $g:\R^p\to\R$ que, em sua formulação mais clássica, é definido como
+\begin{equation}
+    \label{prox}
+        \prox_{g}(x)\coloneqq\argmin_{u\in\R^p}g(u)+ \frac{1}{2}\norm{u-x}_2^2 . 
+\end{equation}
+
+Tomando $g=ch,\ c\geq 0$, o problema proximal acima é separável. Seja $h_i(u_i)\coloneqq \lambda_0\mathbf{1}_{\{0\}}(u_i)+\lambda_1|u_i|+\frac{(u_i-x_i)^2}{2c}\ \forall i\in [p]$. Como no \textit{soft-thresholding operator}, $\operatorname{sign}(x_i)(|x_i|-c\lambda_1)$ é o minimizador não nulo de $h_i$ quando $|x_i|>c\lambda_1$ \cite{statsparse}. Se $|x_i|-c\lambda_1<\sqrt{2c\lambda_0}$, então $h_i(0)<h_i(\operatorname{sign}(x_i)(|x_i|-c\lambda_1))$. Já se $|x_i|-c\lambda_1=\sqrt{2c\lambda_0}$, tem-se $h_i(0)=h_i(\operatorname{sign}(x_i)(|x_i|-c\lambda_1))$. Por fim, $h_i(0)>h_i(\operatorname{sign}(x_i)(|x_i|-c\lambda_1))$ se $|x_i|-c\lambda_1>\sqrt{2c\lambda_0}$. Dessa maneira, temos uma fórmula fechada para o operador proximal de $ch$,
+
+\[\left[\prox_{ch}(x)\right]_i=\argmin_{u_i\in\R}h_i(u_i)=\begin{cases}
+        \{0\},& |x_i|-c\lambda_1<\sqrt{2c\lambda_0}\\
+        \{0,\operatorname{sign}(x_i)(|x_i|-c\lambda_1)\},& |x_i|-c\lambda_1=\sqrt{2c\lambda_0}\\
+        \{\operatorname{sign}(x_i)(|x_i|-c\lambda_1)\},& |x_i|-c\lambda_1>\sqrt{2c\lambda_0}\end{cases} .\]
+
+\subsection{Soluções estacionárias}
+Para $G:\R^p\to \R$ e $d\in\R^p$, definimos a derivada direcional (inferior) 
+
+\[G'(x, d)\coloneq \liminf_{\alpha\downarrow0}\frac{G(x+\alpha d)-G(x)}{\alpha}.\]
+
+\begin{definition}[Solução estacionária]
+    Um vetor $x^*\in\R^p$ é uma solução estacionária de \eqref{C} se, $\forall d\in\R^p$, $F'(x^*,d)\geq 0$. 
+\end{definition}
+
+Para $x\in\R^p$, definimos a $i$-ésima variável minimizadora da parte suave de $F$
+\begin{equation}
+\tilde{x_i}\coloneqq\argmin_{u_i\in\R}f(x+(u_i-x_i)e_i)=\frac{\inner{b-\sum_{j\neq i}x_jA_j,A_i}}{\|A_i\|^2_2+2\lambda_2}\quad\forall i\in [p],\label{tilde}
+\end{equation}
+em que $A_k$ denota a $k$-ésima coluna de $A$. 
+
+\begin{lemma}\label{statlemma}
+    Um vetor $x^*\in\R^p$ com suporte $S$ é uma solução estacionária de \eqref{C} se, e somente se, 
+    \begin{equation}
+    \begin{aligned}
+    x^*_i=\operatorname{sign}(\tilde{x^*_i})\left(|\tilde{x^*_i}|-\frac{\lambda_1}{\|A_i\|^2_2+2\lambda_2}\right)\text{ e } |\tilde{x^*_i}|>\frac{\lambda_1}{\|A_i\|^2_2+2\lambda_2}
+    \quad \forall i\in S.\end{aligned}\label{statprox}
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    \cite[Lemma 1]{fastselect}.
+\end{proof}
+
+\subsection{Mínimo coordenada a coordenada}
+A seguinte classe de minimizadores é inspirada em pontos estacionários de algoritmos coordenados \cite{fastselect}.
+
+\begin{definition}[Mínimo CW]
+    Um ponto $x^*\in\R^p$ é um mínimo \textit{Coordinate-Wise} (CW) de \eqref{C} se, $\forall i\in [p]$, $x_i^*$ minimiza $F$ com respeito à $x_i$ mantendo as demais coordenadas fixas, ou seja, 
+    \[x_i^*\in \argmin_{u_i\in\R}F(x^*+(u_i-x_i^*)e_i)\quad \forall i\in [p].\]
+\end{definition}
+
+Seja $x^*\in\R^p$ mínimo CW. É possível caracterizar mínimos CW a partir do operador proximal através da relação
+\begin{equation}
+    \begin{aligned}
+    x_i^*&\in \argmin_{u_i\in\R}F(x^*+(u_i-x_i^*)e_i)\\
+    &=\argmin_{u_i\in\R}f(x^*+(u_i-x^*_i)e_i)+h(x^*+(u_i-x^*_i)e_i)\\
+    &=\argmin_{u_i\in\R}\frac{1}{2}\left\|b-\sum_{j\neq i}x^*_jA_j-u_iA_i\right\|_2^2+\lambda_2u_i^2+\lambda_0\mathbf{1}_{\{0\}}(u_i)+\lambda_1|u_i|\\
+    &=\argmin_{u_i\in\R}\frac{\|A_i\|^2_2+2\lambda_2}{2}(u_i-\tilde{x_i^*})^2+\lambda_0\mathbf{1}_{\{0\}}(u_i)+\lambda_1|u_i|\\
+    &=\prox_{\frac{1}{\|A_i\|^2_2+2\lambda_2}(\lambda_0\mathbf{1}_{\{0\}}(\cdot)+\lambda_1|\cdot|)}\left(\tilde{x_i^*}\right)\quad \forall i\in [p],
+    \end{aligned}\label{cwprox}
+\end{equation}
+onde foi usado que a transladação e multiplicação por constantes não alteram o minimizador. Comparando \eqref{cwprox} e \eqref{statprox}, pelo \autoref{statlemma} $x^*$ é solução estacionária.
+
+\subsection{Mínimo inescapável por troca}
+As próximas definições de otimalidade seguem de conceitos de análise combinatorial e refinam a ideia de mínimo CW. Dado um ponto mínimo CW $x^*$, podemos tentar melhorá-lo em valor objetivo performando uma operação de troca que consiste em desativar (definir como 0) algumas coordenadas do suporte de $x^*$ e permitir que outras entrem no suporte. Após isso, é realizada uma otimização para o novo suporte com respeito as novas coordenadas inseridas (otimização parcial) ou todas as coordenadas (otimização total).     
+
+\begin{definition}[Mínimo PSI]
+    Seja $k\in\N^+$. Um ponto $x^*\in\R^p$ com suporte $S$ é um mínimo \textit{Partial Swap Inescapable} (PSI) de \eqref{C} de ordem $k$, denotado PSI($k$), se $x^*$ é uma solução estacionária e $\forall S_1\subset S,S_2\subset S^c$ tais que $|S_1|,|S_2|\leq k$ vale
+    \begin{equation}
+    F(x^*)\leq\min_{u\in\R^{|S_2|}}F(x^*-U_{S_1}x^*_{S_1}+U_{S_2}u).\label{psi}
+    \end{equation}
+\end{definition}
+
+Seja $x^*\in\R^p$ mínimo PSI($k$) para algum $k\in\N^+$. De \eqref{psi}, $\forall i\in S$, tomando $S_1=\{i\}$ e $S_2=\emptyset$, tem-se
+\[F(x^*)\leq F(x^*-U_{S_1}x^*_{S_1})=F(x^*-x^*_ie_i).\]
+Por \eqref{statprox} (estacionariedade de $x^*$) e a relação acima, tem-se então que $x^*$ satisfaz \eqref{cwprox}. Assim, $x^*$ é mínimo CW.
+
+\begin{definition}[Mínimo FSI]
+    Seja $k\in\N^+$. Um ponto $x^*\in\R^p$ com suporte $S$ é um mínimo \textit{Full Swap Inescapable} (FSI) de \eqref{C} de ordem $k$, denotado FSI($k$), se $\forall S_1\subset S,S_2\subset S^c$ tais que $|S_1|,|S_2|\leq k$ vale
+    \[F(x^*)\leq\min_{u\in\R^{|(S\cup S_2)\setminus S_1|}}F(x^*-U_{S_1}x^*_{S_1}+U_{(S\cup S_2)\setminus S_1}u).\]
+\end{definition}
+
+Seja $x^*\in\R^p$ mínimo FSI($k$) para algum $k\in\N^+$. Tomando $S_1=S_2=\emptyset$ na definição acima, temos
+\[F(x^*)\leq\min_{u\in\R^{|S|}}F(x^*+U_{S}u)\leq \min_{u_i\in\R}F(x^*+(u_i-x_i^*)e_i)\quad \forall i\in [p], \]
+logo $x^*$ é mínimo CW, e, portanto, solução estacionária. Além disso, como $S_2\subset (S\cup S_2)\setminus S_1$, $x^*$ satisfaz \eqref{psi}. Dessa forma, $x^*$ é PSI($k$). 
+
+\subsection{Ponto estacionário}
+Os conceitos a seguir são padrão em análise variacional (consulte \cite[Chapter 3]{beckbook} para mais detalhes). Seja $g:\R^p\to\R$ e $x \in \operatorname{dom}g$ fixo. Então
+$$
+\widehat{\partial} g(x)\coloneqq\left\{\eta \in \R^p \,\middle\vert\ \liminf _{u \rightarrow x} \frac{g(u)-g(x)-\langle\eta, u-x\rangle}{\|u-x\|} \geq 0\right\}
+$$
+é denominado o subdiferencial regular (ou Fréchet) de $h$ em $x$. Além disso, o conjunto $\partial g(x)$, definido pela relação
+$$
+\eta \in \partial g(x)\iff\exists\left\{x^k\right\},\left\{\eta^k\right\} \subset \R^p: x^k \rightarrow_g x,\ \eta^k \rightarrow \eta,\ \eta^k \in \widehat{\partial} g\left(x^k\right)\ \forall k \in \mathbb{N},
+$$
+é conhecido como o subdiferencial limite (ou de Mordukhovich) de $g$ em $x$. Claramente, sempre vale que $\widehat{\partial} g(x) \subset \partial g(x)$ por construção. 
+
+Como trabalhamos com uma função descontínua, $h$, o subdiferencial de Mordukhovich se prova mais apropriado para a seguinte definição de estacionariedade. Como $f\in C^1$, vale a regra da soma \cite[Proposition 1.30]{mordu2018} $\partial F(x)=\nabla f(x)+\partial h(x)$.
+
+\begin{definition}[Ponto M-estacionário]
+    Um ponto $x^*\in\R^p$ é um ponto M-estacionário de \eqref{C} se
+    \[0\in \partial F(x^*)=\nabla f(x^*)+\partial h(x).\]
+\end{definition}
+
+Note que
+\begin{align*}
+0 \in \widehat{\partial} F(x^*) &\iff \liminf_{u \to x^*} \frac{F(u) - F(x^*)}{\|u - x^*\|} \geq 0 \\
+&\iff \liminf_{\alpha \downarrow 0} \frac{F(x^* + \alpha d) - F(x^*)}{\alpha \|d\|} \geq 0 \quad \forall d\neq 0 \\
+&\iff \liminf_{\alpha \downarrow 0} \frac{F(x^* + \alpha d) - F(x^*)}{\alpha} \geq 0 \quad \forall d\in\R^p.
+\end{align*}
+A última condição é exatamente a definição de $ x^* $ ser uma solução estacionária. Assim, como $\widehat{\partial} F(x) \subset \partial F(x)$, temos que soluções estacionárias são pontos M-estacionários.
+
+\subsection{Ponto estacionário do gradiente proximal}
+A seguinte definição de estacionariedade é baseada no passo do gradiente proximal.
+
+\begin{definition}[Ponto estacionário PG]
+    Um ponto $x^*\in\R^p$ é um ponto estacionário \textit{Proximal Gradient} (PG) de \eqref{C} se, $\forall 0<\tau<\frac{1}{L_f}$, $f\in \mathcal{C}_{L_f}^{1,1}$,
+    \[x^* \in \mathrm{prox}_{\tau h}(x^* - \tau \nabla f(x^*)).\]
+\end{definition}
+
+Seja $x^*$ estacionário PG de suporte $S$. Note que, $\forall 0<\tau<\frac{1}{L_f}$,
+\[\begin{aligned}
+x^* \in \mathrm{prox}_{\tau h}(x^* - \tau \nabla f(x^*))\implies & 0 \in \tau \widehat{\partial} h(x^*) + \big(x^* - (x^* - \tau \nabla f(x^*))\big) \\
+\iff & 0 \in \tau \nabla f(x^*) + \tau \widehat{\partial} h(x^*) \\
+\iff & 0 \in \nabla f(x^*) + \widehat{\partial} h(x^*) \\
+\iff & 0 \in \widehat{\partial} F(x^*),
+\end{aligned}\]
+onde na primeira implicação foi usada a regra de Fermat (condição necessária de primeira ordem). Dessa forma, $x^*$ é solução estacionária. 
+
+Além disso, substituindo 
+\begin{align*}
+[\nabla f(x^*)]_i&=\inner{Ax^*-b, A_i}+2\lambda_2x^*_i\\&=\inner{\sum_{j\neq i}x_j^*A_j-b,A_i}+(\|A_i\|_2^2+2\lambda_2)x^*_i\overset{\eqref{tilde}}{=}(\|A_i\|_2^2+2\lambda_2)(x^*_i-\tilde{x^*_i})
+\end{align*}
+e usando a separabilidade do PG, tem-se
+\[\begin{aligned}
+&x^*\in\mathrm{prox}_{\tau h}(x^* - \tau \nabla f(x^*))\\\iff & x^*_i\in \mathrm{prox}_{\tau (\lambda_0\mathbf{1}_{\{0\}}(\cdot)+\lambda_1|\cdot|)}(\underbrace{x^*_i - \tau (\|A_i\|_2^2+2\lambda_2)(x^*_i-\tilde{x^*_i})}_{\coloneq y_i^*})\quad \forall i\in [p]\\\iff & \begin{cases}
+    x^*_i =\operatorname{sign}(y_i^*)(|y_i^*|-\tau\lambda_1)\text{ e }|x^*_i|\geq \sqrt{2\tau\lambda_0}, & i\in S\\
+    |y_i^*|-\tau\lambda_1\leq \sqrt{2\tau\lambda_0}, & i\notin S
+\end{cases}.
+\end{aligned}\]
+Se $i\in S$ e $y^*_i>0$, tem-se
+\[
+x^*_i=x^*_i - \tau (\|A_i\|_2^2+2\lambda_2)(x^*_i-\tilde{x^*_i})-\tau\lambda_1\iff x^*_i =\tilde{x^*_i}-\frac{\lambda_1}{\|A_i\|_2^2+2\lambda_2},
+\]
+e como $\operatorname{sign}(x^*_i)=\operatorname{sign}(y^*_i)$ (\textit{soft-thresholding} preserva sinal), devemos ter $\tilde{x^*_i}>0$. Já se $y^*_i<0$, 
+\[
+x^*_i=x^*_i - \tau (\|A_i\|_2^2+2\lambda_2)(x^*_i-\tilde{x^*_i})+\tau\lambda_1\iff x^*_i =\tilde{x^*_i}+\frac{\lambda_1}{\|A_i\|_2^2+2\lambda_2},
+\]
+e pelo mesmo argumento anterior $\tilde{x^*_i}<0$. Dessa forma
+\[
+\begin{cases}
+    x^*_i =\operatorname{sign}(\tilde{x^*_i})\left(|\tilde{x^*_i}|-\frac{\lambda_1}{\|A_i\|_2^2+2\lambda_2}\right)\text{ e }|x^*_i|\geq \sqrt{2\tau\lambda_0}, & i\in S\\
+    (\|A_i\|_2^2+2\lambda_2)|\tilde{x^*_i}|-\lambda_1\leq\sqrt{\frac{2\lambda_0}{\tau}}, & i\notin S
+\end{cases}.\]
+Comparando a relação acima com \eqref{cwprox}, conclui-se que, se $L_f\geq 1$, mínimos CW são estacionários PG.
+
+\section{Hierarquia das condições de otimalidade}
+Pelo que foi discutido na seção anterior, temos a seguinte hierarquia das condições de otimalidade:
+\begin{equation}\begin{aligned}
+    \text{Mínimos FSI}(k)&\subset\text{Mínimos PSI}(k)\subset \text{Mínimos CW}\overset{L_f\geq 1}{\subset}\text{Estacionários PG}\\&\subset\text{Soluções estacionárias}\subset\text{M-estacionários}.\label{hier}
+\end{aligned}\end{equation}
+
+Temos que $f\in \mathcal{C}^{1,1}_{L_f}$ com $L_f=\lambda_{\max}(A^TA)+2\lambda_2$, lembrando que $A^TA$ é simétrica e, portanto, dotada de autovalores reais. A condição $L_f\geq 1$ é garantida, por exemplo, se $\|A_i\|_2=1\ \forall i\in[p]$. Nesse caso, $\lambda_{\max}(A^TA)\geq \max_{i\in[p]}e_i^TA^TAe_i=\max_{i\in[p]}(A^TA)_{ii}=\max_{i\in[p]}\|A_i\|_2^2=1$.  

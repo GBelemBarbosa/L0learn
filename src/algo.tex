@@ -1,0 +1,240 @@
+%LTeX: language=pt-BR
+\section{Algoritmos}
+\subsection{\textit{Partially greedy cyclic} CD}
+O algoritmo presente em \cite{fastselect} basicamente consiste em obter $x^{k+1}$ minimizando com respeito somente a $i$-ésima coordenada via
+\[\begin{aligned}
+    x^{k+1}_i\in \argmin_{u_i\in\R}F(x^k+(u_i-x_i^k)e_i)=\prox_{\frac{1}{\|A_i\|^2_2+2\lambda_2}(\lambda_0\mathbf{1}_{\{0\}}(\cdot)+\lambda_1|\cdot|)}\left(\tilde{x_i^k}\right).
+\end{aligned}\]
+
+O algoritmo é iniciado com $x^0$ e calcula $r^0 = b - Ax^0$. Antes de executado, as coordenadas são reordenadas em ordem decrescente de $|\langle r^0, A_i \rangle|=|[\nabla f(x^0)]_i-2\lambda_2x^0_i|$. Na prática, é usada ordenação parcial, ou seja, somente as maiores $t$ coordenadas nesse critério (com $t\ll p$) são ordenadas enquanto as demais mantêm a ordem original, e as atualizações então usam uma ordem cíclica. Isso é mais rápido e igualmente eficaz que a ordenação completa \cite{fastselect}. 
+
+Desse aspecto surge a denominação de \textit{partially greedy cyclic}. A reordenação é feita uma única vez antes da execução, diferentemente do método \textit{greedy} CD que seleciona a melhor coordenada para cada atualização. Outras alternativas de ordem de atualização podem ser empregadas, como randômica ou cíclica convencional, embora experimentos numéricos demonstraram a superioridade da estratégia em questão \cite{fastselect}. 
+
+Os passos de Spacer, cuja inclusão tem o propósito de garantir convergência teórica, serão omitidos da nossa implementação. Sob hipóteses fracas, o artigo demonstrou convergência desse algoritmo para mínimos CW.
+
+\subsection{NPG}
+O algoritmo NPG (\autoref{NPG}) para solucionar problemas compósitos como \eqref{C} foi apresentado inicialmente em \cite{kanzow2021}. A cada iteração, ele executa uma busca linear com condição de decréscimo GLL \cite{GLL}. Para parâmetros $m>1$, essa busca é não monótona, comparando o valor de função de um candidato com o maior valor de função dos últimos $m$ iterados da sequência principal. A escolha do tamanho de passo inicial é livre com salvaguardas, o que fornece flexibilidade para implementações de passos obtidos na literatura (oriundos de problemas não compósitos ou até de minimização restrita), em especial aqueles com características espectrais \cite{BB1}. 
+
+\begin{algorithm}[H]
+\caption{\textit{Nonmonotone Proximal Gradient method} (NPG)}
+\label{NPG}
+        \Input{$x^0\in\R^p$, $\gamma_{\max} > \gamma_{\min} >0$, $m\in \N$, $\delta\in(0,1)$ and $\tau\in(0,1)$}\\
+        \Output{Last $x^{k+1}$ computed or $x^{best}$}
+        \begin{algorithmic}[1]
+        \State Initialize $k\coloneqq 0$
+        \Repeat
+            \State Choose $\gamma_{k,0}\in [\gamma_{\min}, \gamma_{\max}]$
+            \State Initialize $i\coloneqq 0$
+            \While{\begin{equation}
+            \label{descent}
+            F(x^{k,i})> \max_{0\leq j \leq \min\{k, m-1\}}F(x^{k-j})-\frac{\delta}{2\gamma_{k,i}}\norm{x^{k,i}-x^k}^2
+            \end{equation}
+            \hspace*{\algorithmicindent}where
+            \begin{equation}
+            \label{proxnpg}
+            x^{k,i}\in \prox_{\gamma_{k,i}h}\left(x^k-\gamma_{k,i}\nabla f(x^k)\right)
+            \end{equation}\algoIndent{1}}
+                \State$\gamma_{k,i+1}\gets\tau \gamma_{k,i}$
+                \State$i\gets i+1$
+            \EndWhile
+        \State $x^{k+1}\gets x^{k,i}$
+        \State $k\gets k+1$
+        \Until{A suitable termination criterion is violated at iteration $k$}
+    \end{algorithmic}
+\end{algorithm}
+
+Uma possível modificação simples e de amplo emprego em outros esquemas não monótonos é retornar
+\begin{equation}
+\label{eq:xbest}x^{best}\in \argmin_{x^k\in\{x^k\}}{F(x^k)},
+\end{equation}
+em que $\{x^k\}$ é a sequência gerada pelo NPG, ao invés do último iterado calculado.
+
+A teoria de convergência presente em \cite{kanzow2021}, apesar de mais fraca que a de métodos semelhantes, garante convergência do \autoref{NPG} para um ponto M-estacionário quando $h$ é somente semicontínua inferior, como a nossa função de interesse. 
+
+\subsubsection{NSPG}
+A primeira variante do \autoref{NPG}, o \textit{Nonmonotone Spectral Proximal Gradient method} (NSPG), utiliza o passo espectral primal \cite{BB1,BB2}. Várias abordagens foram propostas para lidar com funções objetivo não convexas, nas quais o tamanho do passo espectral pode se tornar negativo. Para o tamanho de passo inicial em cada iteração é usada a proposta em \cite{positiveBB}, que consiste em 
+\begin{equation}
+    \label{BBR}
+\gamma_{k,0}\gets\gamma_{k,+}^{BBR}\coloneq\begin{cases}
+     \gamma_k^{BBR},& \gamma_k^{BBR}> 0\\
+     \frac{\|s^k\|}{\|r^k\|},& \text{c.c.}
+\end{cases}, 
+\end{equation}
+em que $\gamma_k^{BBR}$ é o passo espectral definido como
+\[
+\gamma_k^{BBR}\coloneqq\frac{(s^k)^Ts^k}{(s^k)^Tr^k},
+\]
+sendo $s^k\coloneqq x^k-x^{k-1}$ e $r^k\coloneqq\nabla f(x^k)-\nabla f(x^{k-1})$.
+
+O passo espectral pode ser entendido como um passo quasi-Newton em que $H_k$, a aproximação da Hessiana em $x^k$, é restrita a uma estrutura simplificada com somente uma variável de decisão, $H_k\coloneqq\mu_k I,\ \mu_k \in \mathbb{R}$. A equação secante, 
+\begin{equation}
+    H_ks^k=r^k, \label{eq:sec}
+\end{equation}
+então se reduz à $\mu_k s^k=r^k$. Em geral, essa equação não possui solução exata, sendo então aceita a solução de quadrados mínimos, isso é,
+\[
+\mu_k=\argmin_{\mu\in\R}\left\|\mu s^k-r^k\right\|^2=\frac{(s^k)^Tr^k}{(s^k)^Ts^k}=\frac{1}{\gamma_k^{BBR}}.
+\]
+
+De fato, a interpretação acima aplicada em \eqref{proxnpg} para $i=0$ implica
+\begin{align*}
+    x^{k,0}&\in\argmin_{u\in\R^p}\left\{ h(u)+\inner{\nabla f(x^k), u-x^k}+\frac{1}{2\gamma_k^{BBR}}\norm{u-x^k}^2 \right\}\\
+    &=\argmin_{u\in\R^p}\left\{ \inner{\nabla f(x^k), u-x^k}+\frac{\mu_k}{2}(u-x^k)^TI(u-x^k)+h(u) \right\}\\
+    &=\argmin_{u\in\R^p}\left\{ \inner{\nabla f(x^k), u-x^k}+\frac{1}{2}(u-x^k)^TH_k(u-x^k)+h(u) \right\}
+    \\
+    &=\argmin_{u\in\R^p}\left\{f(x^k)+ \inner{\nabla f(x^k), u-x^k}+\frac{1}{2}(u-x^k)^TH_k(u-x^k)+h(u) \right\},
+\end{align*}
+ou seja, o esquema proximal com o passo espectral consiste em minimizar uma aproximação de segunda ordem de $f$ em $x^k$ (termos à esquerda na última equação) e $h$ original, o que é essencialmente uma aproximação da função objetivo $F$ completa.
+
+Em experimentos realizados em \cite{manuscrito}, foi averiguado que o NSPG superou outros métodos proximais no problema \eqref{R} com $\lambda_q=0$ tanto na velocidade de convergência quanto na qualidade das soluções obtidas em valor objetivo. Esses resultados motivaram a tentativa de empregá-lo juntamente com técnicas de otimização local combinatorial \cite{fastselect}.
+
+\subsubsection{NSPGH}
+Outra forma de escrever a equação secante \eqref{eq:sec} (também denominada forma primal) é na sua forma dual $B_kr^k=s^k$, na qual $B_k$ agora aproxima localmente a inversa da Hessiana. Tomando $B_k=\mu_k I$ resulta agora no tamanho de passo espectral dual
+\[    
+\gamma_k^{BBR2}\coloneq\mu_k=\argmin_{\mu\in\R}\left\|\mu r^k-s^k\right\|^2=\frac{(s^k)^Tr^k}{(r^k)^Tr^k}.
+\]
+Pela desigualdade de Cauchy-Schartz, $\gamma_k^{BBR}\geq \gamma_k^{BBR2}$. Analogamente,
+\begin{equation}
+    \gamma_{k,+}^{BBR2}\coloneq\begin{cases}
+         \gamma_k^{BBR2},& \gamma_k^{BBR2}> 0\\
+         \frac{\|r^k\|}{\|s^k\|},& \text{c.c.}\end{cases}.
+    \label{BBR2}
+\end{equation}
+
+Os trabalhos \cite{hibrido1,hibrido2} mostraram que o desempenho de algoritmos proximais pode ser melhorado usando uma escolha híbrida entre esses dois tamanhos de passo,
+\begin{equation}
+\gamma^{BBRH}_{k,+} =
+\begin{cases}
+\gamma^{BBR2}_{k,+}, & \gamma^{BBR}_{k,+} < \delta \gamma^{BBR2}_{k,+} \\
+\gamma^{BBR}_{k,+} - \frac{1}{\delta} \gamma^{BBR2}_{k,+}, & \text{c.c.}
+\end{cases}
+\label{hybrid}
+\end{equation}
+aqui, o hiperparâmetro $\delta \in \mathbb{R}$ é tipicamente escolhido como $2$, como será na nossa implementação.
+
+O \autoref{NPG} tal que $\gamma_{k,0}\gets\gamma_{k,+}^{BBRH}$ 
+será chamado de NSPH, em que ``H'' representa \textit{hybrid}.
+
+\subsubsection{VMNSPG}
+Com o intuito de permitir mais informação de segunda ordem, em \cite{vmspg} utiliza um operador proximal com métrica matricial. Seja $g:\R^p\to\R$, $U\in S^p_{++}$ (simétrica positiva definida) e $\norm{y}_U\coloneqq\sqrt{y^TUy}$ a norma $U$. O operador proximal com métrica variável é definido como
+\begin{equation}
+    \label{proxvm}
+        \prox_{g,U}(x)\coloneqq\argmin_{u\in\R^k}g(u)+ \frac{1}{2}\norm{u-x}_U^2 . 
+\end{equation} 
+No geral, esse subproblema proximal é de difícil solução devido ao acoplamento de variáveis causado pela multiplicação por $U$. Por esse motivo, a utilização desse $\prox$ é geralmente restrita a matrizes $U$ diagonais e funções $g$ separáveis, garantindo, assim, separabilidade de \eqref{proxvm}. 
+
+Também nesse artigo, é introduzido um esquema semelhante ao \autoref{NPG} que utiliza a atualização
+\begin{equation}
+x^{k,i}\in \prox_{h,U_{k,i}}\left(x^k-U_{k,i}^{-1}\nabla f(x^k)\right)\label{vmstep}
+\end{equation}            
+em lugar de \eqref{proxnpg} e o critério
+\[
+F(x^{k,i})> \max_{0\leq j \leq \min\{k, m-1\}}F(x^{k-j})-\frac{\delta}{2}\norm{x^{k,i}-x^k}_{U_{k,i}}^2\]
+em lugar de \eqref{descent}, em que analogamente $U_{k,i}=\tau^i U_{k,0}$ e $U_{k,0}$ é diagonal positiva definida. A teoria de convergência presente é restrita à $h$ convexa, $f$ $L$-suave e fortemente convexa e parâmetro de não monotonicidade $m=1$. Contudo, é possível que a teoria de \cite{kanzow2021} seja aplicável para relaxar essas hipóteses.
+
+Seja $U_{k-1}$ a métrica que gerou o iterado $x^{k-1}$ por \eqref{vmstep}. Para melhor capturar a geometria Hessiana de $f$, os autores de \cite{vmspg} propõe a métrica diagonal dada pelo problema
+\begin{equation}
+\begin{aligned}
+\min_{U \in \mathbb{R}^p}\ & 
+    \|U s^k - y^k\|_2^2 + \mu \|U - U_{k-1}\|_F^2 \\
+\text{s.a } 
+    & \frac{1}{\gamma^{BBR}_{k,+}} I \preceq U \preceq \frac{1}{\gamma^{BBR2}_{k,+}} I, U = \operatorname{Diag}(u).
+\end{aligned}\label{bbmetric}
+\end{equation}
+Aqui, o hiperparâmetro $\mu > 0$ controla o \textit{trade-off} entre a satisfação da equação secante \eqref{eq:sec} e a proximidade com a métrica anterior $U_{k-1}$. Um $\mu$ grande é usado se é esperado que a aproximação do Hessiano não mude muito entre iterações. Já um $\mu$ serve como salvaguarda e evita operações indefinidas. Os elementos diagonais são limitados pelos passos espectrais primal e dual, conferindo garantia de não negatividade ou passos muito grandes em uma coordenada.
+
+O problema \eqref{bbmetric} possui solução em
+forma fechada dada por
+\begin{equation*}
+(U^{DBBR}_{k,+})_{ii} \coloneq 
+\max\left\{\frac{1}{\gamma^{BBR}_{k,+}}, 
+\min\left\{\frac{1}{\gamma^{BBR2}_{k,+}}, \frac{(s_i^k)^2 + \mu (U_{k-1})_{ii}^2}{(s_i^k)^2 + \mu}\right\} \right\}\quad \forall i\in [p].
+\end{equation*}
+Essa versão do \autoref{NPG} em que $U_{k,0}\gets U^{DBBR}_{k,+}$ será denominada \textit{Variable Metric Nonmonotone Spectral Proximal Gradient method} (VMNSPG).
+
+\subsection{Otimização local combinatorial}
+Um algoritmo iterativo para encontrar um mínimo PSI($k$) através de perturbações no suporte é apresentado em \cite{fastselect}. Em cada iteração $\ell$, é executado algum dos algoritmos anteriores para obter um mínimo CW ou ponto M-estacionário $x^\ell$. Esse algoritmo será chamado de interior. Após isso é buscado um movimento descendente para o problema combinatório
+\begin{equation}
+\begin{aligned}
+\min_{u, S_1, S_2} &  F\left(x^\ell - U_{S_1} x^\ell + U_{S_2} u\right) \\
+\text{s.a } &  S_1 \subseteq S, S_2 \subseteq S^c,  |S_1|, |S_2| \leq k, u\in\R^{|S_2|}
+\end{aligned}\label{psik}
+\end{equation}
+onde $S$ é o suporte de $x^\ell$. Se existir solução viável $\hat{x}$ para o problema acima com $F(\hat{x}) < F(x^\ell)$, então $\hat{x}$ pode não ser um mínimo CW/ponto M-estacionário. Neste caso, reinicializa-se o algoritmo escolhido com $\hat{x}$. Caso contrário, e ademais $x^\ell$ é solução estacionária (por exemplo, mínimo CW, gerado pelo CD), então ele é PSI($k$). O algoritmo a seguir resume o procedimento.
+
+\begin{algorithm}[H]
+\caption{\textit{Composite Partial Swap Inescapable of order $k$ method} (CPSI($k$))}
+\label{alg:cpsi}
+\Input{$\hat{x}^0 \in \R^p$, $k \in \mathbb{N}^+$ and an inner algorithm}\\
+\Output{Last $\hat{x}^{\ell+1}$ computed (which is a PSI($k$) minimum)}
+\begin{algorithmic}[1]
+    \State Initialize $\ell\coloneq 0$
+    \While{true}
+        \State $\hat{x}^{\ell+1} \gets$ output of inner algorithm initialized with $\hat{x}^\ell$
+        \If{problem \eqref{psik} has feasible solution $\hat{x}$ with $F(\hat{x}) < F(\hat{x}^{\ell+1})$}
+            \State $\hat{x}^{\ell+1} \gets \hat{x}$
+            \State $\ell\gets \ell+1$
+        \Else
+            \State \textbf{break}
+        \EndIf
+    \EndWhile
+\end{algorithmic}
+\end{algorithm}
+
+Para o caso $k=1$, o seguinte algoritmo busca uma solução factível melhorada do problema \eqref{psik}.
+
+\begin{algorithm}[H]
+\caption{Search for improved solution of problem \eqref{psik} with $k=1$}
+\label{sub:vanilla}
+\Input{$x^{\ell}$}\\
+\Output{$\hat{x}$ (improved solution) if found, otherwise $x^{\ell}$}
+\begin{algorithmic}[1]
+    \State $S \gets \text{Supp}(x^{\ell})$
+    \For{$i \in S$}
+        \For{$j \in S^c$}
+            \State \begin{equation}
+            v_j^* \gets \argmin_{v_j \in \R} F(x^{\ell} - x_i^{\ell}e_i  + v_je_j )\label{vprob}
+            \end{equation}
+            \State $F_j^* \gets F(x^{\ell} - x_i^{\ell}e_i +  v_j^*e_j)$ 
+        \EndFor
+        \State $\vartheta \gets \underset{j \in S^c}{\arg\min} F_j^*$ 
+        \If{$F_\vartheta^* < F(x^{\ell})$}
+            \State $\hat{x} \gets x^{\ell} - x_i^{\ell}e_i +  v_\vartheta^*e_\vartheta$ 
+            \State \textbf{break}
+        \EndIf
+    \EndFor
+\end{algorithmic}
+\end{algorithm}
+
+A solução de \eqref{vprob} é dada por
+\begin{equation}
+    v_j^*\in \prox_{\frac{1}{\|A_i\|^2_2+2\lambda_2}(\lambda_0\mathbf{1}_{\{0\}}(\cdot)+\lambda_1|\cdot|)}\left(\bar{x_{ij}^\ell}\right),\label{vcalc}
+\end{equation}
+em que $\bar{x_{ij}^\ell}$ é a $j$-ésima variável minimizadora da parte suave de $F$ a partir de $x^\ell-x_i^\ell e_i$
+\[\bar{x_{ij}^\ell}\coloneq\argmin_{u_j\in\R}f(x^\ell-x_i^\ell e_i+u_je_j)=\frac{\inner{b-\sum_{l\neq i}x^\ell_lA_l,A_j}}{\|A_j\|^2_2+2\lambda_2}=\frac{\inner{r^\ell+x_i^\ell A_i,A_j}}{\|A_j\|^2_2+2\lambda_2}.\]
+Além disso, valem as seguintes equivalências
+\begin{align*}
+\argmin_{j \in S^c} F_j^* &\iff \argmax_{j \in S^c} |v_j^*|  \\
+F_\vartheta^* < F(x^\ell) &\iff |v_\vartheta^*| > |x_i^\ell|. 
+\end{align*}
+
+Essas propriedades dão origem a seguinte versão eficiente do \autoref{sub:vanilla}.
+
+\begin{algorithm}[H]
+\caption{Efficient search for improved solution of problem \eqref{psik} with $k=1$}
+\label{sub:eff}
+\Input{$x^{\ell}$}\\
+\Output{$\hat{x}$ (improved solution) if found, otherwise $x^{\ell}$}
+\begin{algorithmic}[1]
+    \State $S \gets \text{Supp}(x^{\ell})$
+    \For{$i \in S$}
+        \For{$j \in S^c$}
+            \State Compute $v_j^*$ using \eqref{vcalc}
+        \EndFor
+        \State $\vartheta \gets \underset{j \in S^c}{\arg\max} |v_j^*|$
+        \If{$|v_{\vartheta}^*| > |x_i^{\ell}|$}
+            \State $\hat{x} \gets x^{\ell} - e_i x_i^{\ell} + e_{\vartheta} v_{\vartheta}^*$
+            \State \textbf{break}
+        \EndIf
+    \EndFor
+\end{algorithmic}
+\end{algorithm}

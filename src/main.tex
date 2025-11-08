@@ -1,0 +1,53 @@
+\documentclass[oneside, a4paper]{memoir}
+\setlength{\headheight}{14pt}
+
+% Pacotes
+\usepackage[english, brazilian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+
+% Comandos
+\newcommand*\R{\mathbb{R}}
+\newcommand*\N{\mathbb{N}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand*\prox{\operatorname{prox}}
+\newcommand*{\inner}[1]{\left\langle #1 \right\rangle}
+\newcommand*{\norm}[1]{\left\| #1 \right\|}
+
+\newtheorem{definition}{Definição}%[chapter]
+\providecommand*{\definitionautorefname}{Definição}
+\newtheorem{lemma}{Lema}%[chapter]
+\providecommand*{\lemmaautorefname}{Lema}
+\newenvironment{proof}{\paragraph{Demonstração.}}{\hfill$\square$}
+\providecommand*{\algorithmautorefname}{Algorithm}
+\renewcommand{\thefigure}{\arabic{figure}}
+
+\algnewcommand{\Input}[1]{\textbf{Input:} #1}
+\algnewcommand{\Output}[1]{\textbf{Output:} #1}
+\newcommand\algoIndent[1]{%
+  \linebreak\hspace*{\dimexpr\algorithmicindent*#1}\hspace*{-0.33em}%
+}
+
+\newsubfloat{figure}
+
+\begin{document}
+\input{intro.tex}
+
+\input{optimal.tex}
+
+\input{algo.tex}
+
+\input{numerico.tex}
+
+\bibliographystyle{plainnat}
+\bibliography{bibliografia}
+
+\end{document}
