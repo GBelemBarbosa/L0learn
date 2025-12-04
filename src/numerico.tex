@@ -100,7 +100,7 @@ Para o próximo experimento, mantivemos os parâmetros anteriores e trocando o t
   \caption{\textit{Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação constante, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=300$.}\label{p4}
 \end{figure}
 
-Por fim, com correlação exponencial, dividimos todas as dimensões por 2, tomamos $k^\dagger=25$,  e aumentamos a correlação para $\rho=0.9$. Todos os métodos com otimização combinatorial obtiveram 100\% de recuperação do suporte original, enquanto o NSPG sem essa estratégia não. O número de iterações (internas e externas) do CD foi muito mais alto, indicando novamente que as soluções obtidas desse método exigem mais perturbações do suporte antes de estabilizar.
+Por fim, com correlação exponencial, dividimos todas as dimensões por 2, tomamos $k^\dagger=25$,  e aumentamos a correlação para $\rho=0.9$ (\autoref{p5}). Todos os métodos com otimização combinatorial obtiveram 100\% de recuperação do suporte original, enquanto o NSPG sem essa estratégia não. O número de iterações (internas e externas) do CD foi muito mais alto, indicando novamente que as soluções obtidas desse método exigem mais perturbações do suporte antes de estabilizar.
 
 \begin{figure}[ht]
   \centering
@@ -114,3 +114,5 @@ Por fim, com correlação exponencial, dividimos todas as dimensões por 2, toma
     \includegraphics[width=0.45\linewidth]{images/pKout-exp-0.9-250-1000-300-25.png}}
   \caption{\textit{Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação exponencial, $\rho=0.9,\ n=250,\ p=1000,\ k^\dagger=25,\ \text{SNR}=300$.}\label{p5}
 \end{figure}
+
+

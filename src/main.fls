@@ -1,9 +1,9 @@
-PWD /home/gggt4/TeX/CDSSvsSPG
+PWD /home/gggt4/TeX/CDSSvsSPG/src
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/gggt4/TeX/CDSSvsSPG/main.tex
+INPUT /home/gggt4/TeX/CDSSvsSPG/src/main.tex
 OUTPUT main.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/memoir/memoir.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/memoir/memoir.cls

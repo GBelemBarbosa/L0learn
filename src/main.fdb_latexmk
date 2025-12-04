@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex main"] 1762633935.77888 "main.aux" "main.bbl" "main" 1762633942.79057 0
+["bibtex main"] 1762633935.77888 "main.aux" "main.bbl" "main" 1763952570.78584 0
   "./bibliografia.bib" 1762369192.11219 10778 f4f1df3db4decb5008b76f9515bdb695 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "main.aux" 1762633942.47708 14496 ec27b95408d9e36b61532101824292db "pdflatex"
+  "main.aux" 1763952570.14977 14496 ec27b95408d9e36b61532101824292db "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1762633935.93295 "/home/gggt4/TeX/CDSSvsSPG/main.tex" "main.pdf" "main" 1762633942.79073 0
+["pdflatex"] 1763952560.14078 "/home/gggt4/TeX/CDSSvsSPG/src/main.tex" "main.pdf" "main" 1763952570.78602 0
   "/etc/texmf/web2c/texmf.cnf" 1760819206.02535 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/gggt4/TeX/CDSSvsSPG/main.tex" 1762619601.54758 1334 8a037c745f5214f28b639d8c4cba64f7 ""
+  "/home/gggt4/TeX/CDSSvsSPG/src/main.tex" 1762619601.54758 1334 8a037c745f5214f28b639d8c4cba64f7 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -167,11 +167,11 @@
   "images/pSUP-exp-0.5-500-2000-300-100.png" 1762618873.85978 185340 695c7a8c830f2d59d99ef5b07fbb0ce5 ""
   "images/pSUP-exp-0.9-250-1000-300-25.png" 1762633329.45604 160159 38bcd607394412a3e033cbf4369483ce ""
   "intro.tex" 1762303232.5291 4653 14cdce8febbfb8d54964013e9169b773 ""
-  "main.aux" 1762633942.47708 14496 ec27b95408d9e36b61532101824292db "pdflatex"
+  "main.aux" 1763952570.14977 14496 ec27b95408d9e36b61532101824292db "pdflatex"
   "main.bbl" 1762633935.92584 9159 97eb7176d244119508448a15c5099c8a "bibtex main"
-  "main.out" 1762633942.47708 1085 490d44cecde8f863192777ec8a41ca9d "pdflatex"
+  "main.out" 1763952570.14977 1085 490d44cecde8f863192777ec8a41ca9d "pdflatex"
   "main.tex" 1762619601.54758 1334 8a037c745f5214f28b639d8c4cba64f7 ""
-  "numerico.tex" 1762633928.93519 14018 0a30fd78f16b5423f489d2e5fe9ff962 ""
+  "numerico.tex" 1763952559.46352 14036 e5602210aa6bfa642df0f334d46833df ""
   "optimal.tex" 1762433871.08849 12147 b34006d72b126b7ed36df852a16d30b7 ""
   (generated)
   "main.aux"
