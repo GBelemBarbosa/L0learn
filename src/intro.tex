@@ -19,7 +19,7 @@ A terceira é utilizar heurísticas ou algoritmos que solucionam aproximadamente
 
 Em \cite{fastselect}, é proposta uma abordagem que busca conciliar a velocidade de modelagens \textit{proxys} dessa segunda estratégia e a otimalidade obtida pelos métodos de otimização inteira mista. O algoritmo proposto busca soluções quase ótimas que satisfaçam uma propriedade de exatidão combinatória local tal que pequenas perturbações no suporte não melhoram a função objetivo.
 
-Os estimadores obtidos demonstraram superioridade em comparação com outros algoritmos de aprendizado esparso em quesitos como predição, estimativa e seleção de variáveis. Além disso, a implementação \textit{open-source} dos autores, \texttt{L0Learn}, provou-se significativamente mais rápida que implementações amplamente usadas como \texttt{ncvreg} \cite{ncvreg} e \texttt{glmnet}  \cite{glmnet} que usam modelos \textit{proxy}.  
+Os estimadores obtidos demonstraram superioridade em comparação com outros algoritmos de aprendizado esparso em quesitos como predição, estimativa e seleção de variáveis. Além disso, a implementação \textit{open-source} dos autores, \texttt{fastselect}, provou-se significativamente mais rápida que implementações amplamente usadas como \texttt{ncvreg} \cite{ncvreg} e \texttt{glmnet}  \cite{glmnet} que usam modelos \textit{proxy}.  
 
 \subsubsection{Notação}
 Para um conjunto de índices $T\subset\{1,2,\ldots,p\}$, $U_T\in\R^{p \times |T|}$ denota a submatriz composta pelas colunas da matriz identidade $I_p$ correspondentes aos elementos de $T$. Além disso, $x_T\in\R^{|T|}$ denota o subvetor de $x\in\R^p$ composto pelos índices em $T$.  

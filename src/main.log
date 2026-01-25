@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.10.18)  23 NOV 2025 23:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.10.18)  25 JAN 2026 17:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -722,154 +722,215 @@ Underfull \hbox (badness 1748) in paragraph at lines 165--165
  []
 
 [11]) [12] (./numerico.tex [13{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [14]
-<images/pF-exp-0.5-500-2000-10-100 (1).png, id=348, 3613.5pt x 2409.0pt>
+<images/pF-exp-0.5-500-2000-10-100 (1).png, id=352, 3613.5pt x 2409.0pt>
 File: images/pF-exp-0.5-500-2000-10-100 (1).png Graphic file (type png)
 <use images/pF-exp-0.5-500-2000-10-100 (1).png>
-Package pdftex.def Info: images/pF-exp-0.5-500-2000-10-100 (1).png  used on input line 40.
+Package pdftex.def Info: images/pF-exp-0.5-500-2000-10-100 (1).png  used on input line 42.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
-<images/pSUP-exp-0.5-500-2000-10-100 (1).png, id=349, 3613.5pt x 2409.0pt>
+<images/pSUP-exp-0.5-500-2000-10-100 (1).png, id=353, 3613.5pt x 2409.0pt>
 File: images/pSUP-exp-0.5-500-2000-10-100 (1).png Graphic file (type png)
 <use images/pSUP-exp-0.5-500-2000-10-100 (1).png>
-Package pdftex.def Info: images/pSUP-exp-0.5-500-2000-10-100 (1).png  used on input line 42.
+Package pdftex.def Info: images/pSUP-exp-0.5-500-2000-10-100 (1).png  used on input line 44.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
-<images/pK-exp-0.5-500-2000-10-100 (1).png, id=350, 3613.5pt x 2409.0pt>
+<images/pK-exp-0.5-500-2000-10-100 (1).png, id=354, 3613.5pt x 2409.0pt>
 File: images/pK-exp-0.5-500-2000-10-100 (1).png Graphic file (type png)
 <use images/pK-exp-0.5-500-2000-10-100 (1).png>
-Package pdftex.def Info: images/pK-exp-0.5-500-2000-10-100 (1).png  used on input line 44.
+Package pdftex.def Info: images/pK-exp-0.5-500-2000-10-100 (1).png  used on input line 46.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
-<images/pF-exp-0.5-500-2000-10-100.png, id=358, 3613.5pt x 2409.0pt>
+<images/pF-exp-0.5-500-2000-10-100.png, id=362, 3613.5pt x 2409.0pt>
 File: images/pF-exp-0.5-500-2000-10-100.png Graphic file (type png)
 <use images/pF-exp-0.5-500-2000-10-100.png>
-Package pdftex.def Info: images/pF-exp-0.5-500-2000-10-100.png  used on input line 63.
+Package pdftex.def Info: images/pF-exp-0.5-500-2000-10-100.png  used on input line 65.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
-<images/pSUP-exp-0.5-500-2000-10-100.png, id=359, 3613.5pt x 2409.0pt>
+<images/pSUP-exp-0.5-500-2000-10-100.png, id=363, 3613.5pt x 2409.0pt>
 File: images/pSUP-exp-0.5-500-2000-10-100.png Graphic file (type png)
 <use images/pSUP-exp-0.5-500-2000-10-100.png>
-Package pdftex.def Info: images/pSUP-exp-0.5-500-2000-10-100.png  used on input line 65.
+Package pdftex.def Info: images/pSUP-exp-0.5-500-2000-10-100.png  used on input line 67.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
-<images/pK-exp-0.5-500-2000-10-100.png, id=360, 3613.5pt x 2409.0pt>
+<images/pK-exp-0.5-500-2000-10-100.png, id=364, 3613.5pt x 2409.0pt>
 File: images/pK-exp-0.5-500-2000-10-100.png Graphic file (type png)
 <use images/pK-exp-0.5-500-2000-10-100.png>
-Package pdftex.def Info: images/pK-exp-0.5-500-2000-10-100.png  used on input line 67.
+Package pdftex.def Info: images/pK-exp-0.5-500-2000-10-100.png  used on input line 69.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
-<images/pKout-exp-0.5-500-2000-10-100.png, id=361, 3613.5pt x 2409.0pt>
+<images/pKout-exp-0.5-500-2000-10-100.png, id=365, 3613.5pt x 2409.0pt>
 File: images/pKout-exp-0.5-500-2000-10-100.png Graphic file (type png)
 <use images/pKout-exp-0.5-500-2000-10-100.png>
-Package pdftex.def Info: images/pKout-exp-0.5-500-2000-10-100.png  used on input line 69.
+Package pdftex.def Info: images/pKout-exp-0.5-500-2000-10-100.png  used on input line 71.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--69
+Underfull \hbox (badness 10000) in paragraph at lines 71--71
 []\OT1/cmr/m/n/8 (d) [][]N^^Sumero de itera^^Xc~oes ex-ter-nas
  []
 
 [15]
-<images/pF-exp-0.5-500-2000-300-100.png, id=376, 3613.5pt x 2409.0pt>
+<images/pF-exp-0.5-500-2000-300-100.png, id=380, 3613.5pt x 2409.0pt>
 File: images/pF-exp-0.5-500-2000-300-100.png Graphic file (type png)
 <use images/pF-exp-0.5-500-2000-300-100.png>
-Package pdftex.def Info: images/pF-exp-0.5-500-2000-300-100.png  used on input line 78.
+Package pdftex.def Info: images/pF-exp-0.5-500-2000-300-100.png  used on input line 80.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
-<images/pSUP-exp-0.5-500-2000-300-100.png, id=377, 3613.5pt x 2409.0pt>
+<images/pSUP-exp-0.5-500-2000-300-100.png, id=381, 3613.5pt x 2409.0pt>
 File: images/pSUP-exp-0.5-500-2000-300-100.png Graphic file (type png)
 <use images/pSUP-exp-0.5-500-2000-300-100.png>
-Package pdftex.def Info: images/pSUP-exp-0.5-500-2000-300-100.png  used on input line 80.
+Package pdftex.def Info: images/pSUP-exp-0.5-500-2000-300-100.png  used on input line 82.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
-<images/pK-exp-0.5-500-2000-300-100.png, id=378, 3613.5pt x 2409.0pt>
+<images/pK-exp-0.5-500-2000-300-100.png, id=382, 3613.5pt x 2409.0pt>
 File: images/pK-exp-0.5-500-2000-300-100.png Graphic file (type png)
 <use images/pK-exp-0.5-500-2000-300-100.png>
-Package pdftex.def Info: images/pK-exp-0.5-500-2000-300-100.png  used on input line 82.
+Package pdftex.def Info: images/pK-exp-0.5-500-2000-300-100.png  used on input line 84.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
-<images/pKout-exp-0.5-500-2000-300-100.png, id=379, 3613.5pt x 2409.0pt>
+<images/pKout-exp-0.5-500-2000-300-100.png, id=383, 3613.5pt x 2409.0pt>
 File: images/pKout-exp-0.5-500-2000-300-100.png Graphic file (type png)
 <use images/pKout-exp-0.5-500-2000-300-100.png>
-Package pdftex.def Info: images/pKout-exp-0.5-500-2000-300-100.png  used on input line 84.
+Package pdftex.def Info: images/pKout-exp-0.5-500-2000-300-100.png  used on input line 86.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 84--84
+Underfull \hbox (badness 10000) in paragraph at lines 86--86
 []\OT1/cmr/m/n/8 (d) N^^Sumero de itera^^Xc~oes ex-ter-nas
  []
 
-<images/pF-con-0.5-500-2000-300-100.png, id=383, 3613.5pt x 2409.0pt>
+<images/pF-con-0.5-500-2000-300-100.png, id=387, 3613.5pt x 2409.0pt>
 File: images/pF-con-0.5-500-2000-300-100.png Graphic file (type png)
 <use images/pF-con-0.5-500-2000-300-100.png>
-Package pdftex.def Info: images/pF-con-0.5-500-2000-300-100.png  used on input line 93.
+Package pdftex.def Info: images/pF-con-0.5-500-2000-300-100.png  used on input line 95.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
-<images/pSUP-con-0.5-500-2000-300-100.png, id=384, 3613.5pt x 2409.0pt>
+<images/pSUP-con-0.5-500-2000-300-100.png, id=388, 3613.5pt x 2409.0pt>
 File: images/pSUP-con-0.5-500-2000-300-100.png Graphic file (type png)
 <use images/pSUP-con-0.5-500-2000-300-100.png>
-Package pdftex.def Info: images/pSUP-con-0.5-500-2000-300-100.png  used on input line 95.
+Package pdftex.def Info: images/pSUP-con-0.5-500-2000-300-100.png  used on input line 97.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
-<images/pK-con-0.5-500-2000-300-100.png, id=385, 3613.5pt x 2409.0pt>
+<images/pK-con-0.5-500-2000-300-100.png, id=389, 3613.5pt x 2409.0pt>
 File: images/pK-con-0.5-500-2000-300-100.png Graphic file (type png)
 <use images/pK-con-0.5-500-2000-300-100.png>
-Package pdftex.def Info: images/pK-con-0.5-500-2000-300-100.png  used on input line 97.
+Package pdftex.def Info: images/pK-con-0.5-500-2000-300-100.png  used on input line 99.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
-<images/pKout-con-0.5-500-2000-300-100.png, id=386, 3613.5pt x 2409.0pt>
+<images/pKout-con-0.5-500-2000-300-100.png, id=390, 3613.5pt x 2409.0pt>
 File: images/pKout-con-0.5-500-2000-300-100.png Graphic file (type png)
 <use images/pKout-con-0.5-500-2000-300-100.png>
-Package pdftex.def Info: images/pKout-con-0.5-500-2000-300-100.png  used on input line 99.
+Package pdftex.def Info: images/pKout-con-0.5-500-2000-300-100.png  used on input line 101.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 99--99
+Underfull \hbox (badness 10000) in paragraph at lines 101--101
 []\OT1/cmr/m/n/8 (d) N^^Sumero de itera^^Xc~oes ex-ter-nas
  []
 
-<images/pF-exp-0.9-250-1000-300-25.png, id=390, 3613.5pt x 2409.0pt>
+<images/pF-exp-0.9-250-1000-300-25.png, id=394, 3613.5pt x 2409.0pt>
 File: images/pF-exp-0.9-250-1000-300-25.png Graphic file (type png)
 <use images/pF-exp-0.9-250-1000-300-25.png>
-Package pdftex.def Info: images/pF-exp-0.9-250-1000-300-25.png  used on input line 108.
+Package pdftex.def Info: images/pF-exp-0.9-250-1000-300-25.png  used on input line 110.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
-<images/pSUP-exp-0.9-250-1000-300-25.png, id=391, 3613.5pt x 2409.0pt>
+<images/pSUP-exp-0.9-250-1000-300-25.png, id=395, 3613.5pt x 2409.0pt>
 File: images/pSUP-exp-0.9-250-1000-300-25.png Graphic file (type png)
 <use images/pSUP-exp-0.9-250-1000-300-25.png>
-Package pdftex.def Info: images/pSUP-exp-0.9-250-1000-300-25.png  used on input line 110.
+Package pdftex.def Info: images/pSUP-exp-0.9-250-1000-300-25.png  used on input line 112.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
-<images/pKout-exp-0.9-250-1000-300-25.png, id=392, 3613.5pt x 2409.0pt>
-File: images/pKout-exp-0.9-250-1000-300-25.png Graphic file (type png)
-<use images/pKout-exp-0.9-250-1000-300-25.png>
-Package pdftex.def Info: images/pKout-exp-0.9-250-1000-300-25.png  used on input line 112.
-(pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
+<images/pKout-exp-0.9-250-1000-300-25.png, id=396, 3613.5pt x 2409.0pt>
 File: images/pKout-exp-0.9-250-1000-300-25.png Graphic file (type png)
 <use images/pKout-exp-0.9-250-1000-300-25.png>
 Package pdftex.def Info: images/pKout-exp-0.9-250-1000-300-25.png  used on input line 114.
 (pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
+File: images/pKout-exp-0.9-250-1000-300-25.png Graphic file (type png)
+<use images/pKout-exp-0.9-250-1000-300-25.png>
+Package pdftex.def Info: images/pKout-exp-0.9-250-1000-300-25.png  used on input line 116.
+(pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--114
+Underfull \hbox (badness 10000) in paragraph at lines 116--116
 []\OT1/cmr/m/n/8 (d) N^^Sumero de itera^^Xc~oes ex-ter-nas
  []
 
-) (./main.bbl [16 <./images/pF-exp-0.5-500-2000-10-100 (1).png> <./images/pSUP-exp-0.5-500-2000-10-100 (1).png> <./images/pK-exp-0.5-500-2000-10-100 (1).png>] [17 <./images/pF-exp-0.5-500-2000-10-100.png> <./images/pSUP-exp-0.5-500-2000-10-100.png> <./images/pK-exp-0.5-500-2000-10-100.png> <./images/pKout-exp-0.5-500-2000-10-100.png>] [18 <./images/pF-exp-0.5-500-2000-300-100.png> <./images/pSUP-exp-0.5-500-2000-300-100.png> <./images/pK-exp-0.5-500-2000-300-100.png> <./images/pKout-exp-0.5-500-2000-300-100.png>] [19 <./images/pF-con-0.5-500-2000-300-100.png> <./images/pSUP-con-0.5-500-2000-300-100.png> <./images/pK-con-0.5-500-2000-300-100.png> <./images/pKout-con-0.5-500-2000-300-100.png>] [20 <./images/pF-exp-0.9-250-1000-300-25.png> <./images/pSUP-exp-0.9-250-1000-300-25.png> <./images/pKout-exp-0.9-250-1000-300-25.png>]
-Underfull \hbox (badness 5022) in paragraph at lines 57--62
+[16 <./images/pF-exp-0.5-500-2000-10-100 (1).png> <./images/pSUP-exp-0.5-500-2000-10-100 (1).png> <./images/pK-exp-0.5-500-2000-10-100 (1).png>] [17 <./images/pF-exp-0.5-500-2000-10-100.png> <./images/pSUP-exp-0.5-500-2000-10-100.png> <./images/pK-exp-0.5-500-2000-10-100.png> <./images/pKout-exp-0.5-500-2000-10-100.png>]
+<images/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png, id=421, 3613.5pt x 2409.0pt>
+File: images/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png Graphic file (type png)
+<use images/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png>
+Package pdftex.def Info: images/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png  used on input line 137.
+(pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
+<images/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png, id=422, 3613.5pt x 2409.0pt>
+File: images/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png Graphic file (type png)
+<use images/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png>
+Package pdftex.def Info: images/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png  used on input line 139.
+(pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
+) (./anexos.tex [18 <./images/pF-exp-0.5-500-2000-300-100.png> <./images/pSUP-exp-0.5-500-2000-300-100.png> <./images/pK-exp-0.5-500-2000-300-100.png> <./images/pKout-exp-0.5-500-2000-300-100.png>] [19 <./images/pF-con-0.5-500-2000-300-100.png> <./images/pSUP-con-0.5-500-2000-300-100.png> <./images/pK-con-0.5-500-2000-300-100.png> <./images/pKout-con-0.5-500-2000-300-100.png>] [20 <./images/pF-exp-0.9-250-1000-300-25.png> <./images/pSUP-exp-0.9-250-1000-300-25.png> <./images/pKout-exp-0.9-250-1000-300-25.png> <./images/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png> <./images/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png>]
+<images/Comp_Sim-SPG_Comparison_const-0.5-2000-10.0-100.png, id=454, 3613.5pt x 2409.0pt>
+File: images/Comp_Sim-SPG_Comparison_const-0.5-2000-10.0-100.png Graphic file (type png)
+<use images/Comp_Sim-SPG_Comparison_const-0.5-2000-10.0-100.png>
+Package pdftex.def Info: images/Comp_Sim-SPG_Comparison_const-0.5-2000-10.0-100.png  used on input line 11.
+(pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
+<images/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png, id=455, 3613.5pt x 2409.0pt>
+File: images/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png Graphic file (type png)
+<use images/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png>
+Package pdftex.def Info: images/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png  used on input line 13.
+(pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
+<images/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png, id=456, 3613.5pt x 2409.0pt>
+File: images/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png Graphic file (type png)
+<use images/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png>
+Package pdftex.def Info: images/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png  used on input line 21.
+(pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
+<images/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png, id=457, 3613.5pt x 2409.0pt>
+File: images/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png Graphic file (type png)
+<use images/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png>
+Package pdftex.def Info: images/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png  used on input line 23.
+(pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
+<images/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png, id=458, 3613.5pt x 2409.0pt>
+File: images/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png Graphic file (type png)
+<use images/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png>
+Package pdftex.def Info: images/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png  used on input line 31.
+(pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
+<images/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png, id=459, 3613.5pt x 2409.0pt>
+File: images/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png Graphic file (type png)
+<use images/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png>
+Package pdftex.def Info: images/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png  used on input line 33.
+(pdftex.def)             Requested size: 153.44896pt x 102.29843pt.
+ [21
+
+ <./images/Comp_Sim-SPG_Comparison_const-0.5-2000-10.0-100.png> <./images/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png> <./images/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png> <./images/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png>]) (./main.bbl
+
+Class memoir Warning: The material used in the headers is too large
+(26.87865pt) for the given head height (14.0pt), it is recommended to
+either increase the head height or redesign the header
+(in both cases you will find help in the memoir manual). on input line 1.
+
+
+Overfull \vbox (12.87865pt too high) has occurred while \output is active []
+
+ [22 <./images/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png> <./images/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png>]
+Underfull \hbox (badness 5022) in paragraph at lines 67--73
 []\OT1/cmr/m/n/10 Yu-Hong Dai, Mehid-din Al-Baali, and Xi-a-oqi Yang.  \OT1/cmr/m/it/10 A Po-si-tive
  []
 
-[21
+[23
 
 ]
-Underfull \hbox (badness 3049) in paragraph at lines 78--82
+Underfull \hbox (badness 3049) in paragraph at lines 94--99
 []\OT1/cmr/m/n/10 Tom Golds-tein, Ch-ris-toph Stu-der, and Ri-chard Ba-ra-niuk.  A fi-eld
  []
 
-[22]) [23] (./main.aux)
+[24])
+
+Class memoir Warning: The material used in the headers is too large
+(26.87865pt) for the given head height (14.0pt), it is recommended to
+either increase the head height or redesign the header
+(in both cases you will find help in the memoir manual). on input line 55.
+
+[25] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 490D44CECDE8F863192777EC8A41CA9D;1085.
+(rerunfilecheck)             Checksum: CD3C446A718A68193D485E2D627310D1;1443.
  ) 
 Here is how much of TeX's memory you used:
- 16510 strings out of 474222
- 257439 string characters out of 5748732
+ 16608 strings out of 474222
+ 261571 string characters out of 5748732
  1944975 words of memory out of 5000000
- 38404 multiletter control sequences out of 15000+600000
- 568793 words of font info for 75 fonts, out of 8000000 for 9000
+ 38479 multiletter control sequences out of 15000+600000
+ 569399 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 85i,19n,93p,1042b,621s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 85i,19n,93p,1042b,623s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (23 pages, 2678463 bytes).
+Output written on main.pdf (25 pages, 4802290 bytes).
 PDF statistics:
- 599 PDF objects out of 1000 (max. 8388607)
- 494 compressed objects within 5 object streams
- 133 named destinations out of 1000 (max. 500000)
- 139 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 648 PDF objects out of 1000 (max. 8388607)
+ 532 compressed objects within 6 object streams
+ 153 named destinations out of 1000 (max. 500000)
+ 187 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -103,8 +103,6 @@
 \@writefile{toc}{\contentsline {subsection}{Comparação entre CDSS e NPG}{14}{section*.21}\protected@file@percent }
 \citation{manuscrito}
 \@writefile{toc}{\contentsline {subsection}{Comparação com otimização combinatorial}{15}{section*.22}\protected@file@percent }
-\bibstyle{plainnat}
-\bibdata{bibliografia}
 \newlabel{pF}{{1(a)}{16}{Subfigure 1(a)}{subfigure.0.1.1}{}}
 \newlabel{sub@pF}{{(a)}{16}{Subfigure 1(a)}{subfigure.0.1.1}{}}
 \newlabel{pSUP}{{1(b)}{16}{Subfigure 1(b)}{subfigure.0.1.2}{}}
@@ -115,6 +113,7 @@
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces Valor objetivo alcançado.}}{16}{figure.0.1}\protected@file@percent }
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces Medida de recuperação do suporte.}}{16}{figure.0.1}\protected@file@percent }
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do CD)}}{16}{figure.0.1}\protected@file@percent }
+\citation{fastselect}
 \newlabel{pF2}{{2(a)}{17}{Subfigure 2(a)}{subfigure.0.2.1}{}}
 \newlabel{sub@pF2}{{(a)}{17}{Subfigure 2(a)}{subfigure.0.2.1}{}}
 \newlabel{pSUP2}{{2(b)}{17}{Subfigure 2(b)}{subfigure.0.2.2}{}}
@@ -128,12 +127,15 @@
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces Medida de recuperação do suporte.}}{17}{figure.0.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do CD)}}{17}{figure.0.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces Número de iterações externas (iterações do \autoref {alg:cpsi})}}{17}{figure.0.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Considerações sobre a regularização e estratégias de validação cruzada}{17}{section*.23}\protected@file@percent }
+\citation{fastselect}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \textit  {Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação exponencial, $\rho =0.5,\ n=500,\ p=2000,\ k^\dagger =100,\ \text  {SNR}=300$.}}{18}{figure.0.3}\protected@file@percent }
 \newlabel{p3}{{3}{18}{\textit {Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação exponencial, $\rho =0.5,\ n=500,\ p=2000,\ k^\dagger =100,\ \text {SNR}=300$}{figure.0.3}{}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces Valor objetivo alcançado.}}{18}{figure.0.3}\protected@file@percent }
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces Medida de recuperação do suporte.}}{18}{figure.0.3}\protected@file@percent }
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do CD)}}{18}{figure.0.3}\protected@file@percent }
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces Número de iterações externas (iterações do \autoref {alg:cpsi})}}{18}{figure.0.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Detalhes de implementação do CDSS}{18}{section*.24}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textit  {Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação constante, $\rho =0.5,\ n=500,\ p=2000,\ k^\dagger =100,\ \text  {SNR}=300$.}}{19}{figure.0.4}\protected@file@percent }
 \newlabel{p4}{{4}{19}{\textit {Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação constante, $\rho =0.5,\ n=500,\ p=2000,\ k^\dagger =100,\ \text {SNR}=300$}{figure.0.4}{}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces Valor objetivo alcançado.}}{19}{figure.0.4}\protected@file@percent }
@@ -146,6 +148,31 @@
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces Medida de recuperação do suporte.}}{20}{figure.0.5}\protected@file@percent }
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do CD)}}{20}{figure.0.5}\protected@file@percent }
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces Número de iterações externas (iterações do \autoref {alg:cpsi})}}{20}{figure.0.5}\protected@file@percent }
+\newlabel{cv_spg}{{6(a)}{20}{Subfigure 6(a)}{subfigure.0.6.1}{}}
+\newlabel{sub@cv_spg}{{(a)}{20}{Subfigure 6(a)}{subfigure.0.6.1}{}}
+\newlabel{cv_cdss}{{6(b)}{20}{Subfigure 6(b)}{subfigure.0.6.2}{}}
+\newlabel{sub@cv_cdss}{{(b)}{20}{Subfigure 6(b)}{subfigure.0.6.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Comparação das estratégias de validação cruzada para SPG e CDSS (Correlação exponencial, $\rho =0.5, p=2000, k^\dagger =100, \text  {SNR}=10$, $T=10$ repetições).}}{20}{figure.0.6}\protected@file@percent }
+\newlabel{fig:cv_comp}{{6}{20}{Comparação das estratégias de validação cruzada para SPG e CDSS (Correlação exponencial, $\rho =0.5, p=2000, k^\dagger =100, \text {SNR}=10$, $T=10$ repetições)}{figure.0.6}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces SPG: Comparação de CVs.}}{20}{figure.0.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces CDSS: Comparação de CVs.}}{20}{figure.0.6}\protected@file@percent }
+\@writefile{lof}{\addvspace {10pt}}
+\@writefile{lot}{\addvspace {10pt}}
+\@writefile{toc}{\contentsline {appendix}{\chapternumberline {A}Comparação adicional de estratégias de validação cruzada}{21}{appendix.A}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Comparação das estratégias de validação cruzada (Correlação constante, $\rho =0.5, p=2000, k^\dagger =100, \text  {SNR}=10$).}}{21}{figure.A.1}\protected@file@percent }
+\newlabel{fig:cv_comp_app1}{{1}{21}{Comparação das estratégias de validação cruzada (Correlação constante, $\rho =0.5, p=2000, k^\dagger =100, \text {SNR}=10$)}{figure.A.1}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces SPG: Comparação de CVs.}}{21}{figure.A.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces CDSS: Comparação de CVs.}}{21}{figure.A.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Comparação das estratégias de validação cruzada (Correlação constante, $\rho =0.9, p=1000, k^\dagger =20, \text  {SNR}=5$).}}{21}{figure.A.2}\protected@file@percent }
+\newlabel{fig:cv_comp_app2}{{2}{21}{Comparação das estratégias de validação cruzada (Correlação constante, $\rho =0.9, p=1000, k^\dagger =20, \text {SNR}=5$)}{figure.A.2}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces SPG: Comparação de CVs.}}{21}{figure.A.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces CDSS: Comparação de CVs.}}{21}{figure.A.2}\protected@file@percent }
+\bibstyle{plainnat}
+\bibdata{bibliografia}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Comparação das estratégias de validação cruzada (Correlação exponencial, $\rho =0.9, p=1000, k^\dagger =20, \text  {SNR}=5$).}}{22}{figure.A.3}\protected@file@percent }
+\newlabel{fig:cv_comp_app3}{{3}{22}{Comparação das estratégias de validação cruzada (Correlação exponencial, $\rho =0.9, p=1000, k^\dagger =20, \text {SNR}=5$)}{figure.A.3}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces SPG: Comparação de CVs.}}{22}{figure.A.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces CDSS: Comparação de CVs.}}{22}{figure.A.3}\protected@file@percent }
 \bibcite{manuscrito}{{1}{2024}{{Barbosa and Silva}}{{}}}
 \bibcite{BB1}{{2}{1988}{{Barzilai and Borwein}}{{}}}
 \bibcite{beckbook}{{3}{2017}{{Beck}}{{}}}
@@ -156,7 +183,7 @@
 \bibcite{positiveBB}{{8}{2015}{{Dai et~al.}}{{Dai, Al-Baali, and Yang}}}
 \bibcite{scad}{{9}{2001}{{Fan and Li}}{{}}}
 \bibcite{glmnet}{{10}{2010}{{Friedman et~al.}}{{Friedman, Hastie, and Tibshirani}}}
-\@writefile{toc}{\contentsline {chapter}{Refer\^encias Bibliogr\'aficas}{21}{chapter*.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{Refer\^encias Bibliogr\'aficas}{23}{appendix*.25}\protected@file@percent }
 \bibcite{hibrido1}{{11}{2014}{{Goldstein et~al.}}{{Goldstein, Studer, and Baraniuk}}}
 \bibcite{GLL}{{12}{1986}{{Grippo et~al.}}{{Grippo, Lampariello, and Lucidi}}}
 \bibcite{statsparse}{{13}{2015}{{Hastie et~al.}}{{Hastie, Tibshirani, and Wainwright}}}
@@ -174,6 +201,6 @@
 \bibcite{mcp}{{25}{2010}{{Zhang}}{{}}}
 \bibcite{hibrido2}{{26}{2006}{{Zhou et~al.}}{{Zhou, Gao, and Dai}}}
 \bibcite{abess}{{27}{2020}{{{Zhu} et~al.}}{{{Zhu}, {Wen}, {Zhu}, {Zhang}, and {Wang}}}}
-\memsetcounter{lastsheet}{23}
-\memsetcounter{lastpage}{23}
-\gdef \@abspage@last{23}
+\memsetcounter{lastsheet}{25}
+\memsetcounter{lastpage}{25}
+\gdef \@abspage@last{25}
