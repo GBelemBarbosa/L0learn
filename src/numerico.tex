@@ -36,7 +36,7 @@ A capacidade do NPG com estratégias de passo espectral encontrar soluções de 
 
 Para melhor analisar as características dos limites das sequências dos algoritmos NPG, também foi executado o CD a partir desses pontos para determinar se eles também eram mínimos CW. Consideramos que caso o suporte não seja alterado durante essa passagem pelo CD e o número de iterações seja pequeno ($2$ ou menos) antes do critério de parada, então o ponto pode razoavelmente ser considerado (numericamente) CW. Para o NSPG, $60\%$ das inicializações resultaram em pontos CW, enquanto essa porcentagem foi $44\%$ para o NSPGH. O VMNSPG não resultou em nenhum ponto CW seguindo essa definição. 
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
   \subbottom[\label{pF}Valor objetivo alcançado.]{%
     \includegraphics[width=0.45\linewidth]{images/pF-exp-0.5-500-2000-10-100 (1).png}}
@@ -59,7 +59,7 @@ A qualidade das soluções obtidas por métodos NSPG (incluindo sem otimização
 
 A utilização conjunta do NSPG e CD se mostrou vantajosa em todos os aspectos se comparado com o NSPG puro.
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
   \subbottom[\label{pF2}Valor objetivo alcançado.]{%
     \includegraphics[width=0.45\linewidth]{images/pF-exp-0.5-500-2000-10-100.png}}
@@ -74,7 +74,7 @@ A utilização conjunta do NSPG e CD se mostrou vantajosa em todos os aspectos s
 
 Aumentando o SNR para 300 para permitir recuperação completa do suporte, vemos uma diferença drástica na qualidade das soluções, com somente um aumento pequeno no número de iterações (\autoref{p3}). A estratégia NSPG+ CD continua sendo a mais atrativa, com menos soluções \textit{outliers} com um custo levemente superior em iterações, porém todas as estratégias NSPG apresentam recuperação perfeita da solução verdadeira com probabilidade alta.
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
   \subbottom[Valor objetivo alcançado.]{%
     \includegraphics[width=0.45\linewidth]{images/pF-exp-0.5-500-2000-300-100.png}}
@@ -89,7 +89,7 @@ Aumentando o SNR para 300 para permitir recuperação completa do suporte, vemos
 
 Para o próximo experimento, mantivemos os parâmetros anteriores e trocando o tipo de correlação por constante, um cenário significativamente mais difícil. A \autoref{p4} apresenta resultados bastante drásticos em favor de estratégias NSPG com busca combinatorial. Em comparação com o CD, o ganho em iterações (tanto internas quanto externas) é substancial. Já em comparação com o NSPG sem busca combinatorial, a qualidade das soluções é muito superior. Entre o NSPG puro e o NSPG+CD, esse primeiro se provou quase tão bom em qualidade de soluções, mas com mais iterações externas, as quais são a parte mais expressiva no tempo de execução total. 
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
   \subbottom[Valor objetivo alcançado.]{%
     \includegraphics[width=0.45\linewidth]{images/pF-con-0.5-500-2000-300-100.png}}
@@ -104,7 +104,7 @@ Para o próximo experimento, mantivemos os parâmetros anteriores e trocando o t
 
 Por fim, com correlação exponencial, dividimos todas as dimensões por 2, tomamos $k^\dagger=25$,  e aumentamos a correlação para $\rho=0.9$ (\autoref{p5}). Todos os métodos com otimização combinatorial obtiveram 100\% de recuperação do suporte original, enquanto o NSPG sem essa estratégia não. O número de iterações (internas e externas) do CD foi muito mais alto, indicando novamente que as soluções obtidas desse método exigem mais perturbações do suporte antes de estabilizar.
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
   \subbottom[Valor objetivo alcançado.]{%
     \includegraphics[width=0.45\linewidth]{images/pF-exp-0.9-250-1000-300-25.png}}
@@ -122,22 +122,24 @@ Por fim, com correlação exponencial, dividimos todas as dimensões por 2, toma
 \subsection{Considerações sobre a regularização e estratégias de validação cruzada}
 Para a seleção do parâmetro de regularização $\lambda$, implementamos e comparamos três estratégias de validação cruzada (CV):
 \begin{enumerate}
-  \item \textit{Validação Cruzada Padrão (Decrescente)}: Segue a ordem proposta em \cite{fastselect}, iniciando com um $\lambda$ grande e decrescendo. Utiliza $\lambda_{novo} = 0.9 \cdot \min(\lambda_{ant}, \lambda_{calc})$.
-  \item \textit{Validação Cruzada Inversa (Crescente)}: Percorre o caminho na direção oposta, iniciando com $\lambda$ pequeno. Utiliza $\lambda_{novo} = 0.9^{-1} \cdot \max(\lambda_{ant}, \lambda_{calc})$.
+  \item \textit{Validação Cruzada Padrão (Decrescente)}: Segue a ordem proposta em \cite{fastselect}, iniciando com um $\lambda$ grande e decrescendo. Utiliza $\lambda_{novo} = 0.9 \cdot \min(\lambda_{ant}, \lambda_{calc})$;
+  \item \textit{Validação Cruzada Inversa (Crescente)}: Percorre o caminho na direção oposta, iniciando com $\lambda$ pequeno. Utiliza $\lambda_{novo} = 0.9^{-1} \cdot \max(\lambda_{ant}, \lambda_{calc})$;
   \item \textit{Validação Cruzada Adaptativa}: Sonda os extremos e escolhe a direção inicial de varredura baseada no menor erro de validação, permitindo reversão.
 \end{enumerate}
 
 Para métodos inicializados com passo espectral (como o SPG), o cálculo de $\lambda_{calc}$ foi ajustado para compensar a escala introduzida pelo passo $\gamma^{0,0}$. Adicionalmente, um refinamento final seleciona a melhor solução entre o \textit{warm-start} do caminho e um \textit{cold-start} (vetor nulo).
 
-A escolha da estratégia de validação cruzada para cada algoritmo foi baseada em testes preliminares de desempenho. A \autoref{fig:cv_comp} ilustra a comparação de recuperação de suporte para as diferentes estratégias. Observa-se que métodos baseados em SPG beneficiam-se significativamente da abordagem adaptativa, que evita mínimos locais inadequados explorando ambas as direções. Já para o CDSS, a abordagem padrão mostrou-se robusta e eficiente. Assim, os resultados reportados nas seções anteriores utilizam CV Adaptativa para SPG/NSPG e CV Padrão para CDSS.
+A escolha da estratégia de validação cruzada para cada algoritmo foi baseada em testes preliminares de desempenho. A \autoref{fig:cv_comp} ilustra a comparação de recuperação de suporte para as diferentes estratégias. Resultados adicionais para outros cenários de correlação e dimensionalidade podem ser encontrados no \autoref{chap:anexos} (Figuras \ref{fig:cv_comp_app1}, \ref{fig:cv_comp_app2} e \ref{fig:cv_comp_app3}). Observa-se que métodos baseados em SPG beneficiam-se significativamente da abordagem adaptativa, que evita mínimos locais inadequados explorando ambas as direções. O SPGpCDSS demonstra comportamento análogo ao SPG, obtendo melhores resultados com a validação cruzada adaptativa. Já para o CDSS, a abordagem padrão mostrou-se robusta e eficiente. A abordagem inversa falha para o CDSS em cenários de correlação constante pois a primeira coordenada é ativada e as demais componentes do gradiente ficam menores que o \textit{threshold} do operador proximal e depois o $\lambda$ cresce, impossibilitando a expansão do suporte, que fica preso em 1. Assim, os resultados reportados nas seções anteriores utilizam CV Adaptativa para SPG/NSPG/SPGpCDSS e CV Padrão para CDSS.
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
   \subbottom[\label{cv_spg}SPG: Comparação de CVs.]{%
-    \includegraphics[width=0.45\linewidth]{images/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png}}
+    \includegraphics[width=0.32\linewidth]{images/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png}}
   \subbottom[\label{cv_cdss}CDSS: Comparação de CVs.]{%
-    \includegraphics[width=0.45\linewidth]{images/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png}}
-  \caption{Comparação das estratégias de validação cruzada para SPG e CDSS (Correlação exponencial, $\rho=0.5, p=2000, k^\dagger=100, \text{SNR}=10$, $T=10$ repetições).}
+    \includegraphics[width=0.32\linewidth]{images/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png}}
+  \subbottom[\label{cv_spgpcdss}SPG+CDSS: Comparação de CVs.]{%
+    \includegraphics[width=0.32\linewidth]{images/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png}}
+  \caption{Comparação das estratégias de validação cruzada para SPG, CDSS e SPG+CDSS (Correlação exponencial, $\rho=0.5, p=2000, k^\dagger=100, \text{SNR}=10$, $T=10$ repetições).}
   \label{fig:cv_comp}
 \end{figure}
 

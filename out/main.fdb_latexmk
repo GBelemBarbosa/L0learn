@@ -1,16 +1,16 @@
 # Fdb version 4
-["bibtex main"] 1769373746.90965 "main.aux" "main.bbl" "main" 1769373761.89508 0
+["bibtex main"] 1769396378.26563 "main.aux" "main.bbl" "main" 1769396405.33378 0
   "./bibliografia.bib" 1762369192.11219 10778 f4f1df3db4decb5008b76f9515bdb695 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "main.aux" 1769373347.50741 18273 559d1b1427333ee2149cef79d7e669b8 ""
+  "main.aux" 1769396186.40367 18826 f4a74b4c9ae792c4c360e18e64d25baa ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1769373747.10256 "main.tex" "/home/gggt4/TeX/CDSSvsSPG/out/main.pdf" "main" 1769373761.89521 0
+["pdflatex"] 1769396391.55313 "main.tex" "/home/gggt4/TeX/CDSSvsSPG/out/main.pdf" "main" 1769396405.33386 0
   "/etc/texmf/web2c/texmf.cnf" 1760819206.02535 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/gggt4/TeX/CDSSvsSPG/out/main.aux" 1769373761.22887 18273 559d1b1427333ee2149cef79d7e669b8 "pdflatex"
-  "/home/gggt4/TeX/CDSSvsSPG/out/main.out" 1769373761.23754 1443 cd3c446a718a68193d485e2d627310d1 "pdflatex"
+  "/home/gggt4/TeX/CDSSvsSPG/out/main.aux" 1769396404.95131 19137 d7ad47b289a1e6ce5c60e6232f8c8e42 "pdflatex"
+  "/home/gggt4/TeX/CDSSvsSPG/out/main.out" 1769396404.95131 1443 cd3c446a718a68193d485e2d627310d1 "pdflatex"
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -149,7 +149,7 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1760819231.11174 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1760819318 8216301 a031e3b5a94d82bb4a69aec27c12be90 ""
   "algo.tex" 1762457928.60953 15525 41a031ffa6084c8326817da3ca4e25d5 ""
-  "anexos.tex" 1769373327.27255 1827 3929cd52095ec58d95063c96f46fc237 ""
+  "anexos.tex" 1769396147.39571 2309 bb5cda1e209a0cfffb3c0501c1e330bb ""
   "images/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png" 1769083087.14837 230007 9dab5ae4ba3a4ee8bec47ac59f5573d4 ""
   "images/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png" 1769083087.49621 294965 2d627465c8987db88ad9ace679d62173 ""
   "images/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png" 1769083087.82316 277213 3c35cd1ace1468c90caed7f1a4063e8d ""
@@ -158,6 +158,10 @@
   "images/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png" 1769083088.95203 385378 d8d5af73697d8785af085c9d861fa071 ""
   "images/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png" 1769083089.31231 264295 5cd0719d98a231c229181c0b9d76048b ""
   "images/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png" 1769083089.71459 295642 5742b8f151d7522e24bbe45f1c3b8117 ""
+  "images/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png" 1769083090.08121 316934 ca27fb398f7a3c814f012c1ef9abfd0b ""
+  "images/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png" 1769083090.47721 346216 bb6cc3e4a5cc74095ceb6e648a46128f ""
+  "images/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png" 1769083090.82016 274961 35ee2dea31c88206f551eeb0aab63ed2 ""
+  "images/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png" 1769083091.23245 284599 2b554c49cc8d08c6b10aa71200ce9245 ""
   "images/pF-con-0.5-500-2000-300-100.png" 1769152884.95222 100978 33e18d0e013ccc647c3b51087cf9dd19 ""
   "images/pF-exp-0.5-500-2000-10-100 (1).png" 1769152884.96022 92535 0c9c6ffd2570af3e7d8b15d738bcf7fd ""
   "images/pF-exp-0.5-500-2000-10-100.png" 1769152884.97622 90647 e986e235b21d78d5c2019e249b1dba94 ""
@@ -177,9 +181,9 @@
   "images/pSUP-exp-0.5-500-2000-300-100.png" 1769152885.25222 185340 695c7a8c830f2d59d99ef5b07fbb0ce5 ""
   "images/pSUP-exp-0.9-250-1000-300-25.png" 1769152885.27222 160159 38bcd607394412a3e033cbf4369483ce ""
   "intro.tex" 1769368877.46406 4656 8fa7f8abd92c064ae421c0c30b5b0146 ""
-  "main.bbl" 1769373747.09789 9233 50ac5d067ff4b6dca44d4fd60f26f11c "bibtex main"
-  "main.tex" 1769373326.53843 1408 b29ea4133e1b899e895fda874862c037 ""
-  "numerico.tex" 1769369235.45912 17383 68318c5218fd1fe04d91dfdb5f4ad613 ""
+  "main.bbl" 1769396378.453 9233 50ac5d067ff4b6dca44d4fd60f26f11c "bibtex main"
+  "main.tex" 1769373840.6403 1408 b29ea4133e1b899e895fda874862c037 ""
+  "numerico.tex" 1769396351.19028 18201 29eddb6ebd89ca474a6fa0f230390ca7 ""
   "optimal.tex" 1769152885.54422 12311 22f27ddc11cae6f3718d5750f57b5ee2 ""
   (generated)
   "/home/gggt4/TeX/CDSSvsSPG/out/main.aux"

@@ -339,6 +339,11 @@ INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png
 INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png
 INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png
 INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png
 INPUT ./anexos.tex
 INPUT ./anexos.tex
 INPUT anexos.tex
@@ -356,6 +361,11 @@ INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png
 INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png
 INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png
 INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png
 INPUT ./images/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png
 INPUT ./images/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png
 INPUT ./images/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png
@@ -366,6 +376,11 @@ INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png
 INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png
 INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png
 INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png
 INPUT ./images/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png
 INPUT ./images/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png
 INPUT ./images/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png
@@ -376,6 +391,11 @@ INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png
 INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png
 INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png
 INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png
 INPUT ./main.bbl
 INPUT ./main.bbl
 INPUT main.bbl

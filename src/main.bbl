@@ -7,15 +7,13 @@
 
 \bibitem[Barbosa and Silva(2024)]{manuscrito}
 Gabriel~Belém Barbosa and Paulo José da~Silva Silva.
-\newblock Relaxing smoothness conditions for non-monotone optimization methods
-  applied to discontinuous composite problems.
+\newblock Relaxing smoothness conditions for non-monotone optimization methods applied to discontinuous composite problems.
 \newblock Manuscript in progress, 2024.
 
 \bibitem[Barzilai and Borwein(1988)]{BB1}
 Jonathan Barzilai and Jonathan~M. Borwein.
 \newblock {Two-Point Step Size Gradient Methods}.
-\newblock \emph{IMA Journal of Numerical Analysis}, 8\penalty0 (1):\penalty0
-  141--148, 01 1988.
+\newblock \emph{IMA Journal of Numerical Analysis}, 8\penalty0 (1):\penalty0 141--148, 01 1988.
 \newblock ISSN 0272-4979.
 \newblock \doi{10.1093/imanum/8.1.141}.
 \newblock URL \url{https://doi.org/10.1093/imanum/8.1.141}.
@@ -23,124 +21,101 @@ Jonathan Barzilai and Jonathan~M. Borwein.
 \bibitem[Beck(2017)]{beckbook}
 Amir Beck.
 \newblock \emph{First-Order Methods in Optimization}.
-\newblock Society for Industrial and Applied Mathematics, Philadelphia, PA,
-  2017.
+\newblock Society for Industrial and Applied Mathematics, Philadelphia, PA, 2017.
 \newblock \doi{10.1137/1.9781611974997}.
 \newblock URL \url{https://epubs.siam.org/doi/abs/10.1137/1.9781611974997}.
 
 \bibitem[Beck and Eldar(2013)]{gcd}
 Amir Beck and Yonina~C. Eldar.
-\newblock Sparsity constrained nonlinear optimization: Optimality conditions
-  and algorithms.
-\newblock \emph{SIAM Journal on Optimization}, 23\penalty0 (3):\penalty0
-  1480--1509, 2013.
+\newblock Sparsity constrained nonlinear optimization: Optimality conditions and algorithms.
+\newblock \emph{SIAM Journal on Optimization}, 23\penalty0 (3):\penalty0 1480--1509, 2013.
 \newblock \doi{10.1137/120869778}.
 \newblock URL \url{https://doi.org/10.1137/120869778}.
 
 \bibitem[Bhlmann and van~de Geer(2011)]{stathigh}
 Peter Bhlmann and Sara van~de Geer.
-\newblock \emph{Statistics for High-Dimensional Data: Methods, Theory and
-  Applications}.
+\newblock \emph{Statistics for High-Dimensional Data: Methods, Theory and Applications}.
 \newblock Springer Publishing Company, Incorporated, 1st edition, 2011.
 \newblock ISBN 3642201911.
 
 \bibitem[Blumensath and Davies(2009)]{iht}
 Thomas Blumensath and Mike~E. Davies.
 \newblock Iterative hard thresholding for compressed sensing.
-\newblock \emph{Applied and Computational Harmonic Analysis}, 27\penalty0
-  (3):\penalty0 265--274, 2009.
+\newblock \emph{Applied and Computational Harmonic Analysis}, 27\penalty0 (3):\penalty0 265--274, 2009.
 \newblock ISSN 1063-5203.
 \newblock \doi{https://doi.org/10.1016/j.acha.2009.04.002}.
-\newblock URL
-  \url{https://www.sciencedirect.com/science/article/pii/S1063520309000384}.
+\newblock URL \url{https://www.sciencedirect.com/science/article/pii/S1063520309000384}.
 
 \bibitem[Breheny and Huang(2011)]{ncvreg}
 Patrick Breheny and Jian Huang.
-\newblock Coordinate descent algorithms for nonconvex penalized regression,
-  with applications to biological feature selection.
-\newblock \emph{Annals of Applied Statistics}, 5\penalty0 (1):\penalty0
-  232--253, 2011.
+\newblock Coordinate descent algorithms for nonconvex penalized regression, with applications to biological feature selection.
+\newblock \emph{Annals of Applied Statistics}, 5\penalty0 (1):\penalty0 232--253, 2011.
 \newblock \doi{10.1214/10-AOAS388}.
 \newblock URL \url{https://doi.org/10.1214/10-AOAS388}.
 
 \bibitem[Dai et~al.(2015)Dai, Al-Baali, and Yang]{positiveBB}
 Yu-Hong Dai, Mehiddin Al-Baali, and Xiaoqi Yang.
-\newblock \emph{A Positive Barzilai–Borwein-Like Stepsize and an Extension
-  for Symmetric Linear Systems}, pages 59--75.
+\newblock \emph{A Positive Barzilai–Borwein-Like Stepsize and an Extension for Symmetric Linear Systems}, pages 59--75.
 \newblock na, 01 2015.
 \newblock ISBN 978-3-319-17688-8.
 \newblock \doi{10.1007/978-3-319-17689-5_3}.
 
 \bibitem[Fan and Li(2001)]{scad}
 Jianqing Fan and Runze Li.
-\newblock Variable selection via nonconcave penalized likelihood and its oracle
-  properties.
-\newblock \emph{Journal of the American Statistical Association}, 96\penalty0
-  (456):\penalty0 1348--1360, 2001.
+\newblock Variable selection via nonconcave penalized likelihood and its oracle properties.
+\newblock \emph{Journal of the American Statistical Association}, 96\penalty0 (456):\penalty0 1348--1360, 2001.
 \newblock ISSN 01621459.
 \newblock URL \url{http://www.jstor.org/stable/3085904}.
 
 \bibitem[Friedman et~al.(2010)Friedman, Hastie, and Tibshirani]{glmnet}
 Jerome~H. Friedman, Trevor Hastie, and Rob Tibshirani.
-\newblock Regularization paths for generalized linear models via coordinate
-  descent.
-\newblock \emph{Journal of Statistical Software}, 33\penalty0 (1):\penalty0
-  1–22, 2010.
+\newblock Regularization paths for generalized linear models via coordinate descent.
+\newblock \emph{Journal of Statistical Software}, 33\penalty0 (1):\penalty0 1–22, 2010.
 \newblock \doi{10.18637/jss.v033.i01}.
-\newblock URL
-  \url{https://www.jstatsoft.org/index.php/jss/article/view/v033i01}.
+\newblock URL \url{https://www.jstatsoft.org/index.php/jss/article/view/v033i01}.
 
 \bibitem[Goldstein et~al.(2014)Goldstein, Studer, and Baraniuk]{hibrido1}
 Tom Goldstein, Christoph Studer, and Richard Baraniuk.
-\newblock A field guide to forward-backward splitting with a fasta
-  implementation.
+\newblock A field guide to forward-backward splitting with a fasta implementation.
 \newblock \emph{ArXiv}, abs/1411.3406, 2014.
 \newblock URL \url{https://api.semanticscholar.org/CorpusID:9037325}.
 
 \bibitem[Grippo et~al.(1986)Grippo, Lampariello, and Lucidi]{GLL}
 L.~Grippo, F.~Lampariello, and S.~Lucidi.
 \newblock A nonmonotone line search technique for newton's method.
-\newblock \emph{SIAM Journal on Numerical Analysis}, 23\penalty0 (4):\penalty0
-  707--716, 1986.
+\newblock \emph{SIAM Journal on Numerical Analysis}, 23\penalty0 (4):\penalty0 707--716, 1986.
 \newblock ISSN 00361429.
 \newblock URL \url{http://www.jstor.org/stable/2157617}.
 
 \bibitem[Hastie et~al.(2015)Hastie, Tibshirani, and Wainwright]{statsparse}
 Trevor Hastie, Robert Tibshirani, and Martin Wainwright.
-\newblock \emph{Statistical Learning with Sparsity: The Lasso and
-  Generalizations}.
+\newblock \emph{Statistical Learning with Sparsity: The Lasso and Generalizations}.
 \newblock Chapman \& Hall/CRC, 2015.
 \newblock ISBN 1498712169.
 
 \bibitem[Hazimeh and Mazumder(2020)]{fastselect}
 Hussein Hazimeh and Rahul Mazumder.
-\newblock Fast best subset selection: Coordinate descent and local
-  combinatorial optimization algorithms.
-\newblock \emph{Operations Research}, 68\penalty0 (5):\penalty0 1517–1537,
-  September 2020.
+\newblock Fast best subset selection: Coordinate descent and local combinatorial optimization algorithms.
+\newblock \emph{Operations Research}, 68\penalty0 (5):\penalty0 1517–1537, September 2020.
 \newblock ISSN 0030-364X.
 \newblock \doi{10.1287/opre.2019.1919}.
 \newblock URL \url{https://doi.org/10.1287/opre.2019.1919}.
 
 \bibitem[Hazimeh et~al.(2021)Hazimeh, Mazumder, and Saab]{mio}
 Hussein Hazimeh, Rahul Mazumder, and Ali Saab.
-\newblock Sparse regression at scale: branch-and-bound rooted in first-order
-  optimization.
+\newblock Sparse regression at scale: branch-and-bound rooted in first-order optimization.
 \newblock \emph{Mathematical Programming}, 196:\penalty0 1--42, 10 2021.
 \newblock \doi{10.1007/s10107-021-01712-4}.
 
 \bibitem[Kanzow and Mehlitz(2021)]{kanzow2021}
 Christian Kanzow and Patrick Mehlitz.
-\newblock Convergence properties of monotone and nonmonotone proximal gradient
-  methods revisited.
-\newblock \emph{Journal of Optimization Theory and Applications}, 195:\penalty0
-  624 -- 646, 2021.
+\newblock Convergence properties of monotone and nonmonotone proximal gradient methods revisited.
+\newblock \emph{Journal of Optimization Theory and Applications}, 195:\penalty0 624 -- 646, 2021.
 \newblock URL \url{https://api.semanticscholar.org/CorpusID:244896538}.
 
 \bibitem[Mazumder et~al.(2017)Mazumder, Radchenko, and Dedieu]{overfitting}
 Rahul Mazumder, Peter Radchenko, and Antoine Dedieu.
-\newblock Subset selection with shrinkage: Sparse linear modeling when the snr
-  is low.
+\newblock Subset selection with shrinkage: Sparse linear modeling when the snr is low.
 \newblock \emph{Operations Research}, 71, 08 2017.
 \newblock \doi{10.1287/opre.2022.2276}.
 
@@ -152,42 +127,33 @@ B.S. Mordukhovich.
 
 \bibitem[Moreau(1962)]{moreau1962}
 Jean~Jacques Moreau.
-\newblock {Fonctions convexes duales et points proximaux dans un espace
-  hilbertien}.
-\newblock \emph{{Comptes rendus hebdomadaires des s{\'e}ances de l'Acad{\'e}mie
-  des sciences}}, 255:\penalty0 2897--2899, 1962.
+\newblock {Fonctions convexes duales et points proximaux dans un espace hilbertien}.
+\newblock \emph{{Comptes rendus hebdomadaires des s{\'e}ances de l'Acad{\'e}mie des sciences}}, 255:\penalty0 2897--2899, 1962.
 \newblock URL \url{https://hal.science/hal-01867195}.
 
 \bibitem[Natarajan(1995)]{nphard}
 B.~K. Natarajan.
 \newblock Sparse approximate solutions to linear systems.
-\newblock \emph{SIAM Journal on Computing}, 24\penalty0 (2):\penalty0 227--234,
-  1995.
+\newblock \emph{SIAM Journal on Computing}, 24\penalty0 (2):\penalty0 227--234, 1995.
 \newblock \doi{10.1137/S0097539792240406}.
 \newblock URL \url{https://doi.org/10.1137/S0097539792240406}.
 
 \bibitem[Park et~al.(2020)Park, Dhar, Boyd, and Shah]{vmspg}
 Youngsuk Park, Sauptik Dhar, Stephen Boyd, and Mohak Shah.
-\newblock Variable metric proximal gradient method with diagonal
-  barzilai-borwein stepsize.
-\newblock In \emph{ICASSP 2020 - 2020 IEEE International Conference on
-  Acoustics, Speech and Signal Processing (ICASSP)}, pages 3597--3601, 05 2020.
+\newblock Variable metric proximal gradient method with diagonal barzilai-borwein stepsize.
+\newblock In \emph{ICASSP 2020 - 2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, pages 3597--3601, 05 2020.
 \newblock \doi{10.1109/ICASSP40776.2020.9054193}.
 
 \bibitem[Patrascu and Necoara(2015)]{rcd}
 Andrei Patrascu and Ion Necoara.
-\newblock Random coordinate descent methods for $\ell_{0}$ regularized convex
-  optimization.
-\newblock \emph{IEEE Transactions on Automatic Control}, 60\penalty0
-  (7):\penalty0 1811--1824, 2015.
+\newblock Random coordinate descent methods for $\ell_{0}$ regularized convex optimization.
+\newblock \emph{IEEE Transactions on Automatic Control}, 60\penalty0 (7):\penalty0 1811--1824, 2015.
 \newblock \doi{10.1109/TAC.2015.2390551}.
 
 \bibitem[RAYDAN(1993)]{BB2}
 MARCOS RAYDAN.
-\newblock On the barzilai and borwein choice of steplength for the gradient
-  method.
-\newblock \emph{IMA Journal of Numerical Analysis}, 13\penalty0 (3):\penalty0
-  321–326, 1993.
+\newblock On the barzilai and borwein choice of steplength for the gradient method.
+\newblock \emph{IMA Journal of Numerical Analysis}, 13\penalty0 (3):\penalty0 321–326, 1993.
 \newblock ISSN 1464-3642.
 \newblock \doi{10.1093/imanum/13.3.321}.
 \newblock URL \url{http://dx.doi.org/10.1093/imanum/13.3.321}.
@@ -195,8 +161,7 @@ MARCOS RAYDAN.
 \bibitem[Tibshirani(1996)]{lasso}
 R.~Tibshirani.
 \newblock Regression shrinkage and selection via the lasso.
-\newblock \emph{Journal of the Royal Statistical Society (Series B)},
-  58:\penalty0 267--288, 1996.
+\newblock \emph{Journal of the Royal Statistical Society (Series B)}, 58:\penalty0 267--288, 1996.
 
 \bibitem[Zhang(2010)]{mcp}
 Cun-Hui Zhang.
@@ -209,15 +174,13 @@ Cun-Hui Zhang.
 \bibitem[Zhou et~al.(2006)Zhou, Gao, and Dai]{hibrido2}
 Bin Zhou, Li~Gao, and Yu-Hong Dai.
 \newblock Gradient methods with adaptive step-sizes.
-\newblock \emph{Computational Optimization and Applications}, 35:\penalty0
-  69--86, 09 2006.
+\newblock \emph{Computational Optimization and Applications}, 35:\penalty0 69--86, 09 2006.
 \newblock \doi{10.1007/s10589-006-6446-0}.
 
 \bibitem[{Zhu} et~al.(2020){Zhu}, {Wen}, {Zhu}, {Zhang}, and {Wang}]{abess}
 Junxian {Zhu}, Canhong {Wen}, Jin {Zhu}, Heping {Zhang}, and Xueqin {Wang}.
 \newblock {A polynomial algorithm for best-subset selection problem}.
-\newblock \emph{Proceedings of the National Academy of Science}, 117\penalty0
-  (52):\penalty0 33117--33123, December 2020.
+\newblock \emph{Proceedings of the National Academy of Science}, 117\penalty0 (52):\penalty0 33117--33123, December 2020.
 \newblock \doi{10.1073/pnas.2014241117}.
 
 \end{thebibliography}
