@@ -9,11 +9,11 @@ Neste apêndice, apresentamos comparações adicionais das estratégias de valid
 \begin{figure}[ht]
   \centering
   \subbottom[SPG: Comparação de CVs.]{%
-    \includegraphics[width=0.32\linewidth]{images/Comp_Sim-SPG_Comparison_const-0.5-2000-10.0-100.png}}
+    \includegraphics[width=0.32\linewidth]{images/Comparisons/Comp_Sim-SPG_Comparison_const-0.5-2000-10.0-100.png}}
   \subbottom[CDSS: Comparação de CVs.]{%
-    \includegraphics[width=0.32\linewidth]{images/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png}}
+    \includegraphics[width=0.32\linewidth]{images/Comparisons/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png}}
   \subbottom[SPG+CDSS: Comparação de CVs.]{%
-    \includegraphics[width=0.32\linewidth]{images/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png}}
+    \includegraphics[width=0.32\linewidth]{images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png}}
   \caption{Comparação das estratégias de validação cruzada (Correlação constante, $\rho=0.5, p=2000, k^\dagger=100, \text{SNR}=10$).}
   \label{fig:cv_comp_app1}
 \end{figure}
@@ -21,11 +21,11 @@ Neste apêndice, apresentamos comparações adicionais das estratégias de valid
 \begin{figure}[ht]
   \centering
   \subbottom[SPG: Comparação de CVs.]{%
-    \includegraphics[width=0.32\linewidth]{images/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png}}
+    \includegraphics[width=0.32\linewidth]{images/Comparisons/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png}}
   \subbottom[CDSS: Comparação de CVs.]{%
-    \includegraphics[width=0.32\linewidth]{images/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png}}
+    \includegraphics[width=0.32\linewidth]{images/Comparisons/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png}}
   \subbottom[SPG+CDSS: Comparação de CVs.]{%
-    \includegraphics[width=0.32\linewidth]{images/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png}}
+    \includegraphics[width=0.32\linewidth]{images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png}}
   \caption{Comparação das estratégias de validação cruzada (Correlação constante, $\rho=0.9, p=1000, k^\dagger=20, \text{SNR}=5$).}
   \label{fig:cv_comp_app2}
 \end{figure}
@@ -33,11 +33,46 @@ Neste apêndice, apresentamos comparações adicionais das estratégias de valid
 \begin{figure}[ht]
   \centering
   \subbottom[SPG: Comparação de CVs.]{%
-    \includegraphics[width=0.32\linewidth]{images/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png}}
+    \includegraphics[width=0.32\linewidth]{images/Comparisons/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png}}
   \subbottom[CDSS: Comparação de CVs.]{%
-    \includegraphics[width=0.32\linewidth]{images/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png}}
+    \includegraphics[width=0.32\linewidth]{images/Comparisons/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png}}
   \subbottom[SPG+CDSS: Comparação de CVs.]{%
-    \includegraphics[width=0.32\linewidth]{images/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png}}
+    \includegraphics[width=0.32\linewidth]{images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png}}
   \caption{Comparação das estratégias de validação cruzada (Correlação exponencial, $\rho=0.9, p=1000, k^\dagger=20, \text{SNR}=5$).}
   \label{fig:cv_comp_app3}
+\end{figure}
+
+\chapter{Comparação adicional com L0Learn}
+\label{chap:anexos_l0learn}
+
+Neste apêndice, apresentamos comparações adicionais entre o CDSS e o L0Learn para diferentes cenários.
+
+\begin{figure}[ht]
+  \centering
+  \subbottom[Recuperação do Suporte.]{%
+    \includegraphics[width=0.45\linewidth]{images/L0Hybrid/const-0.5-2000/L0Hybrid_bestlast_const-0.5-2000-10.0-100-10-200_200_2000_SUP.png}}
+  \subbottom[Tempo de execução (s).]{%
+    \includegraphics[width=0.45\linewidth]{images/L0Hybrid/const-0.5-2000/L0Hybrid_bestlast_const-0.5-2000-10.0-100-10-200_200_2000_Time.png}}
+  \caption{Comparação entre CDSS e L0Learn. Correlação constante, $\rho=0.5,\ n=500,\ p=2000$.}
+  \label{fig:l0learn_anexo_1}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \subbottom[Recuperação do Suporte.]{%
+    \includegraphics[width=0.45\linewidth]{images/L0Hybrid/const-0.9-1000/L0Hybrid_bestlast_const-0.9-1000-5.0-20-10-100_100_1000_SUP.png}}
+  \subbottom[Tempo de execução (s).]{%
+    \includegraphics[width=0.45\linewidth]{images/L0Hybrid/const-0.9-1000/L0Hybrid_bestlast_const-0.9-1000-5.0-20-10-100_100_1000_Time.png}}
+  \caption{Comparação entre CDSS e L0Learn. Correlação constante, $\rho=0.9,\ n=250,\ p=1000$.}
+  \label{fig:l0learn_anexo_2}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \subbottom[Recuperação do Suporte.]{%
+    \includegraphics[width=0.45\linewidth]{images/L0Hybrid/exp-0.9-1000/L0Hybrid_bestlast_exp-0.9-1000-5.0-20-10-100_100_1000_SUP.png}}
+  \subbottom[Tempo de execução (s).]{%
+    \includegraphics[width=0.45\linewidth]{images/L0Hybrid/exp-0.9-1000/L0Hybrid_bestlast_exp-0.9-1000-5.0-20-10-100_100_1000_Time.png}}
+  \caption{Comparação entre CDSS e L0Learn. Correlação exponencial, $\rho=0.9,\ n=250,\ p=1000$.}
+  \label{fig:l0learn_anexo_3}
 \end{figure}

@@ -222,21 +222,21 @@ INPUT ./numerico.tex
 INPUT numerico.tex
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
 INPUT /usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc
-INPUT ./images/pF-exp-0.5-500-2000-10-100 (1).png
-INPUT ./images/pF-exp-0.5-500-2000-10-100 (1).png
-INPUT ./images/pF-exp-0.5-500-2000-10-100 (1).png
-INPUT ./images/pF-exp-0.5-500-2000-10-100 (1).png
-INPUT ./images/pF-exp-0.5-500-2000-10-100 (1).png
-INPUT ./images/pSUP-exp-0.5-500-2000-10-100 (1).png
-INPUT ./images/pSUP-exp-0.5-500-2000-10-100 (1).png
-INPUT ./images/pSUP-exp-0.5-500-2000-10-100 (1).png
-INPUT ./images/pSUP-exp-0.5-500-2000-10-100 (1).png
-INPUT ./images/pSUP-exp-0.5-500-2000-10-100 (1).png
-INPUT ./images/pK-exp-0.5-500-2000-10-100 (1).png
-INPUT ./images/pK-exp-0.5-500-2000-10-100 (1).png
-INPUT ./images/pK-exp-0.5-500-2000-10-100 (1).png
-INPUT ./images/pK-exp-0.5-500-2000-10-100 (1).png
-INPUT ./images/pK-exp-0.5-500-2000-10-100 (1).png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pF-exp-0.5-500-2000-10-100 (1).png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pF-exp-0.5-500-2000-10-100 (1).png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pF-exp-0.5-500-2000-10-100 (1).png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pF-exp-0.5-500-2000-10-100 (1).png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pF-exp-0.5-500-2000-10-100 (1).png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pSUP-exp-0.5-500-2000-10-100 (1).png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pSUP-exp-0.5-500-2000-10-100 (1).png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pSUP-exp-0.5-500-2000-10-100 (1).png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pSUP-exp-0.5-500-2000-10-100 (1).png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pSUP-exp-0.5-500-2000-10-100 (1).png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100 (1).png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100 (1).png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100 (1).png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100 (1).png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100 (1).png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
@@ -250,100 +250,100 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
-INPUT ./images/pF-exp-0.5-500-2000-10-100.png
-INPUT ./images/pF-exp-0.5-500-2000-10-100.png
-INPUT ./images/pF-exp-0.5-500-2000-10-100.png
-INPUT ./images/pF-exp-0.5-500-2000-10-100.png
-INPUT ./images/pF-exp-0.5-500-2000-10-100.png
-INPUT ./images/pSUP-exp-0.5-500-2000-10-100.png
-INPUT ./images/pSUP-exp-0.5-500-2000-10-100.png
-INPUT ./images/pSUP-exp-0.5-500-2000-10-100.png
-INPUT ./images/pSUP-exp-0.5-500-2000-10-100.png
-INPUT ./images/pSUP-exp-0.5-500-2000-10-100.png
-INPUT ./images/pK-exp-0.5-500-2000-10-100.png
-INPUT ./images/pK-exp-0.5-500-2000-10-100.png
-INPUT ./images/pK-exp-0.5-500-2000-10-100.png
-INPUT ./images/pK-exp-0.5-500-2000-10-100.png
-INPUT ./images/pK-exp-0.5-500-2000-10-100.png
-INPUT ./images/pKout-exp-0.5-500-2000-10-100.png
-INPUT ./images/pKout-exp-0.5-500-2000-10-100.png
-INPUT ./images/pKout-exp-0.5-500-2000-10-100.png
-INPUT ./images/pKout-exp-0.5-500-2000-10-100.png
-INPUT ./images/pKout-exp-0.5-500-2000-10-100.png
-INPUT ./images/pF-exp-0.5-500-2000-300-100.png
-INPUT ./images/pF-exp-0.5-500-2000-300-100.png
-INPUT ./images/pF-exp-0.5-500-2000-300-100.png
-INPUT ./images/pF-exp-0.5-500-2000-300-100.png
-INPUT ./images/pF-exp-0.5-500-2000-300-100.png
-INPUT ./images/pSUP-exp-0.5-500-2000-300-100.png
-INPUT ./images/pSUP-exp-0.5-500-2000-300-100.png
-INPUT ./images/pSUP-exp-0.5-500-2000-300-100.png
-INPUT ./images/pSUP-exp-0.5-500-2000-300-100.png
-INPUT ./images/pSUP-exp-0.5-500-2000-300-100.png
-INPUT ./images/pK-exp-0.5-500-2000-300-100.png
-INPUT ./images/pK-exp-0.5-500-2000-300-100.png
-INPUT ./images/pK-exp-0.5-500-2000-300-100.png
-INPUT ./images/pK-exp-0.5-500-2000-300-100.png
-INPUT ./images/pK-exp-0.5-500-2000-300-100.png
-INPUT ./images/pKout-exp-0.5-500-2000-300-100.png
-INPUT ./images/pKout-exp-0.5-500-2000-300-100.png
-INPUT ./images/pKout-exp-0.5-500-2000-300-100.png
-INPUT ./images/pKout-exp-0.5-500-2000-300-100.png
-INPUT ./images/pKout-exp-0.5-500-2000-300-100.png
-INPUT ./images/pF-con-0.5-500-2000-300-100.png
-INPUT ./images/pF-con-0.5-500-2000-300-100.png
-INPUT ./images/pF-con-0.5-500-2000-300-100.png
-INPUT ./images/pF-con-0.5-500-2000-300-100.png
-INPUT ./images/pF-con-0.5-500-2000-300-100.png
-INPUT ./images/pSUP-con-0.5-500-2000-300-100.png
-INPUT ./images/pSUP-con-0.5-500-2000-300-100.png
-INPUT ./images/pSUP-con-0.5-500-2000-300-100.png
-INPUT ./images/pSUP-con-0.5-500-2000-300-100.png
-INPUT ./images/pSUP-con-0.5-500-2000-300-100.png
-INPUT ./images/pK-con-0.5-500-2000-300-100.png
-INPUT ./images/pK-con-0.5-500-2000-300-100.png
-INPUT ./images/pK-con-0.5-500-2000-300-100.png
-INPUT ./images/pK-con-0.5-500-2000-300-100.png
-INPUT ./images/pK-con-0.5-500-2000-300-100.png
-INPUT ./images/pKout-con-0.5-500-2000-300-100.png
-INPUT ./images/pKout-con-0.5-500-2000-300-100.png
-INPUT ./images/pKout-con-0.5-500-2000-300-100.png
-INPUT ./images/pKout-con-0.5-500-2000-300-100.png
-INPUT ./images/pKout-con-0.5-500-2000-300-100.png
-INPUT ./images/pF-exp-0.9-250-1000-300-25.png
-INPUT ./images/pF-exp-0.9-250-1000-300-25.png
-INPUT ./images/pF-exp-0.9-250-1000-300-25.png
-INPUT ./images/pF-exp-0.9-250-1000-300-25.png
-INPUT ./images/pF-exp-0.9-250-1000-300-25.png
-INPUT ./images/pSUP-exp-0.9-250-1000-300-25.png
-INPUT ./images/pSUP-exp-0.9-250-1000-300-25.png
-INPUT ./images/pSUP-exp-0.9-250-1000-300-25.png
-INPUT ./images/pSUP-exp-0.9-250-1000-300-25.png
-INPUT ./images/pSUP-exp-0.9-250-1000-300-25.png
-INPUT ./images/pKout-exp-0.9-250-1000-300-25.png
-INPUT ./images/pKout-exp-0.9-250-1000-300-25.png
-INPUT ./images/pKout-exp-0.9-250-1000-300-25.png
-INPUT ./images/pKout-exp-0.9-250-1000-300-25.png
-INPUT ./images/pKout-exp-0.9-250-1000-300-25.png
-INPUT ./images/pKout-exp-0.9-250-1000-300-25.png
-INPUT ./images/pKout-exp-0.9-250-1000-300-25.png
-INPUT ./images/pKout-exp-0.9-250-1000-300-25.png
-INPUT ./images/pKout-exp-0.9-250-1000-300-25.png
-INPUT ./images/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pF-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pF-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pF-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pF-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pF-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pSUP-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pSUP-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pSUP-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pSUP-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pSUP-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pKout-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pKout-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pKout-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pKout-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-10-100/pKout-exp-0.5-500-2000-10-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pF-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pF-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pF-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pF-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pF-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pSUP-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pSUP-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pSUP-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pSUP-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pSUP-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pK-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pK-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pK-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pK-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pK-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pKout-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pKout-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pKout-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pKout-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.5-500-2000-300-100/pKout-exp-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pF-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pF-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pF-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pF-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pF-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pSUP-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pSUP-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pSUP-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pSUP-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pSUP-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pK-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pK-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pK-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pK-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pK-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pKout-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pKout-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pKout-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pKout-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/con-0.5-500-2000-300-100/pKout-con-0.5-500-2000-300-100.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pF-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pF-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pF-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pF-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pF-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pSUP-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pSUP-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pSUP-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pSUP-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pSUP-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pKout-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pKout-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pKout-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pKout-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pKout-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pKout-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pKout-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pKout-exp-0.9-250-1000-300-25.png
+INPUT ./images/Boxplot/exp-0.9-250-1000-300-25/pKout-exp-0.9-250-1000-300-25.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png
 INPUT ./anexos.tex
 INPUT ./anexos.tex
 INPUT anexos.tex
@@ -351,51 +351,51 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
-INPUT ./images/Comp_Sim-SPG_Comparison_const-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPG_Comparison_const-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPG_Comparison_const-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPG_Comparison_const-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPG_Comparison_const-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png
-INPUT ./images/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png
-INPUT ./images/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_const-0.5-2000-10.0-100.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_const-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPG_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-CDSS_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png
+INPUT ./images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_exp-0.9-1000-5.0-20.png
 INPUT ./main.bbl
 INPUT ./main.bbl
 INPUT main.bbl
