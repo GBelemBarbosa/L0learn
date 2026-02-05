@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1770294680.62321 "main.aux" "main.bbl" "main" 1770312298.30381 0
+["bibtex main"] 1770294680.62321 "main.aux" "main.bbl" "main" 1770312947.50054 0
   "./bibliografia.bib" 1770250574.88568 11028 2374a702ba35b840f9697b3a91a3b5eb ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "main.aux" 1770312297.74537 27387 962cd1f69867049840416aa59f5be4e5 "pdflatex"
+  "main.aux" 1770312947.00474 27387 962cd1f69867049840416aa59f5be4e5 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1770312274.95991 "main.tex" "main.pdf" "main" 1770312298.30409 0
+["pdflatex"] 1770312926.01771 "main.tex" "main.pdf" "main" 1770312947.50078 0
   "/etc/texmf/web2c/texmf.cnf" 1760819206.02535 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -197,20 +197,20 @@
   "images/CV_comp/SPGpCDSS/exp-0.5-2000/Comp_Time-NSPG+PGCCD+CPSI1_Comparison_exp-0.5-2000.png" 1770264740.68974 274049 b08fccb9b6517e25fdf2463477a03874 ""
   "images/CV_comp/SPGpCDSS/exp-0.9-1000/Comp_Sim-NSPG+PGCCD+CPSI1_Comparison_exp-0.9-1000.png" 1770264741.33442 227065 2080496d34208a1fe9883e5d7eca967b ""
   "images/CV_comp/SPGpCDSS/exp-0.9-1000/Comp_Time-NSPG+PGCCD+CPSI1_Comparison_exp-0.9-1000.png" 1770264741.40441 211753 c478c03d623015eaf89d63b8101fed76 ""
-  "images/Mixed_v2/Regular/const-0.5-2000/pnSim-NewTerminal_mixed_v2_const_0.5_p2000.png" 1770312202.11739 383662 11fe7f1995dcd1f36e22cccc400f934c ""
-  "images/Mixed_v2/Regular/const-0.5-2000/pnTime-NewTerminal_mixed_v2_const_0.5_p2000.png" 1770312202.44139 258653 905058cd849b03f523229173f8876e01 ""
-  "images/Mixed_v2/Regular/const-0.9-1000/pnSim-NewTerminal_mixed_v2_const_0.9_p1000.png" 1770312209.77739 401892 35407e8810dc73183986bac0d0661231 ""
-  "images/Mixed_v2/Regular/const-0.9-1000/pnTime-NewTerminal_mixed_v2_const_0.9_p1000.png" 1770312210.07739 271684 e06bc2ed4d9d64b7eec507bf81a0b0c6 ""
-  "images/Mixed_v2/Regular/exp-0.5-2000/pnInf-NewTerminal_mixed_v2_exp_0.5_p2000.png" 1770312218.34539 183941 1edf11b7071547a692ce10c8c2371e4c ""
-  "images/Mixed_v2/Regular/exp-0.5-2000/pnSim-NewTerminal_mixed_v2_exp_0.5_p2000.png" 1770312217.81339 328379 8ff98971dd3cc099841656c6a123a36a ""
-  "images/Mixed_v2/Regular/exp-0.5-2000/pnTime-NewTerminal_mixed_v2_exp_0.5_p2000.png" 1770312218.07739 238608 924e1c1ead74b2e383d1d799ee38899d ""
-  "images/Mixed_v2/Regular/exp-0.9-1000/pnSim-NewTerminal_mixed_v2_exp_0.9_p1000.png" 1770312225.42139 388863 6b9ae795e5ea04b9f287ca48ea5999ba ""
-  "images/Mixed_v2/Regular/exp-0.9-1000/pnTime-NewTerminal_mixed_v2_exp_0.9_p1000.png" 1770312225.70939 273823 30fb3dc348bb74efe53686bd3eb6481d ""
+  "images/Mixed_v2/Regular/const-0.5-2000/pnSim-NewTerminal_mixed_v2_const_0.5_p2000.png" 1770312805.97801 383662 11fe7f1995dcd1f36e22cccc400f934c ""
+  "images/Mixed_v2/Regular/const-0.5-2000/pnTime-NewTerminal_mixed_v2_const_0.5_p2000.png" 1770312806.41953 258653 905058cd849b03f523229173f8876e01 ""
+  "images/Mixed_v2/Regular/const-0.9-1000/pnSim-NewTerminal_mixed_v2_const_0.9_p1000.png" 1770312813.79822 401892 35407e8810dc73183986bac0d0661231 ""
+  "images/Mixed_v2/Regular/const-0.9-1000/pnTime-NewTerminal_mixed_v2_const_0.9_p1000.png" 1770312814.10222 271684 e06bc2ed4d9d64b7eec507bf81a0b0c6 ""
+  "images/Mixed_v2/Regular/exp-0.5-2000/pnInf-NewTerminal_mixed_v2_exp_0.5_p2000.png" 1770312820.84582 183941 1edf11b7071547a692ce10c8c2371e4c ""
+  "images/Mixed_v2/Regular/exp-0.5-2000/pnSim-NewTerminal_mixed_v2_exp_0.5_p2000.png" 1770312820.27836 328379 8ff98971dd3cc099841656c6a123a36a ""
+  "images/Mixed_v2/Regular/exp-0.5-2000/pnTime-NewTerminal_mixed_v2_exp_0.5_p2000.png" 1770312820.54979 238608 924e1c1ead74b2e383d1d799ee38899d ""
+  "images/Mixed_v2/Regular/exp-0.9-1000/pnSim-NewTerminal_mixed_v2_exp_0.9_p1000.png" 1770312828.18682 388863 6b9ae795e5ea04b9f287ca48ea5999ba ""
+  "images/Mixed_v2/Regular/exp-0.9-1000/pnTime-NewTerminal_mixed_v2_exp_0.9_p1000.png" 1770312828.51263 273823 30fb3dc348bb74efe53686bd3eb6481d ""
   "intro.tex" 1770262254.94432 4656 8fa7f8abd92c064ae421c0c30b5b0146 ""
-  "main.aux" 1770312297.74537 27387 962cd1f69867049840416aa59f5be4e5 "pdflatex"
+  "main.aux" 1770312947.00474 27387 962cd1f69867049840416aa59f5be4e5 "pdflatex"
   "main.bbl" 1770294680.77153 9548 a96c812b5b6531222914ae1b60ad962a "bibtex main"
-  "main.out" 1770312297.74537 2058 61b9d385cc382d9cb7e7b110cf295c72 "pdflatex"
-  "main.tex" 1770266587.59092 1569 a63c279fa0561a4a604e45b3ead1cfea ""
+  "main.out" 1770312947.00885 2058 61b9d385cc382d9cb7e7b110cf295c72 "pdflatex"
+  "main.tex" 1770312901.55522 1569 a63c279fa0561a4a604e45b3ead1cfea ""
   "numerico.tex" 1770311914.18549 26351 ca5d0889ca72b3ed0a47a26ab77c99db ""
   "optimal.tex" 1770262254.94432 12311 22f27ddc11cae6f3718d5750f57b5ee2 ""
   (generated)
