@@ -1,4 +1,4 @@
-\begin{thebibliography}{27}
+\begin{thebibliography}{28}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -93,13 +93,19 @@ Trevor Hastie, Robert Tibshirani, and Martin Wainwright.
 \newblock Chapman \& Hall/CRC, 2015.
 \newblock ISBN 1498712169.
 
-\bibitem[Hazimeh and Mazumder(2020)]{fastselect}
+\bibitem[Hazimeh and Mazumder(2020{\natexlab{a}})]{fastselect}
 Hussein Hazimeh and Rahul Mazumder.
 \newblock Fast best subset selection: Coordinate descent and local combinatorial optimization algorithms.
-\newblock \emph{Operations Research}, 68\penalty0 (5):\penalty0 1517–1537, September 2020.
+\newblock \emph{Operations Research}, 68\penalty0 (5):\penalty0 1517–1537, September 2020{\natexlab{a}}.
 \newblock ISSN 0030-364X.
 \newblock \doi{10.1287/opre.2019.1919}.
 \newblock URL \url{https://doi.org/10.1287/opre.2019.1919}.
+
+\bibitem[Hazimeh and Mazumder(2020{\natexlab{b}})]{l0learn}
+Hussein Hazimeh and Rahul Mazumder.
+\newblock \emph{L0Learn: Fast Algorithms for Best Subset Selection}, 2020{\natexlab{b}}.
+\newblock URL \url{https://CRAN.R-project.org/package=L0Learn}.
+\newblock R package version 2.0.0.
 
 \bibitem[Hazimeh et~al.(2021)Hazimeh, Mazumder, and Saab]{mio}
 Hussein Hazimeh, Rahul Mazumder, and Ali Saab.

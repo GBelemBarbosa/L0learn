@@ -8,7 +8,7 @@ O algoritmo presente em \cite{fastselect} basicamente consiste em obter $x^{k+1}
 
 O algoritmo é iniciado com $x^0$ e calcula $r^0 = b - Ax^0$. Antes de executado, as coordenadas são reordenadas em ordem decrescente de $|\langle r^0, A_i \rangle|=|[\nabla f(x^0)]_i-2\lambda_2x^0_i|$. Na prática, é usada ordenação parcial, ou seja, somente as maiores $t$ coordenadas nesse critério (com $t\ll p$) são ordenadas enquanto as demais mantêm a ordem original, e as atualizações então usam uma ordem cíclica. Isso é mais rápido e igualmente eficaz que a ordenação completa \cite{fastselect}. 
 
-Desse aspecto surge a denominação de \textit{partially greedy cyclic}. A reordenação é feita uma única vez antes da execução, diferentemente do método \textit{greedy} CD que seleciona a melhor coordenada para cada atualização. Outras alternativas de ordem de atualização podem ser empregadas, como randômica ou cíclica convencional, embora experimentos numéricos demonstraram a superioridade da estratégia em questão \cite{fastselect}. 
+Por esse aspecto denominaremos o método de \textit{Partially Greedy Cyclic Coordinate Descent} (PGCCD). A reordenação é feita uma única vez antes da execução, diferentemente do método \textit{greedy} CD que seleciona a melhor coordenada para cada atualização. Outras alternativas de ordem de atualização podem ser empregadas, como randômica ou cíclica convencional, embora experimentos numéricos demonstrem a superioridade da estratégia em questão \cite{fastselect}. 
 
 Os passos de Spacer, cuja inclusão tem o propósito de garantir convergência teórica, serão omitidos da nossa implementação. Sob hipóteses fracas, o artigo demonstrou convergência desse algoritmo para mínimos CW.
 
@@ -159,13 +159,13 @@ Um algoritmo iterativo para encontrar um mínimo PSI($k$) através de perturbaç
 \text{s.a } &  S_1 \subseteq S, S_2 \subseteq S^c,  |S_1|, |S_2| \leq k, u\in\R^{|S_2|}
 \end{aligned}\label{psik}
 \end{equation}
-onde $S$ é o suporte de $x^\ell$. Se existir solução viável $\hat{x}$ para o problema acima com $F(\hat{x}) < F(x^\ell)$, então $\hat{x}$ pode não ser um mínimo CW/ponto M-estacionário. Neste caso, reinicializa-se o algoritmo escolhido com $\hat{x}$. Caso contrário, e ademais $x^\ell$ é solução estacionária (por exemplo, mínimo CW, gerado pelo CD), então ele é PSI($k$). O algoritmo a seguir resume o procedimento.
+onde $S$ é o suporte de $x^\ell$. Se existir solução viável $\hat{x}$ para o problema acima com $F(\hat{x}) < F(x^\ell)$, então $\hat{x}$ pode não ser um mínimo CW/ponto M-estacionário. Neste caso, reinicializa-se o algoritmo escolhido com $\hat{x}$. Caso contrário, e ademais $x^\ell$ é solução estacionária (por exemplo, mínimo CW, gerado pelo PGCCD), então ele é PSI($o$). O algoritmo a seguir resume o procedimento.
 
 \begin{algorithm}[H]
-\caption{\textit{Composite Partial Swap Inescapable of order $k$ method} (CPSI($k$))}
+\caption{\textit{Composite Partial Swap Inescapable of order $o$ method} (CPSI($o$))}
 \label{alg:cpsi}
-\Input{$\hat{x}^0 \in \R^p$, $k \in \mathbb{N}^+$ and an inner algorithm}\\
-\Output{Last $\hat{x}^{\ell+1}$ computed (which is a PSI($k$) minimum)}
+\Input{$\hat{x}^0 \in \R^p$, $o \in \mathbb{N}^+$ and an inner algorithm}\\
+\Output{Last $\hat{x}^{\ell+1}$ computed (which is a PSI($o$) minimum)}
 \begin{algorithmic}[1]
     \State Initialize $\ell\coloneq 0$
     \While{true}

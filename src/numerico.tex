@@ -19,144 +19,197 @@ Foram consideradas as seguintes instâncias de $\Sigma \coloneq ((\sigma_{ij}))$
 \end{itemize}
 
 \subsubsection{Parâmetros dos algoritmos}
-Após experimentos iniciais de ajuste de hiperparâmetros, foram escolhidos $m=15,\ \delta=0.01$ e $\tau=0.25$ para o NPG. As salvaguardas $\gamma_{min}$ e $\gamma_{max}$ são usualmente tomadas como valores arbitrariamente pequenos e grandes, respectivamente. Os tamanhos de passo espectral iniciais, $\gamma^{BBR}_{0,+}$ e $\gamma^{BBR2}_{0,+}$, foram tomados via \eqref{BBR} e \eqref{BBR2} com a convenção de $x^{-1}=x^0-10^{-5}\nabla f(x^0)$. Já a métrica diagonal espectral inicial, $U_{0,+}^{DBBR}$, foi definida com esses tamanhos de passo e a convenção de $U_{-1,+}^{DBBR}$ nula. Para o VMNSPG, $\mu=10^{-3}$ apresentou os melhores resultados dentre os valores testados. Quanto ao CDSS, somente foram ordenadas um quarto das coordenadas.
+Após experimentos iniciais de ajuste de hiperparâmetros, foram escolhidos $m=15,\ \delta=0.01$ e $\tau=0.25$ para o NPG. As salvaguardas $\gamma_{min}$ e $\gamma_{max}$ são usualmente tomadas como valores arbitrariamente pequenos e grandes, respectivamente. Os tamanhos de passo espectral iniciais, $\gamma^{BBR}_{0,+}$ e $\gamma^{BBR2}_{0,+}$, foram tomados via \eqref{BBR} e \eqref{BBR2} com a convenção de $x^{-1}=x^0-10^{-5}\nabla f(x^0)$. Já a métrica diagonal espectral inicial, $U_{0,+}^{DBBR}$, foi definida com esses tamanhos de passo e a convenção de $U_{-1,+}^{DBBR}$ nula. Para o VMNSPG, $\mu=10^{-3}$ apresentou os melhores resultados dentre os valores testados. Quanto ao PGCCD, somente foram ordenadas um quarto das coordenadas.
 
 
 
-\subsection{Comparação entre CDSS e NPG}
+\subsection{Comparação entre PGCCD e NPG}
 Consideramos a eficiência dos algoritmos propostos para o problema \eqref{R} com $\lambda_q=0$ (problema $\ell_0$ puro). Foi utilizado um conjunto de dados com correlação exponencial, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$. Foi tomado $\lambda_0=0.5\frac{\norm{A^Tb}^2_\infty}{2L_f}$ para obter uma penalização razoável (veja \cite[Exemplo 3]{manuscrito} para uma explicação dessa escolha). Foram geradas 50 inicializações com suporte de tamanho $k^\dagger$ com índices uniformemente escolhidos de $[p]$ e valores com distribuição uniforme em $(0,1)$. Para cada inicialização é rodado cada algoritmo. A medida de recuperação do suporte é definida como 
 \[\frac{| Supp(x) \cap Supp(x^\dagger) |}{\max \{ |Supp(x)|, k^\dagger \}},\]
 que quantifica a fração de variáveis verdadeiramente ativas recuperadas, normalizada pelo máximo entre o tamanho do suporte estimado e o verdadeiro $k^\dagger$. Essa medida penaliza tanto falsos positivos quanto falsos negativos e valores próximos de 1 indicam recuperação alta. O critério de parada utilizada em todos os algoritmos foi uma mudança relativa no objetivo menor que $10^{-7}$.
 
-A \autoref{pK} contém o \textit{box plot} do número de iterações, em que uma passagem pelas $p$ coordenadas corresponde a uma iteração do CD. Essa métrica não reflete precisamente a velocidade de cada algoritmo uma vez que não considera, por exemplo, o número de sub iterações na busca linear do NPG e a reordenação efetuada no CD. Mesmo assim, é possível ter uma ideia de que a convergência do CD é significativamente mais rápida que a dos métodos proximais não monótonos apresentados. O VMSPG demonstra convergência mais rápida entre os métodos NPG, provavelmente devido à sua incorporação de mais informação de segunda ordem. Seu número de iterações, com mediana em torno de 30, fica o mais próximo do CD, com mediana em torno de 20. O passo espectral híbrido do NSPGH parece acelerar levemente a convergência em comparação com o passo primal usado no NSPG, e ambos performam cerca de duas a três vezes pior que o CD.
+A \autoref{pK} contém o \textit{box plot} do número de iterações, em que uma passagem pelas $p$ coordenadas corresponde a uma iteração do PGCCD. Essa métrica não reflete precisamente a velocidade de cada algoritmo uma vez que não considera, por exemplo, o número de sub iterações na busca linear do NPG e a reordenação efetuada no PGCCD. Mesmo assim, é possível ter uma ideia de que a convergência do PGCCD é significativamente mais rápida que a dos métodos proximais não monótonos apresentados. O VMSPG demonstra convergência mais rápida entre os métodos NPG, provavelmente devido à sua incorporação de mais informação de segunda ordem. Seu número de iterações, com mediana em torno de 30, fica o mais próximo do PGCCD, com mediana em torno de 20. O passo espectral híbrido do NSPGH parece acelerar levemente a convergência em comparação com o passo primal usado no NSPG, e ambos performam cerca de duas a três vezes pior que o PGCCD.
 
 Contudo, uma análise da qualidade das soluções obtidas através da \autoref{pF} e \autoref{pSUP} demonstra que, apesar de mais lentos, ambos o NSPG e NSPGH obtém melhores resultados em valor objetivo e recuperação de suporte. Em particular nesse segundo aspecto, a diferença é bastante significativa. O VMNSPG obteve a pior desempenho em ambos os quesitos, apesar da sua convergência mais rápida.
 
-A capacidade do NPG com estratégias de passo espectral encontrar soluções de qualidade está diretamente ligada a não monotonia da sequência de iterados e a permissão de tamanhos de passo maiores que permitem maior liberdade de movimento \cite{manuscrito}. No caso do VMNSPG, é possível que uma convergência local mais rápida restrinja essa movimentação e a busca por soluções melhores. A excelente recuperação do suporte indica que o NSPG e NSPGH produzem candidatos mais adequados para a aplicação da otimização combinatorial local, como será visto nos experimentos a seguir. Esse resultado é curioso visto que esses algoritmos só possuem garantia de convergência a pontos M-estacionários, enquanto o CD busca mínimos CW, cuja definição é mais restritiva (veja \eqref{hier}).
+A capacidade do NPG com estratégias de passo espectral encontrar soluções de qualidade está diretamente ligada a não monotonia da sequência de iterados e a permissão de tamanhos de passo maiores que permitem maior liberdade de movimento \cite{manuscrito}. No caso do VMNSPG, é possível que uma convergência local mais rápida restrinja essa movimentação e a busca por soluções melhores. A excelente recuperação do suporte indica que o NSPG e NSPGH produzem candidatos mais adequados para a aplicação da otimização combinatorial local, como será visto nos experimentos a seguir. Esse resultado é curioso visto que esses algoritmos só possuem garantia de convergência a pontos M-estacionários, enquanto o PGCCD busca mínimos CW, cuja definição é mais restritiva (veja \eqref{hier}).
 
-Para melhor analisar as características dos limites das sequências dos algoritmos NPG, também foi executado o CD a partir desses pontos para determinar se eles também eram mínimos CW. Consideramos que caso o suporte não seja alterado durante essa passagem pelo CD e o número de iterações seja pequeno ($2$ ou menos) antes do critério de parada, então o ponto pode razoavelmente ser considerado (numericamente) CW. Para o NSPG, $60\%$ das inicializações resultaram em pontos CW, enquanto essa porcentagem foi $44\%$ para o NSPGH. O VMNSPG não resultou em nenhum ponto CW seguindo essa definição. 
+Para melhor analisar as características dos limites das sequências dos algoritmos NPG, também foi executado o PGCCD a partir desses pontos para determinar se eles também eram mínimos CW. Consideramos que caso o suporte não seja alterado durante essa passagem pelo PGCCD e o número de iterações seja pequeno ($2$ ou menos) antes do critério de parada, então o ponto pode razoavelmente ser considerado (numericamente) CW. Para o NSPG, $60\%$ das inicializações resultaram em pontos CW, enquanto essa porcentagem foi $44\%$ para o NSPGH. O VMNSPG não resultou em nenhum ponto CW seguindo essa definição. 
 
 \begin{figure}[H]
   \centering
-  \subbottom[\label{pF}Valor objetivo alcançado.]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/exp-0.5-500-2000-10-100/pF-exp-0.5-500-2000-10-100 (1).png}}
-  \subbottom[\label{pSUP}Medida de recuperação do suporte.]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/exp-0.5-500-2000-10-100/pSUP-exp-0.5-500-2000-10-100 (1).png}}\\
-  \subbottom[\label{pK}Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do CD)]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100 (1).png}}
+  \subbottom[Valor objetivo alcançado.]{\label{pF}%
+    \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-10-100/pF-exp-0.5-500-2000-10-100.png}}
+  \subbottom[Medida de recuperação do suporte.]{\label{pSUP}%
+    \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-10-100/pSUP-exp-0.5-500-2000-10-100.png}}\\
+  \subbottom[Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do PGCCD)]{\label{pK}%
+    \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100.png}}
   \caption{\textit{Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação exponencial, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$.}
 \end{figure}
 
 
 \subsection{Comparação com otimização combinatorial}
-Nesse experimento, visamos identificar o efeito que cada algoritmo tem quando empregado como \textit{inner solver} do CDPSI(1) (\autoref{alg:cpsi}). Serão testados o CD, o NSPG e o NSPG seguido do CD. Como comparação da qualidade das soluções, também foi incluído o NSPG sem estratégia combinatorial.
+Nesse experimento, visamos identificar o efeito que cada algoritmo tem quando empregado como \textit{inner solver} do algoritmo CPSI(1) (\autoref{alg:cpsi}). Serão testados o PGCCD, o NSPG e o NSPG seguido do PGCCD. Como comparação da qualidade das soluções, também foi incluído o NSPG sem estratégia combinatorial.
 
 O setup experimental é idêntico ao da seção anterior. Além das medidas apresentadas ali, incluímos o número de iterações externas (iterações do \autoref{alg:cpsi}). O número de iterações total se refere ao somatório de iterações de todas as chamadas do \textit{inner solver} durante a execução. 
 
-A \autoref{pK2} mostra que a diferença de iterações entre o CD e o NSPG se tornou menos pronunciada que na \autoref{pK}. Isso se deve ao fato de que o CD executa mais iterações externas em média, ou seja, precisa de mais perturbações para melhorar suas soluções, como visto na \autoref{pKout2}. A otimização combinatorial causa um grande aumento no número de iterações do NSPG.
+A \autoref{pK2} mostra que a diferença de iterações entre o PGCCD e o NSPG se tornou menos pronunciada que na \autoref{pK}. Isso se deve ao fato de que o PGCCD executa mais iterações externas em média, ou seja, precisa de mais perturbações para melhorar suas soluções, como visto na \autoref{pKout2}. A otimização combinatorial causa um grande aumento no número de iterações do NSPG.
 
-A qualidade das soluções obtidas por métodos NSPG (incluindo sem otimização combinatorial) continua bastante superior àquelas do CD nos critérios analisados (\autoref{pF2} e \autoref{pSUP2}). De fato, a otimização combinatorial melhora as soluções do NSPG, mas o ganho é relativamente pequeno nesse experimento. 
+A qualidade das soluções obtidas por métodos NSPG (incluindo sem otimização combinatorial) continua bastante superior àquelas do PGCCD nos critérios analisados (\autoref{pF2} e \autoref{pSUP2}). De fato, a otimização combinatorial melhora as soluções do NSPG, mas o ganho é relativamente pequeno nesse experimento. 
 
-A utilização conjunta do NSPG e CD se mostrou vantajosa em todos os aspectos se comparado com o NSPG puro.
+A utilização conjunta do NSPG e PGCCD se mostrou vantajosa em todos os aspectos se comparado com o NSPG puro.
 
 \begin{figure}[H]
   \centering
-  \subbottom[\label{pF2}Valor objetivo alcançado.]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/exp-0.5-500-2000-10-100/pF-exp-0.5-500-2000-10-100.png}}
-  \subbottom[\label{pSUP2}Medida de recuperação do suporte.]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/exp-0.5-500-2000-10-100/pSUP-exp-0.5-500-2000-10-100.png}}\\
-  \subbottom[\label{pK2}Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do CD)]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100.png}}
-  \subbottom[\label{pKout2}Número de iterações externas (iterações do \autoref{alg:cpsi})]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/exp-0.5-500-2000-10-100/pKout-exp-0.5-500-2000-10-100.png}}
+  \subbottom[Valor objetivo alcançado.]{\label{pF2}%
+    \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-10-100/pF-exp-0.5-500-2000-10-100.png}}
+  \subbottom[Medida de recuperação do suporte.]{\label{pSUP2}%
+    \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-10-100/pSUP-exp-0.5-500-2000-10-100.png}}\\
+  \subbottom[Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do CD)]{\label{pK2}%
+    \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100.png}}
+  \subbottom[Número de iterações externas (iterações do Algoritmo \ref{alg:cpsi})]{\label{pKout2}%
+    \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-10-100/pKout-exp-0.5-500-2000-10-100.png}}
   \caption{\textit{Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação exponencial, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$.}
 \end{figure}
 
-Aumentando o SNR para 300 para permitir recuperação completa do suporte, vemos uma diferença drástica na qualidade das soluções, com somente um aumento pequeno no número de iterações (\autoref{p3}). A estratégia NSPG+ CD continua sendo a mais atrativa, com menos soluções \textit{outliers} com um custo levemente superior em iterações, porém todas as estratégias NSPG apresentam recuperação perfeita da solução verdadeira com probabilidade alta.
+Aumentando o SNR para 300 para permitir recuperação completa do suporte, vemos uma diferença drástica na qualidade das soluções, com somente um aumento pequeno no número de iterações (\autoref{p3}). A estratégia NSPG+PGCCD continua sendo a mais atrativa, com menos soluções \textit{outliers} com um custo levemente superior em iterações, porém todas as estratégias NSPG apresentam recuperação perfeita da solução verdadeira com probabilidade alta.
 
 \begin{figure}[H]
   \centering
   \subbottom[Valor objetivo alcançado.]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/exp-0.5-500-2000-300-100/pF-exp-0.5-500-2000-300-100.png}}
+    \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-300-100/pF-exp-0.5-500-2000-300-100.png}}
   \subbottom[Medida de recuperação do suporte.]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/exp-0.5-500-2000-300-100/pSUP-exp-0.5-500-2000-300-100.png}}\\
+    \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-300-100/pSUP-exp-0.5-500-2000-300-100.png}}\\
   \subbottom[Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do CD)]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/exp-0.5-500-2000-300-100/pK-exp-0.5-500-2000-300-100.png}}
+    \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-300-100/pK-exp-0.5-500-2000-300-100.png}}
   \subbottom[Número de iterações externas (iterações do \autoref{alg:cpsi})]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/exp-0.5-500-2000-300-100/pKout-exp-0.5-500-2000-300-100.png}}
+    \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-300-100/pKout-exp-0.5-500-2000-300-100.png}}
   \caption{\textit{Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação exponencial, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=300$.}\label{p3}
 \end{figure}
 
-Para o próximo experimento, mantivemos os parâmetros anteriores e trocando o tipo de correlação por constante, um cenário significativamente mais difícil. A \autoref{p4} apresenta resultados bastante drásticos em favor de estratégias NSPG com busca combinatorial. Em comparação com o CD, o ganho em iterações (tanto internas quanto externas) é substancial. Já em comparação com o NSPG sem busca combinatorial, a qualidade das soluções é muito superior. Entre o NSPG puro e o NSPG+CD, esse primeiro se provou quase tão bom em qualidade de soluções, mas com mais iterações externas, as quais são a parte mais expressiva no tempo de execução total. 
+Para o próximo experimento, mantivemos os parâmetros anteriores e trocando o tipo de correlação por constante, um cenário significativamente mais difícil. A \autoref{p4} apresenta resultados bastante drásticos em favor de estratégias NSPG com busca combinatorial. Em comparação com o CD, o ganho em iterações (tanto internas quanto externas) é substancial. Já em comparação com o NSPG sem busca combinatorial, a qualidade das soluções é muito superior. Entre o NSPG puro e o NSPG+PGCCD, esse primeiro se provou quase tão bom em qualidade de soluções, mas com mais iterações externas, as quais são a parte mais expressiva no tempo de execução total. 
 
 \begin{figure}[H]
   \centering
   \subbottom[Valor objetivo alcançado.]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/con-0.5-500-2000-300-100/pF-con-0.5-500-2000-300-100.png}}
+    \includegraphics[width=0.45\linewidth]{\boxplotPath con-0.5-500-2000-300-100/pF-con-0.5-500-2000-300-100.png}}
   \subbottom[Medida de recuperação do suporte.]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/con-0.5-500-2000-300-100/pSUP-con-0.5-500-2000-300-100.png}}\\
+    \includegraphics[width=0.45\linewidth]{\boxplotPath con-0.5-500-2000-300-100/pSUP-con-0.5-500-2000-300-100.png}}\\
   \subbottom[Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do CD)]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/con-0.5-500-2000-300-100/pK-con-0.5-500-2000-300-100.png}}
+    \includegraphics[width=0.45\linewidth]{\boxplotPath con-0.5-500-2000-300-100/pK-con-0.5-500-2000-300-100.png}}
   \subbottom[Número de iterações externas (iterações do \autoref{alg:cpsi})]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/con-0.5-500-2000-300-100/pKout-con-0.5-500-2000-300-100.png}}
+    \includegraphics[width=0.45\linewidth]{\boxplotPath con-0.5-500-2000-300-100/pKout-con-0.5-500-2000-300-100.png}}
   \caption{\textit{Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação constante, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=300$.}\label{p4}
 \end{figure}
 
-Por fim, com correlação exponencial, dividimos todas as dimensões por 2, tomamos $k^\dagger=25$,  e aumentamos a correlação para $\rho=0.9$ (\autoref{p5}). Todos os métodos com otimização combinatorial obtiveram 100\% de recuperação do suporte original, enquanto o NSPG sem essa estratégia não. O número de iterações (internas e externas) do CD foi muito mais alto, indicando novamente que as soluções obtidas desse método exigem mais perturbações do suporte antes de estabilizar.
+Por fim, com correlação exponencial, dividimos todas as dimensões por 2, tomamos $k^\dagger=25$, e aumentamos a correlação para $\rho=0.9$ (\autoref{p5}). Todos os métodos com otimização combinatorial obtiveram 100\% de recuperação do suporte original, enquanto o NSPG sem essa estratégia não. O número de iterações (internas e externas) do PGCCD foi muito mais alto, indicando novamente que as soluções obtidas desse método exigem mais perturbações do suporte antes de estabilizar.
 
 \begin{figure}[H]
   \centering
   \subbottom[Valor objetivo alcançado.]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/exp-0.9-250-1000-300-25/pF-exp-0.9-250-1000-300-25.png}}
+    \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.9-250-1000-300-25/pF-exp-0.9-250-1000-300-25.png}}
   \subbottom[Medida de recuperação do suporte.]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/exp-0.9-250-1000-300-25/pSUP-exp-0.9-250-1000-300-25.png}}\\
+    \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.9-250-1000-300-25/pSUP-exp-0.9-250-1000-300-25.png}}\\
   \subbottom[Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do CD)]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/exp-0.9-250-1000-300-25/pKout-exp-0.9-250-1000-300-25.png}}
-  \subbottom[Número de iterações externas (iterações do \autoref{alg:cpsi})]{%
-    \includegraphics[width=0.45\linewidth]{images/Boxplot/exp-0.9-250-1000-300-25/pKout-exp-0.9-250-1000-300-25.png}}
+    \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.9-250-1000-300-25/pK-exp-0.9-250-1000-300-25.png}}
+  \subbottom[Número de iterações externas (iterações do Algoritmo \ref{alg:cpsi})]{%
+    \label{pKout_exp_0.9}%
+    \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.9-250-1000-300-25/pKout-exp-0.9-250-1000-300-25.png}}
   \caption{\textit{Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação exponencial, $\rho=0.9,\ n=250,\ p=1000,\ k^\dagger=25,\ \text{SNR}=300$.}\label{p5}
 \end{figure}
 
 
 
-\subsection{Considerações sobre a regularização e estratégias de validação cruzada}
-Para a seleção do parâmetro de regularização $\lambda$, implementamos e comparamos três estratégias de validação cruzada (CV):
+\subsection{Estratégias de Validação Cruzada}
+Para a seleção do parâmetro de regularização $\lambda$, implementamos e comparamos três estratégias de validação cruzada (CV).
+
+Para métodos inicializados com passo espectral (como o NSPG), o cálculo de $\lambda$ em todas as estratégias foi ajustado para compensar a escala introduzida pelo passo $\gamma_{j,0}$. Para métodos que não utilizam o passo espectral inicial (como o PGCCD), assume-se $\gamma_{j,0}=1$.
+
+Adicionalmente, implementamos uma etapa de \textit{Refinamento Final} pós-CV. Independente da estratégia de validação cruzada utilizada, o algoritmo retém o melhor $\lambda^*$ encontrado. Em seguida, compara-se o erro de validação (MSE) de duas soluções finais geradas com este $\lambda^*$:
+\begin{itemize}
+    \item \textbf{Candidato do Caminho (\textit{Path-based})}: A solução obtida seguindo o caminho de regularização (seja decrescente, crescente ou adaptativo).
+    \item \textbf{Candidato do Zero (\textit{Zero-based})}: Uma solução obtida reinicializando o solver a partir do vetor nulo (\textit{cold-start}) diretamente em $\lambda^*$.
+\end{itemize}
+A solução final escolhida é aquela que apresenta o menor MSE de validação. Esta etapa é crucial pois o \textit{warm-start} pode, por vezes, prender o algoritmo em ótimos locais sub-ótimos herdados de $\lambda$ anteriores, enquanto o \textit{cold-start} pode encontrar uma bacia de atração melhor para o mesmo parâmetro de regularização.
+
+O impacto deste refinamento é analisado detalhadamente no \autoref{chap:anexos_refinement}. As métricas apresentadas incluem: (i) \textit{Wins/Ties/Losses}: Classificação qualitativa da escolha pelo zero em relação à recuperação do suporte, calculada apenas quando o candidato do zero é escolhido (por menor erro de validação). \textit{Wins} indica que $J_{zero} > J_{path}$, \textit{Ties} que $J_{zero} = J_{path}$, e \textit{Losses} que $J_{zero} < J_{path}$; e (ii) \textit{Sim Improv} (\textit{Similarity Improvement}): Diferença média na similaridade do suporte ($J_{zero} - J_{path}$) nestes mesmos casos.
+
+\subsubsection{Validação Cruzada Padrão (Decrescente)}
+Esta estratégia segue a abordagem clássica de caminhos de regularização, similar ao proposto em \cite{fastselect}. O algoritmo inicia com um valor de $\lambda_0$ suficientemente grande para garantir que a solução inicial seja o vetor nulo (ou esparsa). Em seguida, $\lambda$ é reduzido monotonicamente. A re-inicialização (warm-start) é utilizada, onde a solução otimizada para $\lambda_j$ serve como ponto de partida para a iteração $j+1$ com $\lambda_{j+1} < \lambda_j$.
+A atualização de $\lambda$ é dada por:
+\[
+\lambda_{j+1} = 0.9 \cdot \min\left(\lambda_j, \gamma_{j,0} \cdot \frac{\max_{l \in S^c} |\nabla f(x^{j,0})_l|^2}{2}\right),
+\]
+onde $\gamma_{j,0}$ é o tamanho de passo inicial da iteração $j$ e $S^c$ é o complemento do suporte de $x^{j,0}$. Esta fórmula busca o próximo valor que permitiria a entrada de uma nova variável no suporte. Para o valor inicial, utilizamos $\lambda_0 = 1.01 \cdot \gamma_{0,0} \cdot \frac{\max_l |[\nabla f(x^0)]_l|^2}{2}$, garantindo que o ponto de partida seja o vetor nulo.
+
+\subsubsection{Validação Cruzada Inversa (Crescente)}
+Inspirada pela necessidade de explorar regiões de soluções mais densas primeiramente, esta estratégia percorre o caminho na direção oposta. O processo inicia com um $\lambda_0 = 1.01^{-1} \cdot \gamma_{0,0} \cdot \frac{\min_l |[\nabla f(x^0)]_l|^2}{2}$ pequeno para gerar um suporte relativamente cheio. Para garantir um ponto de partida válido com suporte não nulo, o que ainda pode acontecer com correlação constante usando PGCCD, executa-se uma fase de \textit{warmup} onde $\lambda$ é decrescido geometricamente por $0.9$ até que $\|x^{j,1}\|_0 > 0$.
+A partir deste ponto, $\lambda$ é incrementado monotonicamente:
+\[
+\lambda_{j+1} = 0.9^{-1} \cdot \max\left(\lambda_j, \frac{\min_{l \in S} |x^{j,0}_l - \gamma_{j,0} \nabla f(x^{j,0})_l|^2}{2\gamma_{j,0}}\right).
+\]
+Esta atualização visa encontrar o próximo valor que forçaria a remoção de uma variável do suporte. Esta estratégia tende a ser mais rápida em alguns cenários por iniciar já com o suporte correto ou próximo dele, evitando o custo de adicionar variáveis uma a uma.
+
+\subsubsection{Validação Cruzada Adaptativa Inteligente (\textit{Smart Adaptive})}
+Esta estratégia híbrida visa combinar a robustez da busca decrescente com a eficiência da busca crescente, mitigando o risco de convergir para mínimos locais ruins dependendo do ponto de partida.
+O procedimento consiste em duas fases:
 \begin{enumerate}
-  \item \textit{Validação Cruzada Padrão (Decrescente)}: Segue a ordem proposta em \cite{fastselect}, iniciando com um $\lambda$ grande e decrescendo. Utiliza $\lambda_{novo} = 0.9 \cdot \min(\lambda_{ant}, \lambda_{calc})$;
-  \item \textit{Validação Cruzada Inversa (Crescente)}: Percorre o caminho na direção oposta, iniciando com $\lambda$ pequeno. Utiliza $\lambda_{novo} = 0.9^{-1} \cdot \max(\lambda_{ant}, \lambda_{calc})$;
-  \item \textit{Validação Cruzada Adaptativa}: Sonda os extremos e escolhe a direção inicial de varredura baseada no menor erro de validação, permitindo reversão.
+    \item \textbf{Sondagem (\textit{Probe Phase})}: Avalia-se o erro de validação (MSE) nos dois extremos possíveis do caminho ($\lambda_{low}$ da estratégia inversa e $\lambda_{high}$ da padrão). Notavelmente, o cálculo de $\lambda_{low}$ também emprega a fase de \textit{warmup} descrita na estratégia inversa, garantindo que a sondagem inferiror inicie de um suporte não nulo válido. A direção inicial de varredura (crescente ou decrescente) é escolhida baseada no extremo que apresentar menor erro de validação.
+    \item \textbf{Varredura com Reversão}: Inicia-se a varredura na direção escolhida. A cada passo, o algoritmo verifica se uma mudança de direção resultaria em uma redução significativa no erro de validação (melhora $> 1\%$). Se tal melhora for detectada, o algoritmo permite uma única inversão de direção. Isso possibilita encontrar vales de mínimos locais que uma varredura monotônica rígida não conseguiria explorar em detalhes e, em certos casos, uma parada mais rápida do algoritmo.
 \end{enumerate}
+O critério de parada da estratégia adaptativa inclui: (i) alcançar o limite de $\lambda$ oposto ao de partida (definido por uma razão fixa do extremo não escolhido); (ii) detecção de oscilação (dupla inversão de direção); ou (iii) colapso do suporte para vazio (no caso de direção crescente) ou cheio (decrescente).
 
-Para métodos inicializados com passo espectral (como o SPG), o cálculo de $\lambda_{calc}$ foi ajustado para compensar a escala introduzida pelo passo $\gamma^{0,0}$. Adicionalmente, um refinamento final seleciona a melhor solução entre o \textit{warm-start} do caminho e um \textit{cold-start} (vetor nulo).
+A escolha da estratégia de validação cruzada para cada algoritmo foi baseada nos resultados apresentados na \autoref{fig:cv_comp} e nas Figuras \ref{fig:cv_comp_app1}--\ref{fig:cv_comp_app3} do apêndice. A primeira linha de cada figura apresenta a medida de recuperação do suporte (Jaccard modificado\footnote{Utilizamos uma variação do índice de Jaccard dada por $J(S, S^\dagger) = |S \cap S^\dagger| / \max(|S|, |S^\dagger|)$, onde $S$ e $S^\dagger$ são os suportes estimado e verdadeiro, respectivamente. Diferente do Jaccard padrão, esta medida penaliza desbalanços de cardinalidade com base no maior conjunto.}), enquanto a segunda linha apresenta o tempo médio de execução por valor de $\lambda$ testado.
 
-A escolha da estratégia de validação cruzada para cada algoritmo foi baseada em testes preliminares de desempenho. A \autoref{fig:cv_comp} ilustra a comparação de recuperação de suporte para as diferentes estratégias. Resultados adicionais para outros cenários de correlação e dimensionalidade podem ser encontrados no \autoref{chap:anexos} (Figuras \ref{fig:cv_comp_app1}, \ref{fig:cv_comp_app2} e \ref{fig:cv_comp_app3}). Observa-se que métodos baseados em SPG beneficiam-se significativamente da abordagem adaptativa, que evita mínimos locais inadequados explorando ambas as direções. O SPGpCDSS demonstra comportamento análogo ao SPG, obtendo melhores resultados com a validação cruzada adaptativa. Já para o CDSS, a abordagem padrão mostrou-se robusta e eficiente. A abordagem inversa falha para o CDSS em cenários de correlação constante pois a primeira coordenada é ativada e as demais componentes do gradiente ficam menores que o \textit{threshold} do operador proximal e depois o $\lambda$ cresce, impossibilitando a expansão do suporte, que fica preso em 1. Assim, os resultados reportados nas seções anteriores utilizam CV Adaptativa para SPG/NSPG/SPGpCDSS e CV Padrão para CDSS.
+Observa-se que métodos baseados em NSSP (incluindo PGCCD) beneficiam-se significativamente de caminhos de regularização bem definidos. Para o NSPG, observa-se que a estratégia inversa é altamente competitiva e robusta. Já para o PGCCD, a estratégia padrão (\textit{Regular}) mostrou-se a mais estável para garantir boa recuperação em todos os cenários, enquanto a abordagem adaptativa (\textit{Smart Adaptive}) mostrou-se ideal para a combinação NSPG+PGCCD, equilibrando eficiência e evasão de mínimos locais inadequados. Assim, os resultados reportados nas seções anteriores utilizam CV Inversa para NSPG, CV Adaptativa para NSPG+PGCCD e CV Padrão para PGCCD.
 
 \begin{figure}[H]
   \centering
-  \subbottom[\label{cv_spg}SPG: Comparação de CVs.]{%
-    \includegraphics[width=0.32\linewidth]{images/Comparisons/Comp_Sim-SPG_Comparison_exp-0.5-2000-10.0-100.png}}
-  \subbottom[\label{cv_cdss}CDSS: Comparação de CVs.]{%
-    \includegraphics[width=0.32\linewidth]{images/Comparisons/Comp_Sim-CDSS_Comparison_exp-0.5-2000-10.0-100.png}}
-  \subbottom[\label{cv_spgpcdss}SPG+CDSS: Comparação de CVs.]{%
-    \includegraphics[width=0.32\linewidth]{images/Comparisons/Comp_Sim-SPGpCDSS_Comparison_exp-0.5-2000-10.0-100.png}}
-  \caption{Comparação das estratégias de validação cruzada para SPG, CDSS e SPG+CDSS (Correlação exponencial, $\rho=0.5, p=2000, k^\dagger=100, \text{SNR}=10$, $T=10$ repetições).}
+  \subbottom[NSPG+CPSI(1): Similaridade.]{%
+    \label{cv_spg}%
+    \includegraphics[width=0.32\linewidth]{\cvPath SPG/exp-0.5-2000/Comp_Sim-NSPG+CPSI1_Comparison_exp-0.5-2000.png}}
+  \subbottom[L0Learn+CPSI(1) val $\lambda$ cv: Similaridade.]{%
+    \label{cv_cdss}%
+    \includegraphics[width=0.32\linewidth]{\cvPath L0LearnPSI1/exp-0.5-2000/Comp_Sim-L0LearnCPSI1_Comparison_exp-0.5-2000.png}}
+  \subbottom[NSPG+PGCCD+CPSI(1): Similaridade.]{%
+    \label{cv_spgpcdss}%
+    \includegraphics[width=0.32\linewidth]{\cvPath SPGpCDSS/exp-0.5-2000/Comp_Sim-NSPG+PGCCD+CPSI1_Comparison_exp-0.5-2000.png}}\\
+  \subbottom[NSPG+CPSI(1): Tempo.]{%
+    \label{cv_spg_time}%
+    \includegraphics[width=0.32\linewidth]{\cvPath SPG/exp-0.5-2000/Comp_Time-NSPG+CPSI1_Comparison_exp-0.5-2000.png}}
+  \subbottom[L0Learn+CPSI(1) val $\lambda$ cv: Tempo.]{%
+    \label{cv_cdss_time}%
+    \includegraphics[width=0.32\linewidth]{\cvPath L0LearnPSI1/exp-0.5-2000/Comp_Time-L0LearnCPSI1_Comparison_exp-0.5-2000.png}}
+  \subbottom[NSPG+PGCCD+CPSI(1): Tempo.]{%
+    \label{cv_spgpcdss_time}%
+    \includegraphics[width=0.32\linewidth]{\cvPath SPGpCDSS/exp-0.5-2000/Comp_Time-NSPG+PGCCD+CPSI1_Comparison_exp-0.5-2000.png}}
+  \caption{Comparação das estratégias de validação cruzada para NSPG, PGCCD e NSPG+PGCCD (Correlação exponencial, $\rho=0.5, p=2000, k^\dagger=100, \text{SNR}=10$, $T=10$ repetições).}
   \label{fig:cv_comp}
 \end{figure}
 
-\subsubsection{Detalhes de implementação do CDSS}
-O algoritmo CDSS emprega a estratégia de \textit{Active Set} conforme descrito em \cite{fastselect}. O método executa ciclos completos de descida coordenada até que o suporte da solução se mantenha inalterado por 10 iterações consecutivas (\texttt{ActiveSetNum=10}). A partir desse ponto, as iterações são restritas apenas às variáveis não-nulas (conjunto ativo) até a convergência. Por fim, uma verificação de otimalidade é realizada em todas as variáveis para garantir que nenhuma coordenada fora do suporte viola as condições de mínimo local. Adicionalmente, para reduzir o custo computacional nas fases iniciais, utilizamos uma estratégia de ordenação parcial (\textit{partial greedy sort}), onde apenas os 25\% das variáveis com maior correlação com o resíduo são ordenadas para a varredura gulosa.
 
 \subsection{Comparação com L0Learn}
-Para contextualizar o desempenho do CDSS em relação ao estado da arte, realizamos uma comparação com o pacote \texttt{L0Learn} \cite{l0learn} (versão de desenvolvimento do repositório git). O \texttt{L0Learn} é altamente otimizado e implementa algoritmos de descida coordenada com estratégias sofisticadas de \textit{active set}. Utilizamos a penalidade $L_0L_2$ no \texttt{L0Learn} para manter a equivalência com a formulação abordada neste trabalho.
+Para contextualizar o desempenho do PGCCD em relação ao estado da arte, realizamos uma comparação com o pacote \texttt{L0Learn} \cite{l0learn} (versão de desenvolvimento do repositório git). O \texttt{L0Learn} é altamente otimizado e implementa algoritmos de descida coordenada com estratégias sofisticadas de \textit{active set}. 
 
-A \autoref{fig:l0learn_comp} apresenta os resultados para o cenário de correlação exponencial com $p=2000$. Observa-se as curvas de recuperação de suporte e tempo de execução em escala logarítmica. O CDSS apresenta resultados competitivos, demonstrando robustez na identificação do suporte verdadeiro. Gráficos adicionais cobrindo outros cenários (correlação constante e diferentes dimensionalidades) estão disponíveis no \autoref{chap:anexos} (\autoref{fig:l0learn_anexo_1}, \autoref{fig:l0learn_anexo_2} e \autoref{fig:l0learn_anexo_3}).
+Nesta comparação, distinguimos três variantes:
+(i) \textbf{\texttt{L0LearnPSI1 val}}: utiliza o algoritmo nativo \texttt{CDPSI} da versão Git;
+(ii) \textbf{\texttt{L0Learn val (CD only)}}: utiliza o algoritmo nativo \texttt{CD};
+(iii) \textbf{\texttt{L0Learn+CPSI(1)}}: utiliza o motor \texttt{CD} do \texttt{L0Learn} como base em um \textit{wrapper} Julia que permite chamadas para um par específico $(\lambda, x)$, aplicando nossa própria estratégia de validação cruzada padrão.
+Cabe destacar que as versões nativas do \texttt{L0Learn} no repositório Git operam computando o caminho de regularização completo para um \textit{grid} de $\lambda$'s, apesar de o artigo original sugerir uma abordagem de caminho flexível. Assim, para as variantes (i) e (ii), recebemos o conjunto completo de soluções gerado pelo pacote e selecionamos a melhor baseada no erro do conjunto de validação. Já na variante (iii), o solver é invocado iterativamente seguindo nossa lógica de busca, garantindo consistência com o processo de refinamento local.
+
+A \autoref{fig:l0learn_comp} apresenta os resultados para o cenário de correlação exponencial com $p=2000$. Observa-se as curvas de recuperação de suporte e tempo de execução em escala logarítmica. O PGCCD apresenta resultados competitivos, demonstrando robustez na identificação do suporte verdadeiro. Gráficos adicionais cobrindo outros cenários (correlação constante e diferentes dimensionalidades) estão disponíveis no \autoref{chap:anexos} (\autoref{fig:l0learn_anexo_1}, \autoref{fig:l0learn_anexo_2} e \autoref{fig:l0learn_anexo_3}).
 
 \begin{figure}[H]
   \centering
-  \subbottom[\label{l0_sup}Recuperação do Suporte.]{%
-    \includegraphics[width=0.45\linewidth]{images/L0Hybrid/exp-0.5-2000/L0Hybrid_bestlast_exp-0.5-2000-10.0-100-10-200_200_2000_SUP.png}}
-  \subbottom[\label{l0_time}Tempo de execução (s).]{%
-    \includegraphics[width=0.45\linewidth]{images/L0Hybrid/exp-0.5-2000/L0Hybrid_bestlast_exp-0.5-2000-10.0-100-10-200_200_2000_Time.png}}
-  \caption{Comparação entre CDSS e L0Learn. Correlação exponencial, $\rho=0.5,\ n=500,\ p=2000$.}
+  \subbottom[Similaridade do Suporte.]{%
+    \label{l0_sup}%
+    \includegraphics[width=0.45\linewidth]{\mixedPath exp-0.5-2000/pnSim-NewTerminal_mixed_v2_exp_0.5_p2000.png}}
+  \subbottom[Tempo de execução (s).]{%
+    \label{l0_time}%
+    \includegraphics[width=0.45\linewidth]{\mixedPath exp-0.5-2000/pnTime-NewTerminal_mixed_v2_exp_0.5_p2000.png}}\\
+  \subbottom[Erro Máximo nos Parâmetros ($L_\infty$).]{%
+    \label{l0_inf}%
+    \includegraphics[width=0.45\linewidth]{\mixedPath exp-0.5-2000/pnInf-NewTerminal_mixed_v2_exp_0.5_p2000.png}}
+  \caption{Comparação entre PGCCD e L0Learn. Correlação exponencial, $\rho=0.5,\ n=500,\ p=2000$.}
   \label{fig:l0learn_comp}
 \end{figure}
