@@ -189,12 +189,12 @@ Observa-se que métodos baseados em NSSP (incluindo PGCCD) beneficiam-se signifi
 
 
 \subsection{Comparação com L0Learn}
-Para contextualizar o desempenho do PGCCD em relação ao estado da arte, realizamos uma comparação com o pacote \texttt{L0Learn} \cite{l0learn} (versão de desenvolvimento do repositório git). O \texttt{L0Learn} é altamente otimizado e implementa algoritmos de descida coordenada com estratégias sofisticadas de \textit{active set}. 
+Para contextualizar o desempenho do PGCCD em relação ao estado da arte, realizamos uma comparação com o pacote \texttt{L0Learn} \cite{l0learn} (versão de desenvolvimento do repositório \texttt{git} \url{https://github.com/fbkns/L0Learn}). O \texttt{L0Learn} é altamente otimizado e implementa algoritmos de descida coordenada com estratégias sofisticadas de \textit{active set}. 
 
 Nesta comparação, distinguimos três variantes:
 (i) \textbf{\texttt{L0Learn+CPSI1 val}}: utiliza o algoritmo nativo \texttt{CDPSI} da versão Git;
 (ii) \textbf{\texttt{L0Learn val (CD only)}}: utiliza o algoritmo nativo \texttt{CD};
-(iii) \textbf{\texttt{L0Learn+CPSI1 val path}}: utiliza o motor \texttt{CD} do \texttt{L0Learn} como base em um \textit{wrapper} Julia que permite chamadas para um par específico $(\lambda, x)$, aplicando nossa própria estratégia de validação cruzada padrão.
+(iii) \textbf{\texttt{L0Learn+CPSI1 val path}}: utiliza o motor \texttt{CD} do \texttt{L0Learn} como base em um \textit{wrapper} \texttt{Julia} que permite chamadas para um par específico $(\lambda, x)$, aplicando nossa própria estratégia de validação cruzada padrão.
 Cabe destacar que as versões nativas do \texttt{L0Learn} no repositório Git operam computando o caminho de regularização completo para um \textit{grid} de $\lambda$'s, apesar de o artigo original sugerir uma abordagem de caminho flexível. Assim, para as variantes (i) e (ii), recebemos o conjunto completo de soluções gerado pelo pacote e selecionamos a melhor baseada no erro do conjunto de validação. Já na variante (iii), o solver é invocado iterativamente seguindo nossa lógica de busca, garantindo consistência com o processo de refinamento local.
 
 A \autoref{fig:l0learn_comp} apresenta os resultados para o cenário de correlação exponencial com $p=2000$. Observa-se as curvas de recuperação de suporte e tempo de execução em escala logarítmica. O PGCCD apresenta resultados competitivos, demonstrando robustez na identificação do suporte verdadeiro. Gráficos adicionais cobrindo outros cenários (correlação constante e diferentes dimensionalidades) estão disponíveis no \autoref{chap:anexos} (\autoref{fig:l0learn_anexo_1}, \autoref{fig:l0learn_anexo_2} e \autoref{fig:l0learn_anexo_3}).
