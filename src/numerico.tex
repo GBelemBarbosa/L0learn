@@ -183,7 +183,7 @@ Observa-se que métodos baseados em NSSP (incluindo PGCCD) beneficiam-se signifi
   \subbottom[NSPG+PGCCD+CPSI(1): Tempo.]{%
     \label{cv_spgpcdss_time}%
     \includegraphics[width=0.32\linewidth]{\cvPath SPGpCDSS/exp-0.5-2000/Comp_Time-NSPG+PGCCD+CPSI1_Comparison_exp-0.5-2000.png}}
-  \caption{Comparação das estratégias de validação cruzada para NSPG, PGCCD e NSPG+PGCCD (Correlação exponencial, $\rho=0.5, p=2000, k^\dagger=100, \text{SNR}=10$, $T=10$ repetições).}
+  \caption{Comparação das estratégias de validação cruzada para NSPG, PGCCD e NSPG+PGCCD (Correlação exponencial, $\rho=0.5,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$).}
   \label{fig:cv_comp}
 \end{figure}
 
@@ -197,7 +197,7 @@ Nesta comparação, distinguimos três variantes:
 (iii) \textbf{\texttt{L0Learn+CPSI1 val path}}: utiliza o motor \texttt{CD} do \texttt{L0Learn} como base em um \textit{wrapper} \texttt{Julia} que permite chamadas para um par específico $(\lambda, x)$, aplicando nossa própria estratégia de validação cruzada padrão.
 Cabe destacar que as versões nativas do \texttt{L0Learn} no repositório Git operam computando o caminho de regularização completo para um \textit{grid} de $\lambda$'s, apesar de o artigo original sugerir uma abordagem de caminho flexível. Assim, para as variantes (i) e (ii), recebemos o conjunto completo de soluções gerado pelo pacote e selecionamos a melhor baseada no erro do conjunto de validação. Já na variante (iii), o solver é invocado iterativamente seguindo nossa lógica de busca, garantindo consistência com o processo de refinamento local.
 
-A \autoref{fig:l0learn_comp} apresenta os resultados para o cenário de correlação exponencial com $p=2000$. Observa-se as curvas de recuperação de suporte e tempo de execução em escala logarítmica. O PGCCD apresenta resultados competitivos, demonstrando robustez na identificação do suporte verdadeiro. Gráficos adicionais cobrindo outros cenários (correlação constante e diferentes dimensionalidades) estão disponíveis no \autoref{chap:anexos} (\autoref{fig:l0learn_anexo_1}, \autoref{fig:l0learn_anexo_2} e \autoref{fig:l0learn_anexo_3}).
+A \autoref{fig:l0learn_comp} apresenta os resultados para o cenário de correlação exponencial com $\rho=0.5$ e $p=2000$. Neste cenário, todos os métodos baseados em NSSP atingem recuperação quase perfeita do suporte a partir de $n \approx 800$. A combinação NSPG+PGCCD+CPSI1 atinge similaridade 1.0 ligeiramente antes dos demais, porém ao custo de um tempo de execução significativamente superior, crescendo de forma acentuada com $n$ (atingindo $\sim$245s para $n=2000$) --- enquanto os demais métodos permanecem abaixo de 15s. Esse cenário ilustra o principal compromisso da abordagem combinada: a otimização coordenada do PGCCD melhora a qualidade do suporte, mas a um custo computacional que escala supralinearmente. Quanto ao erro $L_\infty$ nos parâmetros, os métodos NSPG+CPSI1 e NSPG+PGCCD+CPSI1 apresentam os menores valores em todo o intervalo de $n$, indicando que a melhor recuperação do suporte traduz-se diretamente em melhor estimação dos parâmetros. O método \texttt{L0Learn val (CD only)} é consistentemente o pior tanto em similaridade quanto em $L_\infty$.
 
 \begin{figure}[H]
   \centering
@@ -210,6 +210,27 @@ A \autoref{fig:l0learn_comp} apresenta os resultados para o cenário de correla�
   \subbottom[Erro Máximo nos Parâmetros ($L_\infty$).]{%
     \label{l0_inf}%
     \includegraphics[width=0.45\linewidth]{\mixedPath exp-0.5-2000/pnInf-NewTerminal_mixed_v2_exp_0.5_p2000.png}}
-  \caption{Comparação entre PGCCD e L0Learn. Correlação exponencial, $\rho=0.5,\ n=500,\ p=2000$.}
+  \caption{Comparação entre os métodos propostos e variantes do L0Learn. Correlação exponencial, $\rho=0.5,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$.}
   \label{fig:l0learn_comp}
 \end{figure}
+
+A vantagem do PGCCD torna-se mais pronunciada nos cenários de correlação constante, como ilustrado na \autoref{fig:l0learn_const}. Neste cenário com $\rho=0.9$ e $p=1000$, a alta correlação dificulta a seleção de variáveis para todos os métodos, porém tanto o NSPG+CPSI1 quanto o NSPG+PGCCD+CPSI1 apresentam superioridade consistente. O NSPG+PGCCD+CPSI1 atinge similaridade $\sim$0.95 já em $n \approx 250$, enquanto as variantes nativas do \texttt{L0Learn} necessitam de $n \geq 400$ para atingir desempenho comparável. O \texttt{L0Learn val (CD only)}, em particular, apresenta degradação significativa neste cenário de alta correlação. Em termos de erro $L_\infty$, os métodos NSSP mantêm vantagem em toda a faixa de $n$, convergindo para $\sim$0.1 a partir de $n \approx 800$.
+
+\begin{figure}[H]
+  \centering
+  \subbottom[Similaridade do Suporte.]{%
+    \label{l0_const_sup}%
+    \includegraphics[width=0.45\linewidth]{\mixedPath const-0.9-1000/pnSim-NewTerminal_mixed_v2_const_0.9_p1000.png}}
+  \subbottom[Tempo de execução (s).]{%
+    \label{l0_const_time}%
+    \includegraphics[width=0.45\linewidth]{\mixedPath const-0.9-1000/pnTime-NewTerminal_mixed_v2_const_0.9_p1000.png}}\\
+  \subbottom[Erro Máximo nos Parâmetros ($L_\infty$).]{%
+    \label{l0_const_inf}%
+    \includegraphics[width=0.45\linewidth]{\mixedPath const-0.9-1000/pnInf-NewTerminal_mixed_v2_const_0.9_p1000.png}}
+  \caption{Comparação entre os métodos propostos e variantes do L0Learn. Correlação constante, $\rho=0.9,\ p=1000,\ k^\dagger=20,\ \text{SNR}=5$.}
+  \label{fig:l0learn_const}
+\end{figure}
+
+Essa diferença substancial nos cenários de correlação constante ocorre porque a descida coordenada do PGCCD é particularmente eficaz quando as correlações entre variáveis são uniformes, permitindo uma exploração mais eficiente do espaço de soluções. O mesmo padrão é observado na \autoref{fig:l0learn_anexo_1} ($\rho=0.5,\ p=2000$), onde o NSPG+PGCCD+CPSI1 alcança similaridade próxima a 1.0 já em $n \approx 400$ com custo temporal moderado ($\sim$22s para $n=2000$). No cenário de correlação exponencial com $\rho=0.9$ (\autoref{fig:l0learn_anexo_3}), as diferenças entre os métodos são menores e a convergência é mais uniforme, sugerindo que a estrutura exponencial decrescente das correlações facilita a separação das variáveis relevantes.
+
+Em síntese, os resultados indicam que: (i) a combinação NSPG+PGCCD oferece a recuperação de suporte mais robusta, especialmente em cenários de correlação constante, ao custo de maior tempo de execução; (ii) o NSPG isolado é altamente competitivo em cenários de correlação exponencial, onde alcança excelente recuperação com custo computacional reduzido; (iii) a variante \texttt{L0Learn+CPSI1 val path}, que aplica nosso procedimento de validação cruzada ao motor do \texttt{L0Learn}, apresenta desempenho significativamente superior às variantes nativas, evidenciando a importância da estratégia de busca; e (iv) o erro $L_\infty$ confirma consistentemente que a qualidade da recuperação do suporte se traduz em melhor estimação dos parâmetros verdadeiros.
