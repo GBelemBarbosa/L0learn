@@ -3,6 +3,8 @@
 *.log
 *.pdf
 *.synctex.gz
+*.synctex
+*.synctex(busy)
 *.fdb_latexmk
 *.fls
 *.blg
