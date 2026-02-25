@@ -44,12 +44,12 @@ Para melhor analisar as características dos limites das sequências dos algorit
     \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-10-100/pSUP-exp-0.5-500-2000-10-100.png}}\\
   \subbottom[Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do PGCCD)]{\label{pK}%
     \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100.png}}
-  \caption{\textit{Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação exponencial, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$.}
+  \caption{Resultados para 50 inicializações. Correlação exponencial, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$.}
 \end{figure}
 
 
 \subsection{Comparação com otimização combinatorial}
-Nesse experimento, visamos identificar o efeito que cada algoritmo tem quando empregado como \textit{inner solver} do algoritmo CPSI(1) (\autoref{alg:cpsi}). Serão testados o PGCCD, o NSPG e o NSPG seguido do PGCCD. Como comparação da qualidade das soluções, também foi incluído o NSPG sem estratégia combinatorial.
+Nesse experimento, visamos identificar o efeito que cada algoritmo tem quando empregado como \textit{inner solver} do algoritmo CPSI1 (\autoref{alg:cpsi}). Serão testados o PGCCD, o NSPG e o NSPG seguido do PGCCD. Como comparação da qualidade das soluções, também foi incluído o NSPG sem estratégia combinatorial.
 
 O setup experimental é idêntico ao da seção anterior. Além das medidas apresentadas ali, incluímos o número de iterações externas (iterações do \autoref{alg:cpsi}). O número de iterações total se refere ao somatório de iterações de todas as chamadas do \textit{inner solver} durante a execução. 
 
@@ -69,7 +69,7 @@ A utilização conjunta do NSPG e PGCCD se mostrou vantajosa em todos os aspecto
     \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100.png}}
   \subbottom[Número de iterações externas (iterações do Algoritmo \ref{alg:cpsi})]{\label{pKout2}%
     \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-10-100/pKout-exp-0.5-500-2000-10-100.png}}
-  \caption{\textit{Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação exponencial, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$.}
+  \caption{Resultados para 50 inicializações. Correlação exponencial, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$.}
 \end{figure}
 
 Aumentando o SNR para 300 para permitir recuperação completa do suporte, vemos uma diferença drástica na qualidade das soluções, com somente um aumento pequeno no número de iterações (\autoref{p3}). A estratégia NSPG+PGCCD continua sendo a mais atrativa, com menos soluções \textit{outliers} com um custo levemente superior em iterações, porém todas as estratégias NSPG apresentam recuperação perfeita da solução verdadeira com probabilidade alta.
@@ -84,7 +84,7 @@ Aumentando o SNR para 300 para permitir recuperação completa do suporte, vemos
     \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-300-100/pK-exp-0.5-500-2000-300-100.png}}
   \subbottom[Número de iterações externas (iterações do \autoref{alg:cpsi})]{%
     \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-300-100/pKout-exp-0.5-500-2000-300-100.png}}
-  \caption{\textit{Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação exponencial, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=300$.}\label{p3}
+  \caption{Resultados para 50 inicializações. Correlação exponencial, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=300$.}\label{p3}
 \end{figure}
 
 Para o próximo experimento, mantivemos os parâmetros anteriores e trocando o tipo de correlação por constante, um cenário significativamente mais difícil. A \autoref{p4} apresenta resultados bastante drásticos em favor de estratégias NSPG com busca combinatorial. Em comparação com o CD, o ganho em iterações (tanto internas quanto externas) é substancial. Já em comparação com o NSPG sem busca combinatorial, a qualidade das soluções é muito superior. Entre o NSPG puro e o NSPG+PGCCD, esse primeiro se provou quase tão bom em qualidade de soluções, mas com mais iterações externas, as quais são a parte mais expressiva no tempo de execução total. 
@@ -99,7 +99,7 @@ Para o próximo experimento, mantivemos os parâmetros anteriores e trocando o t
     \includegraphics[width=0.45\linewidth]{\boxplotPath con-0.5-500-2000-300-100/pK-con-0.5-500-2000-300-100.png}}
   \subbottom[Número de iterações externas (iterações do \autoref{alg:cpsi})]{%
     \includegraphics[width=0.45\linewidth]{\boxplotPath con-0.5-500-2000-300-100/pKout-con-0.5-500-2000-300-100.png}}
-  \caption{\textit{Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação constante, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=300$.}\label{p4}
+  \caption{Resultados para 50 inicializações. Correlação constante, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=300$.}\label{p4}
 \end{figure}
 
 Por fim, com correlação exponencial, dividimos todas as dimensões por 2, tomamos $k^\dagger=25$, e aumentamos a correlação para $\rho=0.9$ (\autoref{p5}). Todos os métodos com otimização combinatorial obtiveram 100\% de recuperação do suporte original, enquanto o NSPG sem essa estratégia não. O número de iterações (internas e externas) do PGCCD foi muito mais alto, indicando novamente que as soluções obtidas desse método exigem mais perturbações do suporte antes de estabilizar.
@@ -115,7 +115,7 @@ Por fim, com correlação exponencial, dividimos todas as dimensões por 2, toma
   \subbottom[Número de iterações externas (iterações do Algoritmo \ref{alg:cpsi})]{%
     \label{pKout_exp_0.9}%
     \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.9-250-1000-300-25/pKout-exp-0.9-250-1000-300-25.png}}
-  \caption{\textit{Box plots} dos resultados dos algoritmos testados para 50 inicializações. Correlação exponencial, $\rho=0.9,\ n=250,\ p=1000,\ k^\dagger=25,\ \text{SNR}=300$.}\label{p5}
+  \caption{Resultados para 50 inicializações. Correlação exponencial, $\rho=0.9,\ n=250,\ p=1000,\ k^\dagger=25,\ \text{SNR}=300$.}\label{p5}
 \end{figure}
 
 
@@ -165,25 +165,25 @@ Observa-se que métodos baseados em NSSP (incluindo PGCCD) beneficiam-se signifi
 
 \begin{figure}[H]
   \centering
-  \subbottom[NSPG+CPSI(1): Similaridade.]{%
+  \subbottom[NSPG+CPSI1: Similaridade.]{%
     \label{cv_spg}%
     \includegraphics[width=0.32\linewidth]{\cvPath SPG/exp-0.5-2000/Comp_Sim-NSPG+CPSI1_Comparison_exp-0.5-2000.png}}
-  \subbottom[L0Learn+CPSI(1) val $\lambda$ cv: Similaridade.]{%
+  \subbottom[L0Learn+CPSI1: Similaridade.]{%
     \label{cv_cdss}%
     \includegraphics[width=0.32\linewidth]{\cvPath L0LearnPSI1/exp-0.5-2000/Comp_Sim-L0LearnCPSI1_Comparison_exp-0.5-2000.png}}
-  \subbottom[NSPG+PGCCD+CPSI(1): Similaridade.]{%
+  \subbottom[NSPG+PGCCD+CPSI1: Similaridade.]{%
     \label{cv_spgpcdss}%
     \includegraphics[width=0.32\linewidth]{\cvPath SPGpCDSS/exp-0.5-2000/Comp_Sim-NSPG+PGCCD+CPSI1_Comparison_exp-0.5-2000.png}}\\
-  \subbottom[NSPG+CPSI(1): Tempo.]{%
+  \subbottom[NSPG+CPSI1: Tempo.]{%
     \label{cv_spg_time}%
     \includegraphics[width=0.32\linewidth]{\cvPath SPG/exp-0.5-2000/Comp_Time-NSPG+CPSI1_Comparison_exp-0.5-2000.png}}
-  \subbottom[L0Learn+CPSI(1) val $\lambda$ cv: Tempo.]{%
+  \subbottom[L0Learn+CPSI1: Tempo.]{%
     \label{cv_cdss_time}%
     \includegraphics[width=0.32\linewidth]{\cvPath L0LearnPSI1/exp-0.5-2000/Comp_Time-L0LearnCPSI1_Comparison_exp-0.5-2000.png}}
-  \subbottom[NSPG+PGCCD+CPSI(1): Tempo.]{%
+  \subbottom[NSPG+PGCCD+CPSI1: Tempo.]{%
     \label{cv_spgpcdss_time}%
     \includegraphics[width=0.32\linewidth]{\cvPath SPGpCDSS/exp-0.5-2000/Comp_Time-NSPG+PGCCD+CPSI1_Comparison_exp-0.5-2000.png}}
-  \caption{Comparação das estratégias de validação cruzada para NSPG, PGCCD e NSPG+PGCCD (Correlação exponencial, $\rho=0.5,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$).}
+  \caption{Comparação de estratégias de validação cruzada. Correlação exponencial, $\rho=0.5,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$.}
   \label{fig:cv_comp}
 \end{figure}
 
@@ -210,7 +210,7 @@ A \autoref{fig:l0learn_comp} apresenta os resultados para o cenário de correla�
   \subbottom[Erro Máximo nos Parâmetros ($L_\infty$).]{%
     \label{l0_inf}%
     \includegraphics[width=0.45\linewidth]{\mixedPath exp-0.5-2000/pnInf-NewTerminal_mixed_v2_exp_0.5_p2000.png}}
-  \caption{Comparação entre os métodos propostos e variantes do L0Learn. Correlação exponencial, $\rho=0.5,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$.}
+  \caption{Comparação com o L0Learn. Correlação exponencial, $\rho=0.5,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$.}
   \label{fig:l0learn_comp}
 \end{figure}
 
@@ -227,7 +227,7 @@ A vantagem do PGCCD torna-se mais pronunciada nos cenários de correlação cons
   \subbottom[Erro Máximo nos Parâmetros ($L_\infty$).]{%
     \label{l0_const_inf}%
     \includegraphics[width=0.45\linewidth]{\mixedPath const-0.9-1000/pnInf-NewTerminal_mixed_v2_const_0.9_p1000.png}}
-  \caption{Comparação entre os métodos propostos e variantes do L0Learn. Correlação constante, $\rho=0.9,\ p=1000,\ k^\dagger=20,\ \text{SNR}=5$.}
+  \caption{Comparação com o L0Learn. Correlação constante, $\rho=0.9,\ p=1000,\ k^\dagger=20,\ \text{SNR}=5$.}
   \label{fig:l0learn_const}
 \end{figure}
 
