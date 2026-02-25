@@ -1,0 +1,22 @@
+# LaTeX build files
+*.aux
+*.log
+*.pdf
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.blg
+*.bbl
+*.out
+*.toc
+*.lof
+*.lot
+*.bcf
+*.xml
+
+# Search/build artifacts
+/out/
+all_titles.txt
+
+# Log files in subdirectories
+**/logs/*.log
