@@ -82,7 +82,7 @@ Aumentando o SNR para 300 para permitir recuperação completa do suporte, vemos
     \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-300-100/pSUP-exp-0.5-500-2000-300-100.png}}\\
   \subbottom[Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do CD)]{%
     \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-300-100/pK-exp-0.5-500-2000-300-100.png}}
-  \subbottom[Número de iterações externas (iterações do \autoref{alg:cpsi})]{%
+  \subbottom[Número de iterações externas (iterações do Algoritmo~\ref{alg:cpsi})]{%
     \includegraphics[width=0.45\linewidth]{\boxplotPath exp-0.5-500-2000-300-100/pKout-exp-0.5-500-2000-300-100.png}}
   \caption{Resultados para 50 inicializações. Correlação exponencial, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=300$.}\label{p3}
 \end{figure}
@@ -97,7 +97,7 @@ Para o próximo experimento, mantivemos os parâmetros anteriores e trocando o t
     \includegraphics[width=0.45\linewidth]{\boxplotPath con-0.5-500-2000-300-100/pSUP-con-0.5-500-2000-300-100.png}}\\
   \subbottom[Número de iterações (cada passagem pelas $p$ coordenadas contam como uma iteração do CD)]{%
     \includegraphics[width=0.45\linewidth]{\boxplotPath con-0.5-500-2000-300-100/pK-con-0.5-500-2000-300-100.png}}
-  \subbottom[Número de iterações externas (iterações do \autoref{alg:cpsi})]{%
+  \subbottom[Número de iterações externas (iterações do Algoritmo~\ref{alg:cpsi})]{%
     \includegraphics[width=0.45\linewidth]{\boxplotPath con-0.5-500-2000-300-100/pKout-con-0.5-500-2000-300-100.png}}
   \caption{Resultados para 50 inicializações. Correlação constante, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=300$.}\label{p4}
 \end{figure}
@@ -234,3 +234,43 @@ A vantagem do PGCCD torna-se mais pronunciada nos cenários de correlação cons
 Essa diferença substancial nos cenários de correlação constante ocorre porque a descida coordenada do PGCCD é particularmente eficaz quando as correlações entre variáveis são uniformes, permitindo uma exploração mais eficiente do espaço de soluções. O mesmo padrão é observado na \autoref{fig:l0learn_anexo_1} ($\rho=0.5,\ p=2000$), onde o NSPG+PGCCD+CPSI(1) alcança similaridade próxima a 1.0 já em $n \approx 400$ com custo temporal moderado ($\sim$22s para $n=2000$). No cenário de correlação exponencial com $\rho=0.9$ (\autoref{fig:l0learn_anexo_3}), as diferenças entre os métodos são menores e a convergência é mais uniforme, sugerindo que a estrutura exponencial decrescente das correlações facilita a separação das variáveis relevantes.
 
 Em síntese, os resultados indicam que: (i) a combinação NSPG+PGCCD oferece a recuperação de suporte mais robusta, especialmente em cenários de correlação constante, ao custo de maior tempo de execução; (ii) o NSPG isolado é altamente competitivo em cenários de correlação exponencial, onde alcança excelente recuperação com custo computacional reduzido; (iii) a variante \texttt{L0Learn+CPSI(1) val path}, que aplica nosso procedimento de validação cruzada ao motor do \texttt{L0Learn}, apresenta desempenho significativamente superior às variantes nativas, evidenciando a importância da estratégia de busca; e (iv) o erro $L_\infty$ confirma consistentemente que a qualidade da recuperação do suporte se traduz em melhor estimação dos parâmetros verdadeiros.
+
+\subsection{Experimentos com Estrutura Tridiagonal em Blocos}
+
+Para explorar o comportamento dos algoritmos sob uma estrutura de covariância mais restrita e esparsa, realizamos experimentos nos quais a matriz de dados $A$ foi modificada para possuir uma estrutura quase tridiagonal em blocos. Especificamente, após a geração padrão $A \sim \text{MVN}(0, \Sigma)$, aplicamos uma máscara que zera as entradas fora de uma faixa diagonal estreita (aproximadamente 3 linhas não nulas por parâmetro de forma balanceada, com o caso $n=p$ tornando-se uma matriz tridiagonal). Essa modificação isola os blocos de variáveis, quebrando a dependência de características globais enquanto preserva a estrutura de covariância local ditada por $\Sigma$ no interior de cada bloco.
+
+A eliminação de conexões globais densas tende a simplificar a paisagem de otimização, auxiliando métodos de segunda ordem estruturados ou buscas combinatoriais. No cenário de correlação constante extrema ($\rho=0.9$, \autoref{fig:tri_const}), observamos que a máscara tridiagonal fornece um ganho substancial em recuperação do suporte se comparado ao seu análogo denso (\autoref{fig:l0learn_const}). Sem a intrincada teia de dependências globais, os algoritmos, especialmente aqueles com estratégias ativas e combinatoriais como o NSPG+PGCCD, isolam a alta correlação aos pequenos blocos e conseguem separar o suporte verdadeiro com muito mais facilidade. 
+
+Por outro lado, o cenário de correlação exponencial (\autoref{fig:tri_exp}) exibe um fenômeno contraintuitivo: sua recuperação do suporte sofre uma degradação perceptível se comparada à sua contraparte densa (\autoref{fig:l0learn_anexo_3}). Uma explicação provável para essa inversão de desempenho está ligada à forma como a máscara afeta o poder estatístico de dados com covariância decrescente. Na matriz exponencial original, as correlações decaem progressivamente ($0.9, 0.81, 0.729 \dots$), fornecendo informações residuais importantes através de observações não locais. Ao aplicar a máscara, essas observações complementares são zeradas. Como resultado, o algoritmo é forçado a diferenciar as variáveis dependendo quase exclusivamente da informação no pequeno bloco local que, por sua vez, mantém sua correlação altíssima (0.9). O cenário constante, cuja matriz original não oferecia decaimento que ajudasse a diferenciar as variáveis globalmente, se beneficia unicamente da redução drástica da conectividade densa.
+
+A sensibilidade dos algoritmos a essas diferentes estruturas de correlação localizada evidencia que a topologia do problema afeta drasticamente a dificuldade da otimização. Esses resultados motivam futuras investigações na substituição da métrica variável diagonal (que se mostrou pouco efetiva no VMNSPG) por operadores \textit{proximais} com matrizes de segunda ordem estruturadas (ex: tridiagonais). Tais métodos podem oferecer ganhos de convergência e precisão significativos ao introduzir mais informação de segunda ordem focada nessas dependências locais fortes, mantendo um custo computacional consideravelmente inferior ao de abordagens Newton densas. Gráficos adicionais para cenários de SNR maior e $\rho=0.5$ estão dispostos no \autoref{chap:anexos_tri}.
+
+\begin{figure}[H]
+  \centering
+  \subbottom[Similaridade do Suporte.]{%
+    \label{tri_const_sup}%
+    \includegraphics[width=0.45\linewidth]{images/Mixed_v2/Tridiagonal/const-0.9-1000/pnSim-NewTerminal_mixed_v2_tri_const_0.9_p1000.png}}
+  \subbottom[Tempo de execução (s).]{%
+    \label{tri_const_time}%
+    \includegraphics[width=0.45\linewidth]{images/Mixed_v2/Tridiagonal/const-0.9-1000/pnTime-NewTerminal_mixed_v2_tri_const_0.9_p1000.png}}\\
+  \subbottom[Erro Máximo nos Parâmetros ($L_\infty$).]{%
+    \label{tri_const_inf}%
+    \includegraphics[width=0.45\linewidth]{images/Mixed_v2/Tridiagonal/const-0.9-1000/pnInf-NewTerminal_mixed_v2_tri_const_0.9_p1000.png}}
+  \caption{Experimento tridiagonal. Correlação constante, $\rho=0.9,\ p=1000,\ k^\dagger=20,\ \text{SNR}=5$.}
+  \label{fig:tri_const}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \subbottom[Similaridade do Suporte.]{%
+    \label{tri_exp_sup}%
+    \includegraphics[width=0.45\linewidth]{images/Mixed_v2/Tridiagonal/exp-0.9-1000/pnSim-NewTerminal_mixed_v2_tri_exp_0.9_p1000.png}}
+  \subbottom[Tempo de execução (s).]{%
+    \label{tri_exp_time}%
+    \includegraphics[width=0.45\linewidth]{images/Mixed_v2/Tridiagonal/exp-0.9-1000/pnTime-NewTerminal_mixed_v2_tri_exp_0.9_p1000.png}}\\
+  \subbottom[Erro Máximo nos Parâmetros ($L_\infty$).]{%
+    \label{tri_exp_inf}%
+    \includegraphics[width=0.45\linewidth]{images/Mixed_v2/Tridiagonal/exp-0.9-1000/pnInf-NewTerminal_mixed_v2_tri_exp_0.9_p1000.png}}
+  \caption{Experimento tridiagonal. Correlação exponencial, $\rho=0.9,\ p=1000,\ k^\dagger=20,\ \text{SNR}=5$.}
+  \label{fig:tri_exp}
+\end{figure}

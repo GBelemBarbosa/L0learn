@@ -129,6 +129,35 @@ Neste apêndice, detalhamos o impacto do refinamento final na qualidade da solu�
   \label{fig:refinement_const_0.5}
 \end{figure}
 
+\chapter{Comparação com Estrutura Tridiagonal em Blocos}
+\label{chap:anexos_tri}
+
+Neste apêndice, apresentamos os resultados complementares dos experimentos tridiagonais em bloco. As Figuras \ref{fig:tri_anexo_1} e \ref{fig:tri_anexo_2} detalham os cenários com correlação inicial reduzida ($\rho=0.5$) e maior relação sinal-ruído ($\text{SNR}=10$).
+
+\begin{figure}[H]
+  \centering
+  \subbottom[Similaridade do Suporte.]{%
+    \includegraphics[width=0.45\linewidth]{images/Mixed_v2/Tridiagonal/const-0.5-2000/pnSim-NewTerminal_mixed_v2_tri_const_0.5_p2000.png}}
+  \subbottom[Tempo de execução (s).]{%
+    \includegraphics[width=0.45\linewidth]{images/Mixed_v2/Tridiagonal/const-0.5-2000/pnTime-NewTerminal_mixed_v2_tri_const_0.5_p2000.png}}\\
+  \subbottom[Erro Máximo nos Parâmetros ($L_\infty$).]{%
+    \includegraphics[width=0.45\linewidth]{images/Mixed_v2/Tridiagonal/const-0.5-2000/pnInf-NewTerminal_mixed_v2_tri_const_0.5_p2000.png}}
+  \caption{Experimento tridiagonal. Correlação constante, $\rho=0.5,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$.}
+  \label{fig:tri_anexo_1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \subbottom[Similaridade do Suporte.]{%
+    \includegraphics[width=0.45\linewidth]{images/Mixed_v2/Tridiagonal/exp-0.5-2000/pnSim-NewTerminal_mixed_v2_tri_exp_0.5_p2000.png}}
+  \subbottom[Tempo de execução (s).]{%
+    \includegraphics[width=0.45\linewidth]{images/Mixed_v2/Tridiagonal/exp-0.5-2000/pnTime-NewTerminal_mixed_v2_tri_exp_0.5_p2000.png}}\\
+  \subbottom[Erro Máximo nos Parâmetros ($L_\infty$).]{%
+    \includegraphics[width=0.45\linewidth]{images/Mixed_v2/Tridiagonal/exp-0.5-2000/pnInf-NewTerminal_mixed_v2_tri_exp_0.5_p2000.png}}
+  \caption{Experimento tridiagonal. Correlação exponencial, $\rho=0.5,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$.}
+  \label{fig:tri_anexo_2}
+\end{figure}
+
 \chapter{Detalhes de implementação do PGCCD}
 \label{chap:anexos_implementacao}
 
