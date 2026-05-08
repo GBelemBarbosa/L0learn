@@ -1,0 +1,72 @@
+\documentclass{beamer}
+\usetheme{Malmoe}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{algorithm,algpseudocode}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\graphicspath{{../../images/}}
+
+% beamer colors
+\definecolor{myblue}{rgb}{0.0, 0.45, 0.70}
+\setbeamercolor{structure}{fg=myblue}
+\setbeamercolor{local structure}{fg=myblue}
+\setbeamercolor{palette primary}{fg=white,bg=myblue}
+\setbeamercolor{palette secondary}{fg=myblue,bg=white}
+\setbeamercolor{palette tertiary}{fg=white,bg=myblue}
+\setbeamercolor{title}{fg=myblue}
+\setbeamercolor{frametitle}{fg=myblue}
+\setbeamertemplate{bibliography item}[text]
+
+% mathematics operators
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\DeclareMathOperator{\prox}{prox}
+\DeclareMathOperator{\argmin}{arg\,min}
+\DeclareMathOperator{\argmax}{arg\,max}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Supp}{Supp}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+
+% algorithm settings
+\algnewcommand{\algorithmicinput}{\textbf{Input:}}
+\algnewcommand{\algorithmicoutput}{\textbf{Output:}}
+\algnewcommand{\Input}[1]{\item[\algorithmicinput] #1}
+\algnewcommand{\Output}[1]{\item[\algorithmicoutput] #1}
+\algnewcommand{\algoIndent}[1]{\hspace{#1\algorithmicindent}} % for indentation
+
+\newcommand{\mixedPath}{Mixed_v2/Regular/}
+\newcommand{\cvPath}{CV_comp/}
+\newcommand{\boxplotPath}{Boxplot/}
+\newcommand{\tridiagonalPath}{Mixed_v2/Tridiagonal/}
+
+\begin{document}
+
+\title{Optimality Conditions and Algorithms for\\
+$\ell_0$-Regularized Linear Regression}
+\author[G. Belém Barbosa]{Gabriel Belém Barbosa \and Paulo José da Silva e Silva}
+\institute[IMECC-UNICAMP]{
+  Institute of Mathematics, Statistics, and Scientific Computing\\
+  Department of Applied Mathematics\\
+  UNICAMP
+}
+\date{\today}
+
+\frame{\titlepage}
+
+\input{intro}
+\input{optimality}
+\input{algorithms}
+\input{experiments}
+\input{conclusion}
+
+\begin{frame}[allowframebreaks]{References}
+\bibliographystyle{apalike}
+\bibliography{references}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,25 @@
+\section{Conclusion}
+\begin{frame}{Summary (1/2)}
+\begin{itemize}
+\item Proximal gradient methods with spectral steps (NSPG, NSPGH) often converge to better local minima than coordinate descent (PGCCD) despite weaker theoretical guarantees;
+\item The combination NSPG+PGCCD as an inner solver within the CPSI($k$) framework yields the best support recovery and parameter estimation, especially under constant correlation;
+\item Cross-validation strategy matters: inverse paths benefit NSPG; adaptive paths are best for PGCCD and combined methods.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Summary (2/2)}
+\begin{itemize}
+\item The variable metric variant (VMNSPG) converges quickly but occasionally traps in poor minima;
+\item Compared to L0Learn, the new methods provide more robust solutions in difficult correlation settings with competitive computational efficiency;
+\item Tridiagonal masking reveals the importance of problem topology: dense global correlations are harder, but removing them can sometimes harm fine differentiation.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Future Work}
+\begin{itemize}
+\item Extend to the $\ell_0\ell_1$ and $\ell_0\ell_2$;
+\item Investigate structured (e.g., tridiagonal) variable metric proximal schemes to capture more local second-order information without full Hessian. Each proximal subproblem must be solved iteratively;
+\item Investigate scenarios with partially sparse true Hessians;
+\item Rigorous statistical theory for the quality of the solutions delivered by the proposed algorithms (is it even possible?).
+\end{itemize}
+\end{frame}

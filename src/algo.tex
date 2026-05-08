@@ -159,13 +159,13 @@ Um algoritmo iterativo para encontrar um mínimo PSI($k$) através de perturbaç
 \text{s.a } &  S_1 \subseteq S, S_2 \subseteq S^c,  |S_1|, |S_2| \leq k, u\in\R^{|S_2|}
 \end{aligned}\label{psik}
 \end{equation}
-onde $S$ é o suporte de $x^\ell$. Se existir solução viável $\hat{x}$ para o problema acima com $F(\hat{x}) < F(x^\ell)$, então $\hat{x}$ pode não ser um mínimo CW/ponto M-estacionário. Neste caso, reinicializa-se o algoritmo escolhido com $\hat{x}$. Caso contrário, e ademais $x^\ell$ é solução estacionária (por exemplo, mínimo CW, gerado pelo PGCCD), então ele é PSI($o$). O algoritmo a seguir resume o procedimento.
+onde $S$ é o suporte de $x^\ell$. Se existir solução viável $\hat{x}$ para o problema acima com $F(\hat{x}) < F(x^\ell)$, então $\hat{x}$ pode não ser um mínimo CW/ponto M-estacionário. Neste caso, reinicializa-se o algoritmo escolhido com $\hat{x}$. Caso contrário, e ademais $x^\ell$ é solução estacionária (por exemplo, mínimo CW, gerado pelo PGCCD), então ele é PSI($k$). O algoritmo a seguir resume o procedimento.
 
 \begin{algorithm}[H]
-\caption{\textit{Composite Partial Swap Inescapable of order $o$ method} (CPSI($o$))}
+\caption{\textit{Composite Partial Swap Inescapable of order $k$ method} (CPSI($k$))}
 \label{alg:cpsi}
 \Input{$\hat{x}^0 \in \R^p$, $o \in \mathbb{N}^+$ and an inner algorithm}\\
-\Output{Last $\hat{x}^{\ell+1}$ computed (which is a PSI($o$) minimum)}
+\Output{Last $\hat{x}^{\ell+1}$ computed (which is a PSI($k$) minimum)}
 \begin{algorithmic}[1]
     \State Initialize $\ell\coloneq 0$
     \While{true}

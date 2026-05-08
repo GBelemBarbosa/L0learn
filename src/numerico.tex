@@ -4,7 +4,7 @@ Nessa seção serão efetuados experimentos com o intuito de comparar os algorit
 
 \subsection{\textit{Setup} experimental}
 \subsubsection{Geração de dados}
-Assim como em \cite{fastselect}, utilizamos conjuntos de dados sintéticos para uma ampla variedade de tamanhos e configurações de problemas. A matriz de dados é gerada com distribuição gaussiana multivariada $A_{n \times p} \sim \text{MVN}(0, \Sigma)$, e então suas colunas são normalizadas tal que $\|A_i\|_2=1\ \forall i$ para simplificar as atualizações dos algoritmos. Como verdade base, é utilizado um vetor de coeficientes esparsos $x^\dagger\in\R^p$ com $k^\dagger$ entradas não nulas igualmente espaçadas e com valor $1$. É escolhido também um valor aproximado para o SNR, definido como 
+Assim como em \cite{fastselect}, utilizamos conjuntos de dados sintéticos para uma ampla variedade de tamanhos e configurações de problemas. A matriz de dados é gerada com distribuição gaussiana multivariada $A_{n \times p} \sim \text{MVN}(0, \Sigma)$, e então suas colunas são normalizadas tal que $\|A_i\|_2=1\ \forall i$ para simplificar as atualizações dos algoritmos. Como verdade base, é utilizado um vetor de coeficientes esparsos $x^\dagger\in\R^p$ com $k^\dagger$ entradas não nulas, cujos valores e suporte são definidos conforme cada experimento. É escolhido também um valor aproximado para o SNR, definido como 
 \[\text{SNR} \coloneq \frac{\text{E}[\|Ax^\dagger\|_2^2]}{\text{E}[\|b-Ax^\dagger\|_2^2]},\]
 e com base nessa escolha é tomado 
 \[\sigma = \sqrt{\frac{\|Ax^\dagger\|_2^2}{n\cdot\text{SNR}}}.\]
@@ -24,7 +24,7 @@ Após experimentos iniciais de ajuste de hiperparâmetros, foram escolhidos $m=1
 
 
 \subsection{Comparação entre PGCCD e NPG}
-Consideramos a eficiência dos algoritmos propostos para o problema \eqref{R} com $\lambda_q=0$ (problema $\ell_0$ puro). Foi utilizado um conjunto de dados com correlação exponencial, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$. Foi tomado $\lambda_0=0.5\frac{\norm{A^Tb}^2_\infty}{2L_f}$ para obter uma penalização razoável (veja \cite[Exemplo 3]{manuscrito} para uma explicação dessa escolha). Foram geradas 50 inicializações com suporte de tamanho $k^\dagger$ com índices uniformemente escolhidos de $[p]$ e valores com distribuição uniforme em $(0,1)$. Para cada inicialização é rodado cada algoritmo. A medida de recuperação do suporte é definida como 
+Consideramos a eficiência dos algoritmos propostos para o problema \eqref{R} com $\lambda_q=0$ (problema $\ell_0$ puro). Foi utilizado um conjunto de dados com correlação exponencial, $\rho=0.5,\ n=500,\ p=2000,\ k^\dagger=100,\ \text{SNR}=10$. Foram geradas 50 instâncias (inicializações) aleatórias do problema, em que para cada uma o suporte de $x^\dagger$ foi escolhido uniformemente de $[p]$ e seus valores tomados com distribuição uniforme em $(0,1)$. Os algoritmos foram inicializados a partir de vetores com esse mesmo suporte e valores independentes na mesma distribuição uniforme. A medida de recuperação do suporte é definida como 
 \[\frac{| Supp(x) \cap Supp(x^\dagger) |}{\max \{ |Supp(x)|, k^\dagger \}},\]
 que quantifica a fração de variáveis verdadeiramente ativas recuperadas, normalizada pelo máximo entre o tamanho do suporte estimado e o verdadeiro $k^\dagger$. Essa medida penaliza tanto falsos positivos quanto falsos negativos e valores próximos de 1 indicam recuperação alta. O critério de parada utilizada em todos os algoritmos foi uma mudança relativa no objetivo menor que $10^{-7}$.
 
@@ -189,7 +189,7 @@ Observa-se que métodos baseados em NSPG beneficiam-se significativamente de cam
 
 
 \subsection{Comparação com L0Learn}
-Para contextualizar o desempenho do PGCCD em relação ao estado da arte, realizamos uma comparação com o pacote \texttt{L0Learn} \cite{l0learn} (versão de desenvolvimento do repositório \texttt{git} \url{https://github.com/fbkns/L0Learn}). O \texttt{L0Learn} é altamente otimizado e implementa algoritmos de descida coordenada com estratégias sofisticadas de \textit{active set}. 
+Para contextualizar o desempenho do PGCCD em relação ao estado da arte, realizamos uma comparação com o pacote \texttt{L0Learn} \cite{l0learn} (versão de desenvolvimento do repositório \texttt{git} \url{https://github.com/fbkns/L0Learn}). O \texttt{L0Learn} é altamente otimizado e implementa algoritmos de descida coordenada com estratégias sofisticadas de \textit{active set}. O setup de dados segue o padrão descrito na \autoref{numerico}, com a verdade base $x^\dagger$ possuindo $k^\dagger$ entradas igualmente espaçadas e com valor $1$.
 
 Nesta comparação, distinguimos três variantes:
 (i) \textbf{\texttt{L0Learn+CPSI(1) val}}: utiliza o algoritmo nativo \texttt{CPSI(1)} da versão Git;

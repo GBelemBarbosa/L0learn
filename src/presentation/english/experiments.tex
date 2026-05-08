@@ -1,0 +1,243 @@
+\section{Numerical Experiments}
+
+\subsection{Experimental Setup}
+\begin{frame}{Data Generation}
+\begin{itemize}
+\item $A_{n\times p} \sim \operatorname{MVN}(0,\Sigma)$, columns normalized to unit $\ell_2$ norm;
+\item The ground truth $x^\dagger$ with $k^\dagger$ nonzero entries (values and indices defined per experiment);
+\item Target SNR: $\sigma = \sqrt{\|Ax^\dagger\|^2 / (n\cdot\text{SNR})}$;
+\item $b = Ax^\dagger + \epsilon$, $\epsilon_i \stackrel{\text{iid}}{\sim} N(0,\sigma^2)$.
+\end{itemize}
+Covariance structures:
+\begin{itemize}
+\item \emph{Constant correlation}: $\sigma_{ij} = \rho\ (i\neq j)$, $\sigma_{ii}=1$;
+\item \emph{Exponential correlation}: $\sigma_{ij} = \rho^{|i-j|}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Algorithm Parameters}
+\begin{itemize}
+\item NPG family: $m=15$, $\delta=0.01$, $\tau=0.25$, $\gamma_{\min},\gamma_{\max}$ small/large;
+\item Spectral steps initialized via \eqref{BBR}, \eqref{BBR2} with $x^{-1}=x^0 - 10^{-5}\nabla f(x^0)$;
+\item VMNSPG: $\mu=10^{-3}$;
+\item PGCCD: only the top quarter of coordinates are reordered.
+\end{itemize}
+\end{frame}
+
+\subsection{Comparison: PGCCD vs. NPG Variants}
+\begin{frame}{Experiment $\ell_0$ Problem ($\lambda_q=0$)}
+Exponential correlation, $\rho=0.5$, $n=500$, $p=2000$, $k^\dagger=100$, SNR$=10$,\\
+$\lambda_0 = 0.5\,\|A^T b\|_\infty^2/(2 L_f)$.
+\begin{itemize}
+\item 50 random problem instances: $x^\dagger$ support and values in $(0,1)$ drawn uniformly;
+\item Algorithms start from random initializations with the same support;
+\item Support recovery measure:
+\[
+\frac{|\Supp(x) \cap \Supp(x^\dagger)|}{\max\{|\Supp(x)|, k^\dagger\}};
+\]
+\item Stopping criterion: relative objective change $< 10^{-7}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Iteration Count}
+\begin{center}
+\includegraphics[width=0.6\linewidth]{\boxplotPath nocpsi1/exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100.png}\\
+\small Exponential, $\rho=0.5$, $n=500$, $p=2000$, $k^\dagger=100$, SNR$=10$
+\end{center}
+\end{frame}
+
+\begin{frame}{Objective Value and Support Recovery}
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath nocpsi1/exp-0.5-500-2000-10-100/pF-exp-0.5-500-2000-10-100.png}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath nocpsi1/exp-0.5-500-2000-10-100/pSUP-exp-0.5-500-2000-10-100.png}
+\end{columns}
+\centering \small Exponential, $\rho=0.5$, $n=500$, $p=2000$, $k^\dagger=100$, SNR$=10$
+\end{frame}
+
+\begin{frame}{CW Minimum Check}
+After NSPG/NSPGH/VMNSPG, run PGCCD on the result. 
+If support unchanged and $\le 2$ PGCCD iterations, the point is deemed CW.
+\begin{itemize}
+\item NSPG: 60\% CW;
+\item NSPGH: 44\% CW;
+\item VMNSPG: 0\% CW.
+\end{itemize}
+\end{frame}
+
+\subsection{Impact of Combinatorial Optimization}
+\begin{frame}{CPSI(1) with Different Inner Solvers}
+Inner solvers: PGCCD, NSPG, NSPG+PGCCD (NSPG followed by PGCCD), and NSPG without CPSI.
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath exp-0.5-500-2000-10-100/pK-exp-0.5-500-2000-10-100.png}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath exp-0.5-500-2000-10-100/pKout-exp-0.5-500-2000-10-100.png}
+\end{columns}
+\centering \small Exponential, $\rho=0.5$, $n=500$, $p=2000$, $k^\dagger=100$, SNR$=10$
+\end{frame}
+
+\begin{frame}{Quality with CPSI(1)}
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath exp-0.5-500-2000-10-100/pF-exp-0.5-500-2000-10-100.png}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath exp-0.5-500-2000-10-100/pSUP-exp-0.5-500-2000-10-100.png}
+\end{columns}
+\centering \small Exponential, $\rho=0.5$, $n=500$, $p=2000$, $k^\dagger=100$, SNR$=10$
+\end{frame}
+
+\begin{frame}{Higher SNR (SNR = 300)}
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath exp-0.5-500-2000-300-100/pF-exp-0.5-500-2000-300-100.png}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath exp-0.5-500-2000-300-100/pSUP-exp-0.5-500-2000-300-100.png}
+\end{columns}
+\centering \small Exponential, $\rho=0.5$, $n=500$, $p=2000$, $k^\dagger=100$, SNR$=300$
+\end{frame}
+
+\begin{frame}{Iteration Count (higher SNR)}
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath exp-0.5-500-2000-300-100/pK-exp-0.5-500-2000-300-100.png}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath exp-0.5-500-2000-300-100/pKout-exp-0.5-500-2000-300-100.png}
+\end{columns}
+\centering \small Exponential, $\rho=0.5$, $n=500$, $p=2000$, $k^\dagger=100$, SNR$=300$
+\end{frame}
+
+\begin{frame}{Constant Correlation ($\rho=0.5$, SNR=300)}
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath con-0.5-500-2000-300-100/pF-con-0.5-500-2000-300-100.png}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath con-0.5-500-2000-300-100/pSUP-con-0.5-500-2000-300-100.png}
+\end{columns}
+\centering \small Constant, $\rho=0.5$, $n=500$, $p=2000$, $k^\dagger=100$, SNR$=300$
+\end{frame}
+
+\begin{frame}{Iteration Count (constant correlation)}
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath con-0.5-500-2000-300-100/pK-con-0.5-500-2000-300-100.png}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath con-0.5-500-2000-300-100/pKout-con-0.5-500-2000-300-100.png}
+\end{columns}
+\centering \small Constant, $\rho=0.5$, $n=500$, $p=2000$, $k^\dagger=100$, SNR$=300$
+\end{frame}
+
+\begin{frame}{Exponential, $\rho=0.9$, Reduced Sizes}
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath exp-0.9-250-1000-300-25/pF-exp-0.9-250-1000-300-25.png}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath exp-0.9-250-1000-300-25/pSUP-exp-0.9-250-1000-300-25.png}
+\end{columns}
+\centering \small Exponential, $\rho=0.9$, $n=250$, $p=1000$, $k^\dagger=25$, SNR$=300$
+\end{frame}
+
+\begin{frame}{Iteration Count (exponential, $\rho=0.9$)}
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath exp-0.9-250-1000-300-25/pK-exp-0.9-250-1000-300-25.png}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\boxplotPath exp-0.9-250-1000-300-25/pKout-exp-0.9-250-1000-300-25.png}
+\end{columns}
+\centering \small Exponential, $\rho=0.9$, $n=250$, $p=1000$, $k^\dagger=25$, SNR$=300$
+\end{frame}
+
+\subsection{Cross-Validation Strategies}
+\begin{frame}{Overview}
+Three cross-validation (CV) strategies were implemented to select $\lambda_0$:
+\begin{enumerate}
+\item \textbf{Standard Decreasing}: Warm-start from a large $\lambda$, reduce monotonically;
+\item \textbf{Inverse Increasing}: Warm-start from a small $\lambda$, increase monotonically;
+\item \textbf{Smart Adaptive}: Probes both extremes, chooses best direction, allows one reversal.
+\end{enumerate}
+After CV, a \emph{Final Refinement} compares path-based and zero-based (cold-start) solutions and selects the one with lower validation MSE.
+\end{frame}
+
+\begin{frame}{Update Rules for $\lambda$}
+\begin{itemize}
+    \item \textbf{Decreasing Direction} (Next entry candidate):
+    \[
+    \lambda_{j+1} = 0.9 \cdot \min\left(\lambda_j, \gamma_{j,0} \cdot \frac{\max_{l \in S^c} |\nabla f(x^{j,0})_l|^2}{2}\right)
+    \]
+    Finds the largest $\lambda$ that would likely allow a new variable into the support $S$ via the proximal step.
+    \item \textbf{Increasing Direction} (Next removal candidate):
+    \[
+    \lambda_{j+1} = 1.11 \cdot \max\left(\lambda_j, \frac{\min_{l \in S} |x^{j,0}_l - \gamma_{j,0} \nabla f(x^{j,0})_l|^2}{2\gamma_{j,0}}\right)
+    \]
+    Finds the smallest $\lambda$ that would likely force an active variable out of the support.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CV Strategy Comparison (PGCCD+CPSI1)}
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\cvPath L0LearnPSI1/exp-0.5-2000/Comp_Sim-L0LearnCPSI1_Comparison_exp-0.5-2000.png}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\cvPath L0LearnPSI1/exp-0.5-2000/Comp_Time-L0LearnCPSI1_Comparison_exp-0.5-2000.png}
+\end{columns}
+\centering \small Exponential, $\rho=0.5$, $p=2000$, $k^\dagger=100$, SNR$=10$
+\end{frame}
+
+\subsection{Variable $n$ Comparison}
+\begin{frame}{Setup}
+Compared with the \texttt{L0Learn} package \cite{l0learn} (Git version).
+\begin{itemize}
+\item $x^\dagger$ with $k^\dagger$ equally spaced entries equal to $1$;
+\item Compared with the \texttt{L0Learn} package \cite{l0learn} (Git version).
+\item \texttt{L0Learn+CPSI(1) val} (native CPSI);
+\item \texttt{L0Learn val (CD only)} (native CD);
+\item \texttt{L0Learn+CPSI(1) val path}: uses L0Learn’s CD as inner solver.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exponential, $\rho=0.5$, $p=2000$, SNR=10}
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\mixedPath exp-0.5-2000/pnSim-NewTerminal_mixed_v2_exp_0.5_p2000.png}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\mixedPath exp-0.5-2000/pnTime-NewTerminal_mixed_v2_exp_0.5_p2000.png}
+\end{columns}
+\centering \small Exponential, $\rho=0.5$, $p=2000$, $k^\dagger=100$, SNR$=10$
+\end{frame}
+
+\begin{frame}{Constant, $\rho=0.9$, $p=1000$, SNR=5}
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\mixedPath const-0.9-1000/pnSim-NewTerminal_mixed_v2_const_0.9_p1000.png}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\mixedPath const-0.9-1000/pnTime-NewTerminal_mixed_v2_const_0.9_p1000.png}
+\end{columns}
+\centering \small Constant, $\rho=0.9$, $p=1000$, $k^\dagger=20$, SNR$=5$
+\end{frame}
+
+\subsection{Tridiagonal Block Experiments}
+\begin{frame}{Motivation}
+We mask the design matrix $A$ to have a nearly tridiagonal block structure ($\approx 3$ nonzeros per row after balancing). 
+This isolates blocks of variables, retaining local covariance $\Sigma$ but removing global dense connections.
+\end{frame}
+
+\begin{frame}{Constant, $\rho=0.9$, SNR=5}
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\tridiagonalPath const-0.9-1000/pnSim-NewTerminal_mixed_v2_tri_const_0.9_p1000.png}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\tridiagonalPath const-0.9-1000/pnTime-NewTerminal_mixed_v2_tri_const_0.9_p1000.png}
+\end{columns}
+\centering \small Constant, $\rho=0.9$, $p=1000$, $k^\dagger=20$, SNR$=5$, Tridiagonal Mask
+\end{frame}
+
+\begin{frame}{Exponential, $\rho=0.9$, SNR=5}
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\tridiagonalPath exp-0.9-1000/pnSim-NewTerminal_mixed_v2_tri_exp_0.9_p1000.png}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{\tridiagonalPath exp-0.9-1000/pnTime-NewTerminal_mixed_v2_tri_exp_0.9_p1000.png}
+\end{columns}
+\centering \small Exponential, $\rho=0.9$, $p=1000$, $k^\dagger=20$, SNR$=5$, Tridiagonal Mask
+\end{frame}

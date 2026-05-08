@@ -15,6 +15,12 @@ Tomando $g=ch,\ c\geq 0$, o problema proximal acima é separável. Seja $h_i(u_i
         \{0,\operatorname{sign}(x_i)(|x_i|-c\lambda_1)\},& |x_i|-c\lambda_1=\sqrt{2c\lambda_0}\\
         \{\operatorname{sign}(x_i)(|x_i|-c\lambda_1)\},& |x_i|-c\lambda_1>\sqrt{2c\lambda_0}\end{cases} .\]
 
+Já se tomarmos $h(x)\coloneqq \lambda_0 \|x\|_0 + \lambda_1 \|x\|_1+\lambda_2 \|x\|_2^2$ (termo quadrático como parte da regularização), o operador proximal se torna
+\[\left[\prox_{ch}(x)\right]_i=\argmin_{u_i\in\R}h_i(u_i)=\begin{cases}
+        \{0\},& \frac{|x_i|-c\lambda_1}{1+2c\lambda_2}<\sqrt{\frac{2c\lambda_0}{1+2c\lambda_2}}\\
+        \{0,\operatorname{sign}(x_i)\frac{|x_i|-c\lambda_1}{1+2c\lambda_2}\},& \frac{|x_i|-c\lambda_1}{1+2c\lambda_2}=\sqrt{\frac{2c\lambda_0}{1+2c\lambda_2}}\\
+        \{\operatorname{sign}(x_i)\frac{|x_i|-c\lambda_1}{1+2c\lambda_2}\},& \frac{|x_i|-c\lambda_1}{1+2c\lambda_2}>\sqrt{\frac{2c\lambda_0}{1+2c\lambda_2}}\end{cases} .\]
+
 \subsection{Soluções estacionárias}
 Para $G:\R^p\to \R$ e $d\in\R^p$, definimos a derivada direcional (inferior) 
 

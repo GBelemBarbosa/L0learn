@@ -1,0 +1,157 @@
+\section{Proximal Operator and Optimality Conditions}
+
+\begin{frame}{Composite Problem}
+Define
+\[
+f(x) \coloneqq \frac{1}{2} \|Ax-b\|_2^2 + \lambda_2 \|x\|_2^2,\qquad
+h(x) \coloneqq \lambda_0 \|x\|_0 + \lambda_1 \|x\|_1.
+\]
+We can apply composite optimization to
+\[
+\min_{x \in \R^p} F(x) \coloneqq f(x) + h(x). \tag{C}\label{C}
+\]
+\end{frame}
+
+\begin{frame}{Proximal Operator}
+For $g:\R^p \to \R$, the classical proximal operator is
+\[
+\prox_{g}(x) \coloneqq \argmin_{u \in \R^p} g(u) + \frac{1}{2}\|u-x\|_2^2. \tag{prox}\label{prox}
+\]
+With $g = c h$ ($c \ge 0$), the problem is separable.
+\end{frame}
+
+\begin{frame}{Closed-Form Proximal for $c h$}
+For each coordinate $i$, let $h_i(u_i) \coloneqq \lambda_0 \mathbf{1}_{\{0\}}(u_i) + \lambda_1|u_i| + \frac{(u_i-x_i)^2}{2c}$.
+As in soft-thresholding, the nonzero minimizer is $\sign(x_i)(|x_i|-c\lambda_1)$ when $|x_i| > c\lambda_1$.
+\begin{footnotesize}
+\[
+[\prox_{ch}(x)]_i =
+\begin{cases}
+\{0\}, & |x_i|-c\lambda_1 < \sqrt{2c\lambda_0}\\[2pt]
+\{0,\,\sign(x_i)(|x_i|-c\lambda_1)\},& |x_i|-c\lambda_1 = \sqrt{2c\lambda_0}\\[2pt]
+\{\sign(x_i)(|x_i|-c\lambda_1)\},& |x_i|-c\lambda_1 > \sqrt{2c\lambda_0}
+\end{cases}.
+\]
+\end{footnotesize}
+\end{frame}
+
+\begin{frame}{Quadratic Term in Regularization}
+If we consider $h(x)\coloneqq \lambda_0 \|x\|_0 + \lambda_1 \|x\|_1 + \lambda_2 \|x\|_2^2$ (quadratic term as part of the regularization), the proximal operator becomes:
+\begin{footnotesize}
+\[\left[\prox_{ch}(x)\right]_i=\begin{cases}
+        \{0\},& \frac{|x_i|-c\lambda_1}{1+2c\lambda_2}<\sqrt{\frac{2c\lambda_0}{1+2c\lambda_2}}\\
+        \{0,\operatorname{sign}(x_i)\frac{|x_i|-c\lambda_1}{1+2c\lambda_2}\},& \frac{|x_i|-c\lambda_1}{1+2c\lambda_2}=\sqrt{\frac{2c\lambda_0}{1+2c\lambda_2}}\\
+        \{\operatorname{sign}(x_i)\frac{|x_i|-c\lambda_1}{1+2c\lambda_2}\},& \frac{|x_i|-c\lambda_1}{1+2c\lambda_2}>\sqrt{\frac{2c\lambda_0}{1+2c\lambda_2}}\end{cases} .\]
+\end{footnotesize}
+\end{frame}
+
+\begin{frame}{Stationary Solutions}
+For $G:\R^p\to\R$, $d\in\R^p$, define the lower directional derivative
+\[
+G'(x,d) \coloneqq \liminf_{\alpha \downarrow 0} \frac{G(x+\alpha d)-G(x)}{\alpha}.
+\]
+\begin{definition}
+$x^* \in \R^p$ is a \alert{stationary solution} of \eqref{C} if
+$F'(x^*,d) \ge 0 \ \forall d \in \R^p$.
+\end{definition}
+\end{frame}
+
+\begin{frame}{Characterisation via $z_i$}
+Let the $i$-th minimizer of the smooth part (keeping other coordinates fixed) be
+\[
+z_i \coloneqq \argmin_{u_i} f(x+(u_i-x_i)e_i)
+= \frac{\big\langle b-\sum_{j\neq i} x_j A_j,\, A_i \big\rangle}{\|A_i\|_2^2+2\lambda_2}, \quad \forall i\in[p].
+\]
+\begin{center}
+\includegraphics[width=0.6\linewidth]{p2.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{Stationary $\Leftrightarrow$ Proximal-like Condition \cite[Lemma 1]{fastselect}} \label{statlemma}
+$x^*$ with support $S$ is a stationary solution iff
+\[
+x^*_i = \sign(z_i^*)\Bigl(|z_i^*| - \frac{\lambda_1}{\|A_i\|_2^2+2\lambda_2}\Bigr)
+\ \text{and}\ |z_i^*| > \frac{\lambda_1}{\|A_i\|_2^2+2\lambda_2}
+\]
+for all $i \in S$, and $x_j^*=0$ with $|z_j^*| \le \lambda_1/(\|A_j\|_2^2+2\lambda_2)$ for $j \notin S$.
+\end{frame}
+
+\begin{frame}{Coordinate-Wise (CW) Minimum}
+\begin{definition}
+$x^*$ is a \alert{CW minimum} of \eqref{C} if for every $i\in[p]$,
+\[
+x_i^* \in \argmin_{u_i \in \R} F\bigl(x^* + (u_i-x_i^*) e_i\bigr).
+\]
+\end{definition}
+From the proximal operator:
+\[
+x_i^* \in \prox_{\frac{1}{\|A_i\|_2^2+2\lambda_2}(\lambda_0\mathbf{1}_{\{0\}}+\lambda_1|\cdot|)}(\tilde{x_i^*}),
+\]
+so a CW minimum is stationary.
+\end{frame}
+
+\begin{frame}{Partial Swap Inescapable (PSI($k$))}
+\begin{definition}
+A stationary solution $x^*$ with support $S$ is a \alert{PSI($k$) minimum} if 
+$\forall S_1 \subset S,\, S_2 \subset S^c$ with $|S_1|,|S_2| \le k$,
+\[
+F(x^*) \le \min_{u \in \R^{|S_2|}} F\!\bigl(x^* - U_{S_1}x^*_{S_1} + U_{S_2}u\bigr).
+\]
+\end{definition}
+Taking $S_1=\{i\},\, S_2=\emptyset$ gives the CW property, so PSI($k$) $\subset$ CW minima.
+\end{frame}
+
+\begin{frame}{Full Swap Inescapable (FSI($k$))}
+\begin{definition}
+$x^*$ is an \alert{FSI($k$) minimum} if $\forall S_1 \subset S,\, S_2 \subset S^c$ with $|S_1|,|S_2| \le k$,
+\[
+F(x^*) \le \min_{u \in \R^{|(S\cup S_2)\setminus S_1|}} F\!\bigl(x^* - U_{S_1}x^*_{S_1} + U_{(S\cup S_2)\setminus S_1} u\bigr).
+\]
+\end{definition}
+It is straightforward to deduce that
+\[
+\text{FSI}(k) \subset \text{PSI}(k) \subset \text{CW minima}.
+\]
+\end{frame}
+
+\begin{frame}{M-Stationarity}
+For $g:\R^p\to\R$, the regular (Fréchet) subdifferential is
+\[
+\widehat{\partial} g(x) \coloneqq \Bigl\{ \eta \in \R^p \,\Big|\,
+\liminf_{u \to x} \frac{g(u)-g(x)-\langle\eta,u-x\rangle}{\|u-x\|} \ge 0 \Bigr\}.
+\]
+The limiting (Mordukhovich) subdifferential $\partial g(x)$ is the outer limit of $\widehat{\partial} g$ at points $x^k \to_g x$.
+For $F = f + h$ with $f \in \mathcal{C}^1$, $\partial F(x) = \nabla f(x) + \partial h(x)$.
+\newline
+\begin{definition}
+$x^*$ is \alert{M-stationary} if $0 \in \partial F(x^*)$.
+\end{definition}
+\end{frame}
+
+\begin{frame}{Relation to Stationary Solutions}
+One can check that $0 \in \widehat{\partial} F(x^*)\Leftrightarrow F'(x^*,d) \ge 0$ for all $d$. 
+Since $\widehat{\partial} F(x) \subset \partial F(x)$, stationary solutions are M-stationary.
+\end{frame}
+
+\begin{frame}{Proximal Gradient (PG) Stationarity}
+\begin{definition}
+$x^*$ is \alert{PG-stationary} if for all $0 < \tau < 1/L_f$ ($f\in\mathcal{C}^{1,1}_{L_f}$),
+\[
+x^* \in \prox_{\tau h}\bigl(x^* - \tau \nabla f(x^*)\bigr).
+\]
+\end{definition}
+Using Fermat's rule one obtains $0 \in \widehat{\partial} F(x^*)$, so PG-stationarity $\subset$ stationary solutions.
+If $L_f \ge 1$, then CW minima are PG-stationary (since $\|A_i\|_2=1$ implies $L_f = \lambda_{\max}(A^T A) + 2\lambda_2 \ge 1$).
+\end{frame}
+
+\begin{frame}{Hierarchy of Optimality Conditions}
+\[
+\begin{aligned}
+\text{FSI($k$)} &\subset \text{PSI($k$)} \subset \text{CW minima} \overset{L_f\ge 1}{\subset} \text{PG-stationary}\\
+&\subset \text{stationary solutions} \subset \text{M-stationary}.
+\end{aligned}
+\]
+\[
+L_f = \lambda_{\max}(A^T A) + 2\lambda_2.
+\]
+\end{frame}
