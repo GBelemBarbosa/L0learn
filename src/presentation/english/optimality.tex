@@ -56,10 +56,10 @@ $F'(x^*,d) \ge 0 \ \forall d \in \R^p$.
 \end{definition}
 \end{frame}
 
-\begin{frame}{Characterisation via $z_i$}
+\begin{frame}{Characterisation via $\tilde{x_i}$}
 Let the $i$-th minimizer of the smooth part (keeping other coordinates fixed) be
 \[
-z_i \coloneqq \argmin_{u_i} f(x+(u_i-x_i)e_i)
+\tilde{x_i} \coloneqq \argmin_{u_i} f(x+(u_i-x_i)e_i)
 = \frac{\big\langle b-\sum_{j\neq i} x_j A_j,\, A_i \big\rangle}{\|A_i\|_2^2+2\lambda_2}, \quad \forall i\in[p].
 \]
 \begin{center}
@@ -70,10 +70,10 @@ z_i \coloneqq \argmin_{u_i} f(x+(u_i-x_i)e_i)
 \begin{frame}{Stationary $\Leftrightarrow$ Proximal-like Condition \cite[Lemma 1]{fastselect}} \label{statlemma}
 $x^*$ with support $S$ is a stationary solution iff
 \[
-x^*_i = \sign(z_i^*)\Bigl(|z_i^*| - \frac{\lambda_1}{\|A_i\|_2^2+2\lambda_2}\Bigr)
-\ \text{and}\ |z_i^*| > \frac{\lambda_1}{\|A_i\|_2^2+2\lambda_2}
+x^*_i = \sign(\tilde{x_i^*})\Bigl(|\tilde{x_i^*}| - \frac{\lambda_1}{\|A_i\|_2^2+2\lambda_2}\Bigr)
+\ \text{and}\ |\tilde{x_i^*}| > \frac{\lambda_1}{\|A_i\|_2^2+2\lambda_2}
 \]
-for all $i \in S$, and $x_j^*=0$ with $|z_j^*| \le \lambda_1/(\|A_j\|_2^2+2\lambda_2)$ for $j \notin S$.
+for all $i \in S$, and $x_j^*=0$ with $|\tilde{x_j^*}| \le \lambda_1/(\|A_j\|_2^2+2\lambda_2)$ for $j \notin S$.
 \end{frame}
 
 \begin{frame}{Coordinate-Wise (CW) Minimum}

@@ -4,7 +4,7 @@
 \texttt{L0Learn} \cite{fastselect} proposes a CD method:
 \[
 x^{k+1}_i \in \argmin_{u_i} F(x^k + (u_i-x_i^k)e_i)
-= \prox_{\frac{1}{\|A_i\|^2+2\lambda_2} (\lambda_0\mathbf{1}_{\{0\}}+\lambda_1|\cdot|)}(z_i^k).
+= \prox_{\frac{1}{\|A_i\|^2+2\lambda_2} (\lambda_0\mathbf{1}_{\{0\}}+\lambda_1|\cdot|)}(\tilde{x_i^k}).
 \]
 \begin{itemize}
 \item Start with $x^0$, residual $r^0 = b - Ax^0$;
