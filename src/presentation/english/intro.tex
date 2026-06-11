@@ -1,5 +1,9 @@
 \section{Introduction}
 
+\begin{frame}{Main Citation}
+    Fast Best Subset Selection: Coordinate Descent and Local Combinatorial Optimization Algorithms \cite{fastselect}.
+\end{frame}
+
 \begin{frame}{Problem Statement}
 Consider the usual linear regression problem with noise
 \[
@@ -19,11 +23,6 @@ Assuming sparsity in the solution (often desired or theoretically expected when 
 \min_{x \in \R^p} \frac{1}{2} \|Ax-b\|_2^2 + \lambda_0 \|x\|_0 + \lambda_q \|x\|_q^q,\quad q \in \{1,2\}. \tag{R}\label{R}
 \]
 The $\ell_0$ pseudo-norm $\|x\|_0 = |\{i \mid x_i \neq 0\}|$; $\lambda_0 \ge 0$ controls the trade-off between nonzeros and data fit; $\lambda_q \ge 0$ controls the $\ell_q$ regularization.
-\end{frame}
-
-\begin{frame}{Motivation for $\ell_q$ Regularization}
-Although $q=1$ also induces sparsity, the additional $\ell_q$ term helps avoid \textit{overfitting} in low Signal-to-Noise Ratio (SNR) regimes \cite{overfitting} via \textit{shrinkage}. 
-We denote \eqref{R} with $q=1$ as the $\ell_0\ell_1$ problem and $q=2$ as the $\ell_0\ell_2$ problem.
 \end{frame}
 
 \begin{frame}{Approaches to Solve \eqref{R}}

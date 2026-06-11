@@ -3,26 +3,17 @@
 \subsection{Experimental Setup}
 \begin{frame}{Data Generation}
 \begin{itemize}
-\item $A_{n\times p} \sim \operatorname{MVN}(0,\Sigma)$, columns normalized to unit $\ell_2$ norm;
-\item The ground truth $x^\dagger$ with $k^\dagger$ nonzero entries (values and indices defined per experiment);
-\item Target SNR: $\sigma = \sqrt{\|Ax^\dagger\|^2 / (n\cdot\text{SNR})}$;
-\item $b = Ax^\dagger + \epsilon$, $\epsilon_i \stackrel{\text{iid}}{\sim} N(0,\sigma^2)$.
-\end{itemize}
-Covariance structures:
+\item $A_{n\times p} \sim \operatorname{MVN}(0,\Sigma)$ (Multivariate Normal), columns normalized to unit $\ell_2$ norm, with covariance structures:
 \begin{itemize}
 \item \emph{Constant correlation}: $\sigma_{ij} = \rho\ (i\neq j)$, $\sigma_{ii}=1$;
 \item \emph{Exponential correlation}: $\sigma_{ij} = \rho^{|i-j|}$.
 \end{itemize}
-\end{frame}
-
-\begin{frame}{Algorithm Parameters}
-\begin{itemize}
-\item NPG family: $m=15$, $\delta=0.01$, $\tau=0.25$, $\gamma_{\min},\gamma_{\max}$ small/large;
-\item Spectral steps initialized via \eqref{BBR}, \eqref{BBR2} with $x^{-1}=x^0 - 10^{-5}\nabla f(x^0)$;
-\item VMNSPG: $\mu=10^{-3}$;
-\item PGCCD: only the top quarter of coordinates are reordered.
+\item The ground truth $x^\dagger$ with $k^\dagger$ nonzero entries (values and indices defined per experiment);
+\item Target SNR: $\sigma = \sqrt{\|Ax^\dagger\|^2 / (n\cdot\text{SNR})}$;
+\item $b = Ax^\dagger + \epsilon$, $\epsilon_i \stackrel{\text{iid}}{\sim} N(0,\sigma^2)$.
 \end{itemize}
 \end{frame}
+
 
 \subsection{Comparison: PGCCD vs. NPG Variants}
 \begin{frame}{Experiment $\ell_0$ Problem ($\lambda_q=0$)}
@@ -88,15 +79,6 @@ Inner solvers: PGCCD, NSPG, NSPG+PGCCD (NSPG followed by PGCCD), and NSPG withou
 \centering \small Exponential, $\rho=0.5$, $n=500$, $p=2000$, $k^\dagger=100$, SNR$=10$
 \end{frame}
 
-\begin{frame}{Iteration Count (Constant Correlation)}
-\begin{columns}
-\column{0.5\textwidth}
-\includegraphics[width=\linewidth]{\boxplotPath con-0.5-500-2000-300-100/pK-con-0.5-500-2000-300-100.png}
-\column{0.5\textwidth}
-\includegraphics[width=\linewidth]{\boxplotPath con-0.5-500-2000-300-100/pKout-con-0.5-500-2000-300-100.png}
-\end{columns}
-\centering \small Constant, $\rho=0.5$, $n=500$, $p=2000$, $k^\dagger=100$, SNR$=300$
-\end{frame}
 
 \begin{frame}{Iteration Count (Exponential, $\rho=0.9$)}
 \begin{columns}
@@ -109,12 +91,12 @@ Inner solvers: PGCCD, NSPG, NSPG+PGCCD (NSPG followed by PGCCD), and NSPG withou
 \end{frame}
 
 \subsection{Cross-Validation Strategies}
-\begin{frame}{Overview}
+\begin{frame}{Variable Sample Size ($n$) Automatic $\lambda_0$ CV Search}
 Three cross-validation (CV) strategies were implemented to select $\lambda_0$:
 \begin{enumerate}
 \item \textbf{Standard Decreasing}: Warm-start from a large $\lambda$, reduce monotonically;
 \item \textbf{Inverse Increasing}: Warm-start from a small $\lambda$, increase monotonically;
-\item \textbf{Smart Adaptive}: Probes both extremes, chooses best direction, allows one reversal.
+\item \textbf{Adaptive}: Probes both extremes, chooses best direction, allows one reversal.
 \end{enumerate}
 After CV, a \emph{Final Refinement} compares path-based and zero-based (cold-start) solutions and selects the one with lower validation MSE.
 \end{frame}
@@ -134,44 +116,13 @@ After CV, a \emph{Final Refinement} compares path-based and zero-based (cold-sta
 \end{itemize}
 \end{frame}
 
-\begin{frame}{CV Strategy Comparison (PGCCD+CPSI1)}
-\begin{columns}
-\column{0.5\textwidth}
-\includegraphics[width=\linewidth]{\cvPath L0LearnPSI1/exp-0.5-2000/Comp_Sim-L0LearnCPSI1_Comparison_exp-0.5-2000.png}
-\column{0.5\textwidth}
-\includegraphics[width=\linewidth]{\cvPath L0LearnPSI1/exp-0.5-2000/Comp_Time-L0LearnCPSI1_Comparison_exp-0.5-2000.png}
-\end{columns}
-\centering \small Exponential, $\rho=0.5$, $p=2000$, $k^\dagger=100$, SNR$=10$
-\end{frame}
 
-\subsection{Variable $n$ Comparison}
-\begin{frame}{Setup}
-Compared with the \texttt{L0Learn} package \cite{l0learn} (Git version).
-\begin{itemize}
-\item $x^\dagger$ with $k^\dagger$ equally spaced entries equal to $1$;
-\item Compared with the \texttt{L0Learn} package \cite{l0learn} (Git version).
-\item \texttt{L0Learn+CPSI(1) val} (native CPSI);
-\item \texttt{L0Learn val (CD only)} (native CD);
-\item \texttt{L0Learn+CPSI(1) val path}: uses L0Learn’s CD as inner solver.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Exponential, $\rho=0.5$, $p=2000$, SNR=10}
-\begin{columns}
-\column{0.5\textwidth}
-\includegraphics[width=\linewidth]{\mixedPath exp-0.5-2000/pnSim-NewTerminal_mixed_v2_exp_0.5_p2000.png}
-\column{0.5\textwidth}
-\includegraphics[width=\linewidth]{\mixedPath exp-0.5-2000/pnTime-NewTerminal_mixed_v2_exp_0.5_p2000.png}
-\end{columns}
-\centering \small Exponential, $\rho=0.5$, $p=2000$, $k^\dagger=100$, SNR$=10$
-\end{frame}
-
-\begin{frame}{Constant, $\rho=0.9$, $p=1000$, SNR=5}
+\begin{frame}
 \begin{columns}
 \column{0.5\textwidth}
 \includegraphics[width=\linewidth]{\mixedPath const-0.9-1000/pnSim-NewTerminal_mixed_v2_const_0.9_p1000.png}
 \column{0.5\textwidth}
-\includegraphics[width=\linewidth]{\mixedPath const-0.9-1000/pnTime-NewTerminal_mixed_v2_const_0.9_p1000.png}
+\includegraphics[width=\linewidth]{\mixedPath exp-0.5-2000/pnSim-NewTerminal_mixed_v2_exp_0.5_p2000.png}
 \end{columns}
-\centering \small Constant, $\rho=0.9$, $p=1000$, $k^\dagger=20$, SNR$=5$
+\centering \small Constant ($\rho=0.9, p=1000, k^\dagger=20$, SNR$=5$, left) vs. Exponential ($\rho=0.5, p=2000, k^\dagger=100$, SNR$=10$, right)
 \end{frame}

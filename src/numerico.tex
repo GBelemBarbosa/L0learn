@@ -274,3 +274,38 @@ A sensibilidade dos algoritmos a essas diferentes estruturas de correlação loc
   \caption{Experimento tridiagonal. Correlação exponencial, $\rho=0.9,\ p=1000,\ k^\dagger=20,\ \text{SNR}=5$.}
   \label{fig:tri_exp}
 \end{figure}
+
+\subsection{Escolha de Limiares para Penalização Mista $L_0 + L_1 + L_2$}
+
+No contexto da penalização mista, os limiares de redefinição para o parâmetro $\lambda_0$ são adaptados para incorporar os efeitos de $L_1$ ($\lambda_1$) e $L_2$ ($\lambda_2$). No passo proximal com passo $\gamma$, de \eqref{eq:proxl0l1l2}, a condição para uma coordenada entrar no suporte a partir do ponto $x$ exige
+\[
+\max(0, |[x - \gamma \nabla f(x)]_l| - \gamma \lambda_1) \ge \sqrt{2\lambda_0 \gamma (1 + 2\lambda_2 \gamma)}.
+\]
+
+Se partirmos de $x = 0$ (onde $\nabla f(0) = -X'y$), o limiar acima do qual a estimativa é garantida como nula no primeiro passo do gradiente proximal é obtido resolvendo a inequação para $\lambda_0$:
+\[
+\lambda_0 \le \frac{\gamma \left[\max\left(0, |\nabla f(0)|_l - \lambda_1\right)\right]^2}{2 (1 + 2\lambda_2 \gamma)}.
+\]
+
+Dessa forma, os limiares inicializadores de $\lambda_0$ para as validações padrão e inversa tornam-se, respectivamente:
+\[
+\lambda_0 = 1.01 \cdot \gamma_{0,0} \cdot \frac{\left[\max\left(0, \max_l |\nabla f(x^0)_l| - \lambda_1\right)\right]^2}{2 (1 + 2\lambda_2 \gamma_{0,0})},
+\]
+e
+\[
+\lambda_0 = 1.01^{-1} \cdot \gamma_{0,0} \cdot \frac{\left[\max\left(0, \min_l |\nabla f(x^0)_l| - \lambda_1\right)\right]^2}{2 (1 + 2\lambda_2 \gamma_{0,0})}.
+\]
+
+\subsubsection{Fórmulas Gerais de Atualização}
+
+De forma análoga, os passos de redefinição ao longo dos caminhos de regularização da validação cruzada padrão (decrescente) e inversa (crescente) na iteração $j$ passam a ser expressos como:
+\[
+\lambda_{j+1} = 0.9 \cdot \min\left(\lambda_j, \gamma_{j,0} \cdot \frac{\left[\max\left(0, \max_{l \in S^c} |\nabla f(x^{j,0})_l| - \lambda_1\right)\right]^2}{2 (1 + 2\lambda_2 \gamma_{j,0})}\right),
+\]
+e
+\[
+\lambda_{j+1} = 0.9^{-1} \cdot \max\left(\lambda_j, \frac{\left[\max\left(0, \min_{l \in S} |x^{j,0}_l - \gamma_{j,0} \nabla f(x^{j,0})_l| - \gamma_{j,0} \lambda_1\right)\right]^2}{2\gamma_{j,0} (1 + 2\lambda_2 \gamma_{j,0})}\right),
+\]
+onde $S$ denota o suporte de $x^{j,0}$ e $S^c$ o seu complemento.
+
+

@@ -1,0 +1,47 @@
+\section{Composite Reframe and Optimality Conditions}
+
+\begin{frame}{Composite Problem}
+Define
+\[
+f(x) \coloneqq \frac{1}{2} \|Ax-b\|_2^2 + \lambda_2 \|x\|_2^2,\qquad
+h(x) \coloneqq \lambda_0 \|x\|_0 + \lambda_1 \|x\|_1.
+\]
+We can apply composite optimization to
+\[
+\min_{x \in \R^p} F(x) \coloneqq f(x) + h(x). \tag{C}\label{C}
+\]
+\end{frame}
+
+\begin{frame}{Proximal Operator}
+For $g:\R^p \to \R$, the classical proximal operator is
+\[
+\prox_{g}(x) \coloneqq \argmin_{u \in \R^p} g(u) + \frac{1}{2}\|u-x\|_2^2. \tag{prox}\label{prox}
+\]
+For our choice of $g = c h$ ($c \ge 0$), the problem is separable (and prox-friendly!).
+\end{frame}
+
+\begin{frame}{Optimality Concepts (Summary)}
+\begin{description}
+\item[\alert{M-stationary}:] $0 \in \partial F(x^*)$ (Mordukhovich subdifferential).
+\item[\alert{Stationary solution}:] $F'(x^*,d) \ge 0\ \forall d$. 
+\item[\alert{PG-stationary}:] $x^* \in \prox_{\tau h}(x^* - \tau\nabla f(x^*))$ for all $0<\tau<1/L_f$.
+\item[\alert{CW minimum}:] Optimal in each coordinate separately: $x_i^*\in\argmin_{u_i} F(x^*+(u_i-x_i^*)e_i)$.
+\item[\alert{PSI($k$)}:] No partial swap of $\le k$ support indices improves $F$.
+\item[\alert{FSI($k$)}:] No full swap of $\le k$ support indices (re-optimizing all active coefficients) improves $F$.
+\end{description}
+\end{frame}
+
+\begin{frame}{Hierarchy of Optimality Conditions}
+\[
+\begin{aligned}
+\text{FSI($k$)} &\subseteq \text{PSI($k$)} \subseteq \text{CW minima} \overset{L_f\ge 1}{\subseteq} \text{PG-stationary}\\
+&\subseteq \text{stationary solutions} \subseteq \text{M-stationary}
+\end{aligned}
+\]
+where
+\[
+L_f = \lambda_{\max}(A^T A) + 2\lambda_2.
+\]
+\newline
+NPG applied to discontinuous (lsc) problems converges to M-stationary solutions \cite{kanzow2021}, while CD converges to CW minima.
+\end{frame}

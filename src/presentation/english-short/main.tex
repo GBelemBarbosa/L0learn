@@ -1,0 +1,138 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Malmoe}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{algorithm,algpseudocode}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{hyperref}
+\graphicspath{{../../images/}}
+
+% beamer colors
+\definecolor{myblue}{rgb}{0.0, 0.45, 0.70}
+\setbeamercolor{structure}{fg=myblue}
+\setbeamercolor{local structure}{fg=myblue}
+\setbeamercolor{palette primary}{fg=white,bg=myblue}
+\setbeamercolor{palette secondary}{fg=myblue,bg=white}
+\setbeamercolor{palette tertiary}{fg=white,bg=myblue}
+\setbeamercolor{title}{fg=myblue}
+\setbeamercolor{frametitle}{fg=myblue}
+\setbeamertemplate{bibliography item}[text]
+
+% footer configuration with page numbers
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+% mathematics operators
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\DeclareMathOperator{\prox}{prox}
+\DeclareMathOperator{\argmin}{arg\,min}
+\DeclareMathOperator{\argmax}{arg\,max}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Supp}{Supp}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+
+% algorithm settings
+\algnewcommand{\algorithmicinput}{\textbf{Input:}}
+\algnewcommand{\algorithmicoutput}{\textbf{Output:}}
+\algnewcommand{\Input}[1]{\item[\algorithmicinput] #1}
+\algnewcommand{\Output}[1]{\item[\algorithmicoutput] #1}
+\algnewcommand{\algoIndent}[1]{\hspace{#1\algorithmicindent}} % for indentation
+
+\newcommand{\mixedPath}{Mixed_v2/Regular/}
+\newcommand{\cvPath}{CV_comp/}
+\newcommand{\boxplotPath}{Boxplot/}
+\newcommand{\tridiagonalPath}{Mixed_v2/Tridiagonal/}
+
+\setbeamertemplate{title page}{
+  \vbox{}
+  \vfill
+  \begin{centering}
+    \begin{beamercolorbox}[sep=4pt,center]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%
+    \end{beamercolorbox}%
+    \vskip0.4em\par
+    \begin{beamercolorbox}[sep=3pt,center]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=3pt,center]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=3pt,center]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}
+    \vskip0.8em
+    \inserttitlegraphic\par
+  \end{centering}
+  \vfill
+}
+
+\titlegraphic{
+  \hspace{1.2cm}%
+  \includegraphics[height=1.2cm]{unicamp_logo.png}%
+  \hfill
+  \includegraphics[height=0.85cm]{siam_op26_logo.png}%
+  \hspace{1.2cm}%
+}
+
+\begin{document}
+
+\title{Nonmonotone Spectral Algorithms for Discontinuous Composite Optimization\newline \small{Fast Subset Selection Using NSPG}}
+\author[G. Belém Barbosa]{Gabriel Belém Barbosa \and Paulo José da Silva e Silva}
+\institute[IMECC-UNICAMP]{
+  Institute of Mathematics, Statistics, and Scientific Computing\\
+  Department of Applied Mathematics\\
+  UNICAMP
+}
+\date{June 5, 2026}
+
+\frame{\titlepage}
+
+\input{intro}
+\input{optimality}
+\input{algorithms}
+\input{experiments}
+\input{conclusion}
+
+\begin{frame}{Acknowledgments}
+  \centering
+  \vspace{0.8cm}
+  {\large Thank you for your attention!}
+  
+  \vspace{0.4cm}
+  \small
+  \texttt{g234672@dac.unicamp.br}
+  
+  \vspace{0.8cm}
+  Gabriel Belém Barbosa thanks FAPESP (grant 2024/20168-8) for funding.
+  
+  \vspace{0.6cm}
+  \includegraphics[height=0.9cm]{fapesp_logo.png}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{References}
+\bibliographystyle{apalike}
+\bibliography{references}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,47 @@
+\section{Introduction}
+
+
+\begin{frame}{Problem Statement}
+Consider the usual linear regression problem with noise
+\[
+b = Ax + \epsilon, \tag{P}\label{P}
+\]
+where:
+\begin{itemize}
+\item $b \in \R^n$ is the response vector;
+\item $A \in \R^{n \times p}$ is the design matrix;
+\item $x \in \R^p$ is the coefficient vector to be estimated;
+\item $\epsilon \in \R^n$ is the noise vector.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sparse Regularized Problem}
+Assuming sparsity in the solution (often desired or theoretically expected when $p \gg n$), a natural strategy is to consider the regularized least squares problem
+\[
+\min_{x \in \R^p} \frac{1}{2} \|Ax-b\|_2^2 + \lambda_0 \|x\|_0 + \lambda_q \|x\|_q^q,\quad q \in \{1,2\}. \tag{R}\label{R}
+\]
+\begin{itemize}
+\item The $\ell_0$ pseudo-norm is $\|x\|_0 = |\{i \mid x_i \neq 0\}|$;
+\item $\lambda_0 \ge 0$ controls the trade-off between nonzeros and data fit;
+\item $\lambda_q \ge 0$ controls the $\ell_q$ regularization.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Approaches to Solve \eqref{R}}
+\eqref{R} is NP-hard \cite{nphard}. Three common approaches:
+\begin{enumerate}
+\item \textbf{Convex/nonconvex proxies}: LASSO \cite{lasso}, MCP \cite{mcp}, SCAD \cite{scad};
+\item \textbf{Exact methods}: Mixed Integer Programming (MIP) \cite{mio} (e.g., using Gurobi) – can solve globally for $p \sim 10^7$ when high sparsity is desired, but at high cost;
+\item \textbf{Heuristics / approximate algorithms}: stepwise regression, Iterative Hard Thresholding (IHT) \cite{iht}, \texttt{abess} \cite{abess}, greedy Coordinate Descent (CD) \cite{gcd,fastselect}.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{The \texttt{L0Learn} Approach}
+\cite{fastselect} proposes a method that balances speed and near-optimality: 
+\begin{itemize}
+\item Seeks \textit{almost optimal} solutions satisfying a local combinatorial exactness property;
+\item Small perturbations of the support do not improve the objective;
+\item The resulting estimators outperform others in prediction, estimation, and variable selection;
+\item These estimators are \textbf{faster} to find than global minima (MIP), but still \textbf{high quality}.
+\end{itemize}
+\end{frame}

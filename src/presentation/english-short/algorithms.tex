@@ -1,0 +1,117 @@
+\section{Algorithms}
+
+\begin{frame}{Partially Greedy Cyclic Coordinate Descent (PGCCD)}
+\texttt{L0Learn} \cite{fastselect} proposes a CD method:
+\[
+x^{k+1}_i \in \argmin_{u_i} F(x^k + (u_i-x_i^k)e_i)
+= \prox_{\frac{1}{\|A_i\|^2+2\lambda_2} (\lambda_0\mathbf{1}_{\{0\}}+\lambda_1|\cdot|)}(\tilde{x_i^k}).
+\]
+\begin{itemize}
+\item Start with $x^0$, residual $r^0 = b - Ax^0$;
+\item Reorder coordinates in descending order of $|\langle r^0, A_i \rangle|$;
+\item Only the top $t$ ($t \ll p$) are ordered; the rest keep original order;
+\item Cyclic updates after the initial ordering.
+\end{itemize}
+Converges to a CW minimum under weak assumptions.
+\end{frame}
+
+\begin{frame}{Nonmonotone Proximal Gradient (NPG)}
+Algorithm for composite problems like \eqref{C} \cite{kanzow2021}.
+\begin{algorithmic}[1]
+\State Input $x^0$, $\gamma_{\max},\gamma_{\min}>0$, $m\in\N$, $\delta,\tau\in(0,1)$.
+\Repeat
+\State Choose $\gamma_{k,0} \in [\gamma_{\min},\gamma_{\max}]$, $i\gets0$.
+\While{$F(x^{k,i}) > \max_{0\le j \le \min\{k,m-1\}} F(x^{k-j}) - \frac{\delta}{2\gamma_{k,i}}\|x^{k,i}-x^k\|^2$}
+\State $x^{k,i} \in \prox_{\gamma_{k,i} h}(x^k - \gamma_{k,i}\nabla f(x^k))$
+\State $\gamma_{k,i+1} \gets \tau \gamma_{k,i}$, $i \gets i+1$
+\EndWhile
+\State $x^{k+1} \gets x^{k,i}$, $k \gets k+1$
+\Until{stopping criterion}
+\end{algorithmic}
+Optionally return $x^{\text{best}}$ with smallest $F$.
+\end{frame}
+
+\begin{frame}{NPG: Influence of the Memory Parameter $m$}
+\centering
+\begin{tikzpicture}[scale=0.78]
+  % X-axis: m
+  \draw[->, thick] (0,0) -- (6.5,0) node[below right] {$m$};
+  
+  % Left Y-axis (Speed) - using myblue
+  \draw[->, thick, myblue] (0,0) -- (0,4.2) node[above, myblue] {Speed};
+  
+  % Right Y-axis (Solution Quality) - using a red color
+  \definecolor{myred}{rgb}{0.8, 0.1, 0.1}
+  \draw[->, thick, myred] (6.0,0) -- (6.0,4.2) node[above, myred] {Quality};
+  
+  % Speed curve: increases up to certain m then slows down again
+  \draw[myblue, ultra thick] (0.5, 1.8) .. controls (1.0, 3.5) and (1.2, 3.8) .. (1.5, 3.8)
+                                       .. controls (1.8, 3.8) and (3.0, 1.5) .. (5.5, 1.0);
+  
+  % Quality curve: goes up with m (steeper initially, then flattening around m = 5-10)
+  \draw[myred, ultra thick] (0.5, 1.0) .. controls (0.8, 3.0) and (1.2, 3.4) .. (1.5, 3.4)
+                                       .. controls (2.0, 3.4) and (4.0, 3.8) .. (5.5, 3.8);
+  
+  % Ticks and reference lines
+  \draw (0.5, 0.07) -- (0.5, -0.07) node[below] {$1$};
+  \draw[dashed, gray!60] (1.5, 0) -- (1.5, 3.4);
+  \draw (1.5, 0.07) -- (1.5, -0.07) node[below] {$5 \text{--} 10$};
+  \draw (5.5, 0.07) -- (5.5, -0.07) node[below] {$100$};
+\end{tikzpicture}
+
+\vspace{0.05cm}
+\small
+\textbf{Trade-off:} Small $m$ (e.g., $m=1$) can be slow (smaller steps accepted) and get stuck. Large $m$ (e.g., $m=100$) guarantees better quality but decreases speed due to overly lenient line-search. A moderate $m \in [5, 10]$ is optimal.
+\end{frame}
+
+\begin{frame}{NSPG – Spectral Step Size}
+Our candidate step is the primal spectral step \cite{BB1,BB2}:
+\begin{equation} \label{BBR}
+\gamma_k^{BBR} \coloneqq \frac{(s^k)^T s^k}{(s^k)^T r^k},\quad
+s^k = x^k - x^{k-1},\; r^k = \nabla f(x^k) - \nabla f(x^{k-1}).
+\end{equation}
+As in \cite{positiveBB}, the initial step is modified to
+\[
+\gamma_{k,0} \gets \gamma_{k,+}^{BBR} \coloneqq 
+\begin{cases}
+\gamma_k^{BBR}, & \gamma_k^{BBR} > 0,\\
+\frac{\|s^k\|}{\|r^k\|}, & \text{otherwise}.
+\end{cases}
+\]
+Interpretation: $\prox$ with this step minimizes a second‑order model of $f$ using a scalar Hessian approximation $\mu_k I$ from the secant equation.
+\end{frame}
+
+\begin{frame}{Variants: NSPGH and VMNSPG}
+\textbf{NSPGH} \cite{hibrido1,hibrido2}: uses a hybrid of primal/dual spectral steps,
+\begin{equation} \label{BBR2}
+\gamma^{BBRH}_{k,+} = 
+\begin{cases}
+\gamma^{BBR2}_{k,+}, & \gamma^{BBR}_{k,+} < \delta \gamma^{BBR2}_{k,+},\\
+\gamma^{BBR}_{k,+} - \frac{1}{\delta} \gamma^{BBR2}_{k,+}, & \text{otherwise},
+\end{cases}
+\quad \delta=2.
+\end{equation}
+\textbf{VMNSPG} \cite{vmspg}: replaces the scalar step with a diagonal metric $U_k \succ 0$,
+\[
+x^{k,i} \in \prox_{h, U_{k,i}}\bigl(x^k - U_{k,i}^{-1} \nabla f(x^k)\bigr),
+\]
+where $U_{k,+}^{DBBR}$ is the closed-form solution of a regularized secant equation bounded by $[1/\gamma^{BBR}_{k,+},\, 1/\gamma^{BBR2}_{k,+}]$.
+\end{frame}
+
+\begin{frame}{Local Combinatorial Optimization – CPSI($k$) Algorithm}
+\begin{algorithm}[H]
+\caption{CPSI($k$) Method}
+\begin{algorithmic}[1]
+\Input{$\hat{x}^0$, $k$, inner algorithm}
+\State $\ell \gets 0$
+\While{true}
+\State $\hat{x}^{\ell+1} \gets$ output of inner algorithm starting from $\hat{x}^\ell$
+\If{the combinatorial swap problem has feasible $\hat{x}$ with $F(\hat{x}) < F(\hat{x}^{\ell+1})$}
+\State $\hat{x}^{\ell+1} \gets \hat{x}$, $\ell \gets \ell+1$
+\Else \textbf{break}
+\EndIf
+\EndWhile
+\Output{last $\hat{x}^{\ell+1}$ (PSI($k$) minimum)}
+\end{algorithmic}
+\end{algorithm}
+\end{frame}
